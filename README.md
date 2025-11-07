@@ -9,5 +9,6 @@
 ## 阶段二学习
 1.[Git学习笔记](https://github.com/Technoblade1889/Git-)
 
-2.[Git练习文档](https://github.com/Technoblade1889/Git------/blob/main/hello)
+2.[Git练习文档1](https://github.com/Technoblade1889/Git------/blob/main/hello)
+[Git练习文档2](https://github.com/Technoblade1889/Git------)
 
