@@ -31,7 +31,7 @@
 
 [CSS学习笔记2](https://github.com/Technoblade1889/CSS2/blob/main/README.md?plain=1)
 
-3.[Javascript学习笔记]()
+3.[Javascript学习笔记](https://github.com/Technoblade1889/Javascript/blob/main/README.md?plain=1)
 
 4.[静态网页作品链接](https://technoblade1889.github.io/Jay-Chou-web/JAY%20CHOU.html)
 
