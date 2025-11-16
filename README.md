@@ -24,6 +24,6 @@
 
 3.[Javascript学习笔记]
 
-4.[静态网页作品链接]
+4.[静态网页作品链接](https://github.com/Technoblade1889/Jay-Chou-web)
 
 5.[页面编后感](https://github.com/Technoblade1889/Jay-Chou)
