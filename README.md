@@ -20,14 +20,16 @@
 ## 阶段三学习
 1.[HTML学习笔记1(练习中敲的代码可以直接查看)](https://github.com/Technoblade1889/html/blob/main/README.md?plain=1)
 
-[HTML学习笔记1(练习中敲的代码可以直接查看)]()
+[HTML学习笔记2(练习中敲的代码可以直接查看)](https://github.com/Technoblade1889/html2/blob/main/README.md?plain=1)
 
-[HTML学习笔记1(练习中敲的代码可以直接查看)]()
+[HTML学习笔记3(练习中敲的代码可以直接查看)](https://github.com/Technoblade1889/html3/blob/main/README.md?plain=1)
 
-[HTML学习笔记1(练习中敲的代码可以直接查看)]()
+[HTML学习笔记4(练习中敲的代码可以直接查看)](https://github.com/Technoblade1889/html4/blob/main/README.md?plain=1)
 
 
-2.[CSS学习笔记]()
+2.[CSS学习笔记1](https://github.com/Technoblade1889/CSS1/blob/main/README.md?plain=1)
+
+[CSS学习笔记2](https://github.com/Technoblade1889/CSS2/blob/main/README.md?plain=1)
 
 3.[Javascript学习笔记]()
 
