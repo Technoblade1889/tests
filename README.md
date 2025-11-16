@@ -18,11 +18,18 @@
 
 
 ## 阶段三学习
-1.[HTML学习笔记]
+1.[HTML学习笔记1(练习中敲的代码可以直接查看)](https://github.com/Technoblade1889/html/blob/main/README.md?plain=1)
 
-2.[CSS学习笔记]
+[HTML学习笔记1(练习中敲的代码可以直接查看)]()
 
-3.[Javascript学习笔记]
+[HTML学习笔记1(练习中敲的代码可以直接查看)]()
+
+[HTML学习笔记1(练习中敲的代码可以直接查看)]()
+
+
+2.[CSS学习笔记]()
+
+3.[Javascript学习笔记]()
 
 4.[静态网页作品链接](https://technoblade1889.github.io/Jay-Chou-web/JAY%20CHOU.html)
 
