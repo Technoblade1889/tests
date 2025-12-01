@@ -36,3 +36,12 @@
 4.[静态网页作品链接](https://technoblade1889.github.io/Jay-Chou-web/JAY%20CHOU.html)
 
 5.[页面编后感](https://github.com/Technoblade1889/Jay-Chou)
+
+
+
+## 阶段四学习
+1.[Geek网站复刻](https://github.com/Technoblade1889/Geek-/tree/main/Geek%E7%BD%91%E7%AB%99)
+
+[网站地址](https://technoblade1889.github.io/Geek-/)
+
+2.[编后感](https://github.com/Technoblade1889/Geek-/blob/main/Geek%E7%BD%91%E7%AB%99%E5%A4%8D%E5%88%BB%E7%BC%96%E5%90%8E%E8%AE%B0.md)
