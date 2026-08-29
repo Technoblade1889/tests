@@ -9,6 +9,7 @@ function defaultState() {
     leetcode: {},   // { monthKey: number }
     checkins: {},   // { monthKey: [day...] }
     currentMonth: null,
+    daily: {},      // { "YYYY-MM-DD": { taskId: true } }
   };
 }
 
@@ -351,6 +352,97 @@ function renderEnglish() {
   });
 }
 
+// ===== 每日安排 =====
+function todayStr() {
+  const d = new Date();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return d.getFullYear() + "-" + mm + "-" + dd;
+}
+
+function renderDaily() {
+  const wrap = document.getElementById("daily-wrap");
+  if (!wrap || typeof DAILY === "undefined") return;
+  wrap.innerHTML = "";
+
+  const card = document.createElement("section");
+  card.className = "card daily";
+
+  const h = document.createElement("h2");
+  h.className = "daily-title";
+  h.textContent = "📅 每日安排";
+  card.appendChild(h);
+
+  const sTitle = document.createElement("h3");
+  sTitle.className = "sub-title";
+  sTitle.style.marginTop = "0";
+  sTitle.textContent = "⏰ 每日时间表（在校日）";
+  card.appendChild(sTitle);
+
+  const tl = document.createElement("div");
+  tl.className = "daily-schedule";
+  DAILY.schedule.forEach((s) => {
+    const row = document.createElement("div");
+    row.className = "schedule-row";
+
+    const t = document.createElement("div");
+    t.className = "schedule-time";
+    t.textContent = s.time;
+
+    const info = document.createElement("div");
+    info.className = "schedule-info";
+    const tt = document.createElement("div");
+    tt.className = "schedule-title";
+    tt.textContent = s.title;
+    const nn = document.createElement("div");
+    nn.className = "schedule-note";
+    nn.textContent = s.note;
+    info.append(tt, nn);
+
+    row.append(t, info);
+    tl.appendChild(row);
+  });
+  card.appendChild(tl);
+
+  const wk = document.createElement("p");
+  wk.className = "daily-weekend";
+  wk.textContent = DAILY.weekend;
+  card.appendChild(wk);
+
+  const key = todayStr();
+  const tTitle = document.createElement("h3");
+  tTitle.className = "sub-title";
+  tTitle.textContent = "✅ 每日任务 · " + key;
+  card.appendChild(tTitle);
+
+  const today = state.daily[key] || {};
+  const taskWrap = document.createElement("div");
+  taskWrap.className = "daily-tasks";
+  DAILY.tasks.forEach((t) => {
+    const label = document.createElement("label");
+    label.className = "item";
+    if (today[t.id]) label.classList.add("done");
+
+    const cb = document.createElement("input");
+    cb.type = "checkbox";
+    cb.checked = !!today[t.id];
+    cb.addEventListener("change", () => {
+      if (!state.daily[key]) state.daily[key] = {};
+      state.daily[key][t.id] = cb.checked;
+      saveState();
+      label.classList.toggle("done", cb.checked);
+    });
+
+    const span = document.createElement("span");
+    span.textContent = t.label;
+    label.append(cb, span);
+    taskWrap.appendChild(label);
+  });
+  card.appendChild(taskWrap);
+
+  wrap.appendChild(card);
+}
+
 // ===== 其他 =====
 function renderHeader() {
   const now = new Date();
@@ -361,6 +453,7 @@ function renderHeader() {
 
 function renderAll() {
   renderHeader();
+  renderDaily();
   renderMonthNav();
   renderRoadmap();
   renderMonth();
