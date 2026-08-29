@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>全年学习计划 · 2026.9 – 2027.8</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <h1>📚 全年学习计划</h1>
+      <p class="date" id="date"></p>
+      <p class="subtitle">2026.9 – 2027.8 · 全年总进度 <b id="year-progress">0%</b></p>
+    </header>
+
+    <!-- 月份导航 -->
+    <nav class="month-nav" id="month-nav"></nav>
+
+    <!-- 全年路线图 -->
+    <details class="card roadmap">
+      <summary class="roadmap-summary">🗺️ 全年路线图（点击展开 / 收起）</summary>
+      <div class="table-wrap">
+        <table class="roadmap-table">
+          <thead>
+            <tr><th>月份</th><th>核心学习</th><th>辅助学习</th><th>项目 / 目标</th></tr>
+          </thead>
+          <tbody id="roadmap-body"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- 当前月份 -->
+    <section class="card month">
+      <div class="month-head">
+        <h2 id="month-title"></h2>
+        <span class="month-theme" id="month-theme"></span>
+      </div>
+
+      <div class="overview">
+        <div class="overview-number" id="month-progress-pct">0%</div>
+        <div class="overview-label">本月进度</div>
+        <div class="progress-bar"><div class="progress-fill" id="month-progress-fill"></div></div>
+        <div class="overview-stats">
+          <div class="stat"><span class="stat-value" id="stat-modules">0/0</span><span class="stat-name">任务项</span></div>
+          <div class="stat"><span class="stat-value" id="stat-leetcode">0/0</span><span class="stat-name">LeetCode</span></div>
+          <div class="stat"><span class="stat-value" id="stat-checkin">0/0</span><span class="stat-name">打卡</span></div>
+        </div>
+      </div>
+
+      <h3 class="sub-title">🧩 LeetCode</h3>
+      <div class="lc-row">
+        <button class="lc-btn" id="lc-minus">−</button>
+        <div class="lc-count"><span id="lc-solved">0</span><span class="lc-goal" id="lc-goal">/ 20 题</span></div>
+        <button class="lc-btn" id="lc-plus">＋</button>
+        <button class="lc-quick" id="lc-quick">今日 +1</button>
+      </div>
+      <div class="progress-bar"><div class="progress-fill lc" id="lc-fill"></div></div>
+
+      <h3 class="sub-title">🔥 每日练习打卡</h3>
+      <div class="cal-stats">
+        <span>已打卡 <b id="cal-days">0</b> 天</span>
+        <span>最长连续 <b id="cal-streak">0</b> 天</span>
+      </div>
+      <div class="cal-weekdays">
+        <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+
+      <h3 class="sub-title">📖 本月学习模块</h3>
+      <div id="month-modules"></div>
+
+      <h3 class="sub-title">📓 本月日记 / 总结</h3>
+      <textarea class="note diary" id="month-diary" placeholder="这个月学了什么、卡在哪、下个月怎么调整…"></textarea>
+    </section>
+
+    <!-- 英语专区 -->
+    <div id="english-wrap"></div>
+  </main>
+
+  <script src="plan-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
