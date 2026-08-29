@@ -533,3 +533,76 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* 数据同步 */
+.sync-summary {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  list-style: none;
+  user-select: none;
+}
+
+.sync-summary::-webkit-details-marker {
+  display: none;
+}
+
+.sync-body {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.sync-hint {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.sync-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sync-btn {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.sync-btn:hover {
+  border-color: var(--accent);
+}
+
+.sync-btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.sync-btn.primary:hover {
+  background: #5a4bd1;
+}
+
+.sync-paste {
+  margin-bottom: 10px;
+}
+
+.sync-paste .note {
+  margin-bottom: 8px;
+  background: #fff;
+}
+
+.sync-status {
+  font-size: 13px;
+  color: var(--green);
+  min-height: 18px;
+}

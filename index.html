@@ -14,6 +14,28 @@
       <p class="subtitle">2026.9 – 2027.8 · 全年总进度 <b id="year-progress">0%</b></p>
     </header>
 
+    <!-- 数据同步 -->
+    <details class="card sync-card">
+      <summary class="sync-summary">📦 数据同步（手机 ↔ 电脑）</summary>
+      <div class="sync-body">
+        <p class="sync-hint">电脑点「导出」→ 把文件/文字传到手机 → 手机点「导入/粘贴」即可。导入会覆盖本机数据，并自动备份。</p>
+        <div class="sync-buttons">
+          <button class="sync-btn primary" id="btn-export">⬇️ 导出文件</button>
+          <button class="sync-btn" id="btn-import">⬆️ 导入文件</button>
+        </div>
+        <div class="sync-buttons">
+          <button class="sync-btn" id="btn-copy">📋 复制数据</button>
+          <button class="sync-btn" id="btn-paste">📥 粘贴导入</button>
+        </div>
+        <div class="sync-paste" id="sync-paste" hidden>
+          <textarea class="note" id="paste-area" placeholder="长按此处粘贴复制的数据…"></textarea>
+          <button class="sync-btn primary" id="btn-paste-confirm">确认导入</button>
+        </div>
+        <p class="sync-status" id="sync-status"></p>
+        <input type="file" id="import-file" accept=".json,application/json" hidden />
+      </div>
+    </details>
+
     <!-- 每日安排 -->
     <div id="daily-wrap"></div>
 
