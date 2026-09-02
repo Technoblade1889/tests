@@ -368,6 +368,40 @@ body {
   padding: 4px 0 6px;
 }
 
+.ds-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ds-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.ds-badge-current {
+  color: #fff;
+  background: var(--accent);
+}
+
+.ds-badge-learned {
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.ds-current {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+.review-table td {
+  white-space: normal;
+}
+
 /* 打卡 */
 .cal-stats {
   display: flex;

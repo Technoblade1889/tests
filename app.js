@@ -317,6 +317,14 @@ function dsKey(no, pi) {
   return "ds|" + no + "|" + pi;
 }
 
+function dsStatus(no) {
+  if (typeof DS_CURRENT !== "undefined" && DS_CURRENT) {
+    if (no < DS_CURRENT) return "learned";
+    if (no === DS_CURRENT) return "current";
+  }
+  return "";
+}
+
 function updateDsProgress(no) {
   const sec = DS_MAP.find((s) => s.no === no);
   if (!sec) return;
@@ -349,14 +357,29 @@ function renderDsMap() {
     const card = document.createElement("details");
     card.className = "module";
 
+    const status = dsStatus(sec.no);
+    if (status === "current") {
+      card.classList.add("ds-current");
+      card.open = true;
+    }
+
     const sum = document.createElement("summary");
     sum.className = "module-summary";
     const left = document.createElement("div");
     left.className = "module-left";
+    const nameRow = document.createElement("div");
+    nameRow.className = "ds-title-row";
     const name = document.createElement("span");
     name.className = "module-name";
     name.textContent = sec.no + ". " + sec.title;
-    left.appendChild(name);
+    nameRow.appendChild(name);
+    if (status) {
+      const badge = document.createElement("span");
+      badge.className = "ds-badge ds-badge-" + status;
+      badge.textContent = status === "current" ? "📍 当前" : "✓ 已学";
+      nameRow.appendChild(badge);
+    }
+    left.appendChild(nameRow);
     const prog = document.createElement("span");
     prog.className = "module-progress";
     prog.id = "dsprog-" + sec.no;
@@ -646,6 +669,40 @@ function renderDaily() {
     taskWrap.appendChild(label);
   });
   card.appendChild(taskWrap);
+
+  // 遗忘曲线复习安排
+  if (typeof REVIEW !== "undefined") {
+    const rTitle = document.createElement("h3");
+    rTitle.className = "sub-title";
+    rTitle.textContent = "🔄 遗忘曲线复习安排（1 / 2 / 4 / 7 天间隔）";
+    card.appendChild(rTitle);
+
+    const intList = document.createElement("ul");
+    intList.className = "advice";
+    REVIEW.intervals.forEach((iv) => {
+      const li = document.createElement("li");
+      li.textContent = iv;
+      intList.appendChild(li);
+    });
+    card.appendChild(intList);
+
+    const tblWrap = document.createElement("div");
+    tblWrap.className = "table-wrap";
+    const table = document.createElement("table");
+    table.className = "roadmap-table review-table";
+    const thead = document.createElement("thead");
+    thead.innerHTML = "<tr><th>星期</th><th>复习（按遗忘曲线）</th><th>新学</th></tr>";
+    table.appendChild(thead);
+    const tbody = document.createElement("tbody");
+    REVIEW.week.forEach((w) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + w.day + "</td><td>" + w.review + "</td><td>" + w.learn + "</td>";
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    tblWrap.appendChild(table);
+    card.appendChild(tblWrap);
+  }
 
   wrap.appendChild(card);
 }
