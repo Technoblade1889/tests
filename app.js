@@ -312,6 +312,116 @@ function renderLeetcodePlan(m) {
   });
 }
 
+// ===== 渲染：数据结构学习地图 =====
+function dsKey(no, pi) {
+  return "ds|" + no + "|" + pi;
+}
+
+function updateDsProgress(no) {
+  const sec = DS_MAP.find((s) => s.no === no);
+  if (!sec) return;
+  const total = sec.problems.length;
+  let done = 0;
+  sec.problems.forEach((_, pi) => {
+    if (state.items[dsKey(no, pi)]) done++;
+  });
+  const prog = document.getElementById("dsprog-" + no);
+  if (prog) prog.textContent = total ? done + "/" + total : "要点";
+}
+
+function renderDsMap() {
+  const wrap = document.getElementById("ds-map");
+  if (!wrap || typeof DS_MAP === "undefined") return;
+  wrap.innerHTML = "";
+
+  let currentPart = 0;
+  DS_MAP.forEach((sec) => {
+    if (sec.part !== currentPart) {
+      currentPart = sec.part;
+      const part = document.createElement("h3");
+      part.className = "ds-part";
+      part.textContent =
+        "第 " + currentPart + " 部分" +
+        (currentPart === 1 ? " · 线性结构 / 树 / 图" : " · 图应用 / 查找 / 排序");
+      wrap.appendChild(part);
+    }
+
+    const card = document.createElement("details");
+    card.className = "module";
+
+    const sum = document.createElement("summary");
+    sum.className = "module-summary";
+    const left = document.createElement("div");
+    left.className = "module-left";
+    const name = document.createElement("span");
+    name.className = "module-name";
+    name.textContent = sec.no + ". " + sec.title;
+    left.appendChild(name);
+    const prog = document.createElement("span");
+    prog.className = "module-progress";
+    prog.id = "dsprog-" + sec.no;
+    sum.append(left, prog);
+
+    const body = document.createElement("div");
+    body.className = "module-body";
+
+    const points = document.createElement("ul");
+    points.className = "ds-points";
+    sec.points.forEach((pt) => {
+      const li = document.createElement("li");
+      li.textContent = pt;
+      points.appendChild(li);
+    });
+    body.appendChild(points);
+
+    if (sec.problems && sec.problems.length) {
+      const pH = document.createElement("div");
+      pH.className = "note-label";
+      pH.textContent = "🎯 配套 LeetCode";
+      body.appendChild(pH);
+
+      sec.problems.forEach((p, pi) => {
+        const key = dsKey(sec.no, pi);
+        const label = document.createElement("label");
+        label.className = "item lc-problem";
+        if (state.items[key]) label.classList.add("done");
+
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.checked = !!state.items[key];
+        cb.addEventListener("change", () => {
+          state.items[key] = cb.checked;
+          saveState();
+          label.classList.toggle("done", cb.checked);
+          updateDsProgress(sec.no);
+        });
+
+        const span = document.createElement("span");
+        const link = document.createElement("a");
+        link.href = "https://leetcode.cn/problems/" + p.slug + "/";
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = p.id + ". " + p.name;
+        const diff = document.createElement("em");
+        diff.className = "lc-diff lc-diff-" + (p.diff === "简单" ? "easy" : p.diff === "中等" ? "mid" : "hard");
+        diff.textContent = p.diff;
+        span.append(link, diff);
+        label.append(cb, span);
+        body.appendChild(label);
+      });
+    } else {
+      const note = document.createElement("div");
+      note.className = "ds-empty";
+      note.textContent = "本节以概念理解与手写为主，暂无直接对应题。";
+      body.appendChild(note);
+    }
+
+    card.append(sum, body);
+    wrap.appendChild(card);
+    updateDsProgress(sec.no);
+  });
+}
+
 // ===== 渲染：日历 =====
 function renderCalendar(m) {
   const grid = document.getElementById("cal-grid");
@@ -554,6 +664,7 @@ function renderAll() {
   renderMonthNav();
   renderRoadmap();
   renderMonth();
+  renderDsMap();
   renderEnglish();
 }
 

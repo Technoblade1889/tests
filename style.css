@@ -334,6 +334,40 @@ body {
   background: #ffeded;
 }
 
+/* 数据结构学习地图 */
+.ds-part {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 16px 0 10px;
+  padding-top: 14px;
+  border-top: 2px solid var(--accent-soft);
+}
+
+.ds-part:first-child {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 4px;
+}
+
+.ds-points {
+  margin: 2px 0 10px;
+  padding-left: 18px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.ds-points li {
+  margin-bottom: 4px;
+}
+
+.ds-empty {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 4px 0 6px;
+}
+
 /* 打卡 */
 .cal-stats {
   display: flex;

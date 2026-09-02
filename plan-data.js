@@ -509,6 +509,327 @@ const LEETCODE_PLAN = {
 };
 
 // ============================================================
+// 数据结构学习地图（25 节 · 按真实课程顺序）
+// 每个 section：no / part(1|2) / title / points[] / problems[]
+// problems 为空表示本节以概念理解与手写为主，暂无直接对应题。
+// ============================================================
+
+const DS_MAP = [
+  // ===== 第 1 部分 =====
+  {
+    no: 1, part: 1, title: "数据结构基本认知与必要知识点复习",
+    points: [
+      "逻辑结构：线性（表 / 栈 / 队列 / 串）与非线性（树 / 图）",
+      "存储结构：顺序存储 vs 链式存储",
+      "算法五特性：有穷、确定、可行、输入、输出",
+      "时间 / 空间复杂度：大 O 记法，常见量级排序",
+    ],
+    problems: [
+      { id: 509, name: "斐波那契数", slug: "fibonacci-number", diff: "简单" },
+    ],
+  },
+  {
+    no: 2, part: 1, title: "指针 · 结构体 · 动态内存分配 · 算法时间复杂度",
+    points: [
+      "指针与指针运算（&、*、指针偏移）",
+      "struct 结构体与 typedef",
+      "malloc / free 动态内存分配",
+      "数组与指针的关系",
+    ],
+    problems: [
+      { id: 27, name: "移除元素", slug: "remove-element", diff: "简单" },
+      { id: 344, name: "反转字符串", slug: "reverse-string", diff: "简单" },
+    ],
+  },
+  {
+    no: 3, part: 1, title: "顺序表与链表",
+    points: [
+      "顺序表：随机访问 O(1)，插入删除 O(n)",
+      "单链表：结点结构、头插 / 尾插",
+      "头结点的作用：统一空表与首元素操作",
+      "顺序 vs 链式 的取舍",
+    ],
+    problems: [
+      { id: 27, name: "移除元素", slug: "remove-element", diff: "简单" },
+      { id: 203, name: "移除链表元素", slug: "remove-linked-list-elements", diff: "简单" },
+      { id: 206, name: "反转链表", slug: "reverse-linked-list", diff: "简单" },
+    ],
+  },
+  {
+    no: 4, part: 1, title: "链表应用 · 循环链表",
+    points: [
+      "循环链表：尾指针指向头",
+      "快慢指针：判环 / 找中点",
+      "约瑟夫环问题",
+    ],
+    problems: [
+      { id: 141, name: "环形链表", slug: "linked-list-cycle", diff: "简单" },
+      { id: 876, name: "链表的中间结点", slug: "middle-of-the-linked-list", diff: "简单" },
+      { id: 142, name: "环形链表 II", slug: "linked-list-cycle-ii", diff: "中等" },
+    ],
+  },
+  {
+    no: 5, part: 1, title: "双向链表 · 栈 · 队列",
+    points: [
+      "双向链表：prev + next 指针",
+      "栈：LIFO，顺序栈 / 链栈，入栈出栈",
+      "队列：FIFO，队头队尾",
+      "栈的应用：括号匹配、递归、表达式",
+    ],
+    problems: [
+      { id: 707, name: "设计链表", slug: "design-linked-list", diff: "中等" },
+      { id: 20, name: "有效的括号", slug: "valid-parentheses", diff: "简单" },
+      { id: 232, name: "用栈实现队列", slug: "implement-queue-using-stacks", diff: "简单" },
+      { id: 225, name: "用队列实现栈", slug: "implement-stack-using-queues", diff: "简单" },
+    ],
+  },
+  {
+    no: 6, part: 1, title: "循环队列 · 讲题 · 递归",
+    points: [
+      "循环队列：队满 (rear+1)%n == front",
+      "队列元素个数：(rear - front + n) % n",
+      "递归三要素：终止条件 / 递推 / 返回",
+    ],
+    problems: [
+      { id: 622, name: "设计循环队列", slug: "design-circular-queue", diff: "中等" },
+      { id: 509, name: "斐波那契数", slug: "fibonacci-number", diff: "简单" },
+      { id: 70, name: "爬楼梯", slug: "climbing-stairs", diff: "简单" },
+    ],
+  },
+  {
+    no: 7, part: 1, title: "表达式求值 · 树开头",
+    points: [
+      "中缀 → 后缀（栈）",
+      "逆波兰表达式求值",
+      "树的基本概念：根 / 结点 / 度 / 深度",
+    ],
+    problems: [
+      { id: 150, name: "逆波兰表达式求值", slug: "evaluate-reverse-polish-notation", diff: "中等" },
+      { id: 227, name: "基本计算器 II", slug: "basic-calculator-ii", diff: "中等" },
+    ],
+  },
+  {
+    no: 8, part: 1, title: "二叉树与遍历",
+    points: [
+      "二叉树性质：第 i 层最多 2^(i-1) 个结点",
+      "前 / 中 / 后序遍历（递归 + 非递归）",
+      "层序遍历（队列）",
+      "完全二叉树 / 满二叉树",
+    ],
+    problems: [
+      { id: 144, name: "二叉树的前序遍历", slug: "binary-tree-preorder-traversal", diff: "简单" },
+      { id: 94, name: "二叉树的中序遍历", slug: "binary-tree-inorder-traversal", diff: "简单" },
+      { id: 145, name: "二叉树的后序遍历", slug: "binary-tree-postorder-traversal", diff: "简单" },
+      { id: 102, name: "二叉树的层序遍历", slug: "binary-tree-level-order-traversal", diff: "中等" },
+    ],
+  },
+  {
+    no: 9, part: 1, title: "遍历结果推导 · 线索二叉树",
+    points: [
+      "由 前+中 / 中+后 唯一确定二叉树",
+      "线索二叉树：利用空指针指向前驱 / 后继",
+      "中序线索化",
+    ],
+    problems: [
+      { id: 105, name: "从前序与中序遍历序列构造二叉树", slug: "construct-binary-tree-from-preorder-and-inorder-traversal", diff: "中等" },
+      { id: 106, name: "从中序与后序遍历序列构造二叉树", slug: "construct-binary-tree-from-inorder-and-postorder-traversal", diff: "中等" },
+      { id: 889, name: "根据前序和后序遍历构造二叉树", slug: "construct-binary-tree-from-preorder-and-postorder-traversal", diff: "中等" },
+    ],
+  },
+  {
+    no: 10, part: 1, title: "哈夫曼树 · 树森林与二叉树转换",
+    points: [
+      "哈夫曼树：带权路径长度 WPL 最小",
+      "哈夫曼编码：前缀编码",
+      "森林 ↔ 二叉树 的转换",
+    ],
+    problems: [],
+  },
+  {
+    no: 11, part: 1, title: "树森林二叉树转换 · 层序遍历 · 综合应用题",
+    points: [
+      "森林 ↔ 二叉树 相互转换",
+      "层序遍历变体（按层输出 / 层平均）",
+      "N 叉树",
+    ],
+    problems: [
+      { id: 429, name: "N 叉树的层序遍历", slug: "n-ary-tree-level-order-traversal", diff: "中等" },
+      { id: 637, name: "二叉树的层平均值", slug: "average-of-levels-in-binary-tree", diff: "简单" },
+      { id: 102, name: "二叉树的层序遍历", slug: "binary-tree-level-order-traversal", diff: "中等" },
+    ],
+  },
+  {
+    no: 12, part: 1, title: "图基本概念与存储结构",
+    points: [
+      "图：顶点 / 边 / 有向 / 无向 / 带权",
+      "邻接矩阵 vs 邻接表（空间、适用场景）",
+      "度 / 入度 / 出度",
+    ],
+    problems: [
+      { id: 1791, name: "找出星型图的中心节点", slug: "find-center-of-star-graph", diff: "简单" },
+      { id: 997, name: "找到小镇的法官", slug: "find-the-town-judge", diff: "简单" },
+    ],
+  },
+  {
+    no: 13, part: 1, title: "深度优先 · 广度优先 · 最小生成树",
+    points: [
+      "DFS：递归 / 栈",
+      "BFS：队列",
+      "最小生成树：Prim / Kruskal",
+    ],
+    problems: [
+      { id: 200, name: "岛屿数量", slug: "number-of-islands", diff: "中等" },
+      { id: 733, name: "图像渲染", slug: "flood-fill", diff: "简单" },
+      { id: 547, name: "省份数量", slug: "number-of-provinces", diff: "中等" },
+    ],
+  },
+  // ===== 第 2 部分 =====
+  {
+    no: 14, part: 2, title: "最短路径",
+    points: [
+      "Dijkstra（非负权，单源）",
+      "Floyd（多源）",
+      "Bellman-Ford（可处理负权）",
+    ],
+    problems: [
+      { id: 743, name: "网络延迟时间", slug: "network-delay-time", diff: "中等" },
+      { id: 787, name: "K 站中转内最便宜的航班", slug: "cheapest-flights-within-k-stops", diff: "中等" },
+    ],
+  },
+  {
+    no: 15, part: 2, title: "拓扑排序 · 关键路径",
+    points: [
+      "AOV 网 → 拓扑排序（入度表）",
+      "AOE 网 → 关键路径",
+      "入度表 / 队列实现",
+    ],
+    problems: [
+      { id: 207, name: "课程表", slug: "course-schedule", diff: "中等" },
+      { id: 210, name: "课程表 II", slug: "course-schedule-ii", diff: "中等" },
+    ],
+  },
+  {
+    no: 16, part: 2, title: "顺序查找 · 折半查找 · 二叉排序树",
+    points: [
+      "顺序查找 O(n)",
+      "折半查找 O(logn)（需有序）",
+      "BST：左小右大，插入 / 删除",
+    ],
+    problems: [
+      { id: 704, name: "二分查找", slug: "binary-search", diff: "简单" },
+      { id: 35, name: "搜索插入位置", slug: "search-insert-position", diff: "简单" },
+      { id: 700, name: "二叉搜索树中的搜索", slug: "search-in-a-binary-search-tree", diff: "简单" },
+    ],
+  },
+  {
+    no: 17, part: 2, title: "折半查找判定树 · 平衡二叉树 · 题目讲解",
+    points: [
+      "折半查找判定树",
+      "AVL：平衡因子、旋转（LL / RR / LR / RL）",
+      "平衡二叉树高度推导",
+    ],
+    problems: [
+      { id: 110, name: "平衡二叉树", slug: "balanced-binary-tree", diff: "简单" },
+      { id: 108, name: "将有序数组转换为二叉搜索树", slug: "convert-sorted-array-to-binary-search-tree", diff: "简单" },
+    ],
+  },
+  {
+    no: 18, part: 2, title: "B 树与 B+ 树 · 真题解析",
+    points: [
+      "B 树：多路平衡、阶 m、分裂",
+      "B+ 树：数据在叶子、叶子链",
+      "与 BST / AVL 的区别",
+    ],
+    problems: [],
+  },
+  {
+    no: 19, part: 2, title: "散列表 · 真题解析",
+    points: [
+      "哈希函数、冲突处理（拉链 / 开放定址）",
+      "装填因子",
+      "平均查找长度 ASL",
+    ],
+    problems: [
+      { id: 1, name: "两数之和", slug: "two-sum", diff: "简单" },
+      { id: 242, name: "有效的字母异位词", slug: "valid-anagram", diff: "简单" },
+      { id: 49, name: "字母异位词分组", slug: "group-anagrams", diff: "中等" },
+      { id: 128, name: "最长连续序列", slug: "longest-consecutive-sequence", diff: "中等" },
+    ],
+  },
+  {
+    no: 20, part: 2, title: "简单的排序算法",
+    points: [
+      "冒泡 / 选择 / 插入 O(n²)",
+      "稳定性、是否原地",
+      "直接插入 vs 折半插入",
+    ],
+    problems: [
+      { id: 912, name: "排序数组", slug: "sort-an-array", diff: "中等" },
+      { id: 283, name: "移动零", slug: "move-zeroes", diff: "简单" },
+      { id: 147, name: "对链表进行插入排序", slug: "insertion-sort-list", diff: "中等" },
+    ],
+  },
+  {
+    no: 21, part: 2, title: "堆与堆排序",
+    points: [
+      "堆：大顶堆 / 小顶堆，完全二叉树",
+      "建堆 O(n)、堆排 O(nlogn)",
+      "优先队列",
+    ],
+    problems: [
+      { id: 215, name: "数组中的第K个最大元素", slug: "kth-largest-element-in-an-array", diff: "中等" },
+      { id: 347, name: "前 K 个高频元素", slug: "top-k-frequent-elements", diff: "中等" },
+      { id: 703, name: "数据流中的第 K 大元素", slug: "kth-largest-element-in-a-stream", diff: "简单" },
+    ],
+  },
+  {
+    no: 22, part: 2, title: "高效的排序算法（希尔 · 归并 · 快速 · 基数）",
+    points: [
+      "希尔：分组插入",
+      "归并：分治、稳定 O(nlogn)",
+      "快排：partition、最坏 O(n²)",
+      "基数：按位、稳定",
+    ],
+    problems: [
+      { id: 912, name: "排序数组", slug: "sort-an-array", diff: "中等" },
+      { id: 148, name: "排序链表", slug: "sort-list", diff: "中等" },
+      { id: 215, name: "数组中的第K个最大元素", slug: "kth-largest-element-in-an-array", diff: "中等" },
+    ],
+  },
+  {
+    no: 23, part: 2, title: "内部排序真题讲解",
+    points: [
+      "各排序对比：时间 / 空间 / 稳定",
+      "真题综合",
+    ],
+    problems: [
+      { id: 75, name: "颜色分类", slug: "sort-colors", diff: "中等" },
+      { id: 912, name: "排序数组", slug: "sort-an-array", diff: "中等" },
+    ],
+  },
+  {
+    no: 24, part: 2, title: "外部排序",
+    points: [
+      "多路归并、败者树",
+      "置换-选择排序",
+      "归并趟数计算",
+    ],
+    problems: [],
+  },
+  {
+    no: 25, part: 2, title: "几道查找与排序大题讲解",
+    points: [
+      "查找 + 排序综合大题",
+    ],
+    problems: [
+      { id: 33, name: "搜索旋转排序数组", slug: "search-in-rotated-sorted-array", diff: "中等" },
+      { id: 34, name: "在排序数组中查找元素的第一个和最后一个位置", slug: "find-first-and-last-position-of-element-in-sorted-array", diff: "中等" },
+      { id: 4, name: "寻找两个正序数组的中位数", slug: "median-of-two-sorted-arrays", diff: "困难" },
+    ],
+  },
+];
+
+// ============================================================
 // 英语专区：六级 + 雅思
 // ============================================================
 
