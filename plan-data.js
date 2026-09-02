@@ -415,6 +415,100 @@ const YEAR_MONTHS = [
 ];
 
 // ============================================================
+// LeetCode 每日题目清单（数据结构主线：9 月栈/队列/递归 + 10 月树/哈希/图/排序/查找）
+// 每个月份 key 对应一组 day 块；每个 problem 是具体到「每天该刷哪道题」。
+// problem：{ id, name, slug, diff }，slug 用于生成力扣链接。
+// ============================================================
+
+const LEETCODE_PLAN = {
+  "2026-09": {
+    summary: "数据结构收尾 · 共 15 题。栈 / 队列 / 递归，配合 Python 重写，约每 2 天 1 题，剩下时间留给语法与项目。",
+    days: [
+      {
+        topic: "栈 Stack", day: "9.1 – 9.6",
+        problems: [
+          { id: 20, name: "有效的括号", slug: "valid-parentheses", diff: "简单" },
+          { id: 155, name: "最小栈", slug: "min-stack", diff: "简单" },
+          { id: 232, name: "用栈实现队列", slug: "implement-queue-using-stacks", diff: "简单" },
+          { id: 225, name: "用队列实现栈", slug: "implement-stack-using-queues", diff: "简单" },
+          { id: 150, name: "逆波兰表达式求值", slug: "evaluate-reverse-polish-notation", diff: "中等" },
+          { id: 394, name: "字符串解码", slug: "decode-string", diff: "中等" },
+        ],
+      },
+      {
+        topic: "队列 Queue", day: "9.7 – 9.12",
+        problems: [
+          { id: 933, name: "最近的请求次数", slug: "number-of-recent-calls", diff: "简单" },
+          { id: 622, name: "设计循环队列", slug: "design-circular-queue", diff: "中等" },
+        ],
+      },
+      {
+        topic: "递归 Recursion", day: "9.13 – 9.30",
+        problems: [
+          { id: 509, name: "斐波那契数", slug: "fibonacci-number", diff: "简单" },
+          { id: 344, name: "反转字符串", slug: "reverse-string", diff: "简单" },
+          { id: 206, name: "反转链表", slug: "reverse-linked-list", diff: "简单" },
+          { id: 21, name: "合并两个有序链表", slug: "merge-two-sorted-lists", diff: "简单" },
+          { id: 24, name: "两两交换链表中的节点", slug: "swap-nodes-in-pairs", diff: "中等" },
+          { id: 70, name: "爬楼梯", slug: "climbing-stairs", diff: "简单" },
+          { id: 104, name: "二叉树的最大深度", slug: "maximum-depth-of-binary-tree", diff: "简单" },
+        ],
+      },
+    ],
+  },
+  "2026-10": {
+    summary: "数据结构 + 算法 · 共 25 题。树 → 哈希/图 → 排序/查找 → 算法起步，按模块逐块刷透。",
+    days: [
+      {
+        topic: "树 Tree", day: "10.1 – 10.10",
+        problems: [
+          { id: 144, name: "二叉树的前序遍历", slug: "binary-tree-preorder-traversal", diff: "简单" },
+          { id: 94, name: "二叉树的中序遍历", slug: "binary-tree-inorder-traversal", diff: "简单" },
+          { id: 145, name: "二叉树的后序遍历", slug: "binary-tree-postorder-traversal", diff: "简单" },
+          { id: 102, name: "二叉树的层序遍历", slug: "binary-tree-level-order-traversal", diff: "中等" },
+          { id: 104, name: "二叉树的最大深度", slug: "maximum-depth-of-binary-tree", diff: "简单" },
+          { id: 101, name: "对称二叉树", slug: "symmetric-tree", diff: "简单" },
+          { id: 226, name: "翻转二叉树", slug: "invert-binary-tree", diff: "简单" },
+          { id: 98, name: "验证二叉搜索树", slug: "validate-binary-search-tree", diff: "中等" },
+          { id: 230, name: "二叉搜索树中第K小的元素", slug: "kth-smallest-element-in-a-bst", diff: "中等" },
+        ],
+      },
+      {
+        topic: "哈希与图 Hash / Graph", day: "10.11 – 10.18",
+        problems: [
+          { id: 1, name: "两数之和", slug: "two-sum", diff: "简单" },
+          { id: 217, name: "存在重复元素", slug: "contains-duplicate", diff: "简单" },
+          { id: 242, name: "有效的字母异位词", slug: "valid-anagram", diff: "简单" },
+          { id: 49, name: "字母异位词分组", slug: "group-anagrams", diff: "中等" },
+          { id: 128, name: "最长连续序列", slug: "longest-consecutive-sequence", diff: "中等" },
+          { id: 200, name: "岛屿数量", slug: "number-of-islands", diff: "中等" },
+          { id: 733, name: "图像渲染", slug: "flood-fill", diff: "简单" },
+        ],
+      },
+      {
+        topic: "排序与查找 Sort / Binary Search", day: "10.19 – 10.26",
+        problems: [
+          { id: 912, name: "排序数组", slug: "sort-an-array", diff: "中等" },
+          { id: 704, name: "二分查找", slug: "binary-search", diff: "简单" },
+          { id: 35, name: "搜索插入位置", slug: "search-insert-position", diff: "简单" },
+          { id: 34, name: "在排序数组中查找元素的第一个和最后一个位置", slug: "find-first-and-last-position-of-element-in-sorted-array", diff: "中等" },
+          { id: 33, name: "搜索旋转排序数组", slug: "search-in-rotated-sorted-array", diff: "中等" },
+        ],
+      },
+      {
+        topic: "算法起步 双指针 / 回溯", day: "10.27 – 10.31",
+        problems: [
+          { id: 283, name: "移动零", slug: "move-zeroes", diff: "简单" },
+          { id: 3, name: "无重复字符的最长子串", slug: "longest-substring-without-repeating-characters", diff: "中等" },
+          { id: 11, name: "盛最多水的容器", slug: "container-with-most-water", diff: "中等" },
+          { id: 46, name: "全排列", slug: "permutations", diff: "中等" },
+        ],
+      },
+    ],
+  },
+};
+
+// ============================================================
 // 英语专区：六级 + 雅思
 // ============================================================
 

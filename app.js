@@ -25,6 +25,8 @@ function loadState() {
 
 function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  setLocalTs(Date.now());
+  scheduleCloudPush();
 }
 
 const monthByKey = {};
@@ -216,6 +218,100 @@ function changeLC(delta) {
   updateMonthStats();
 }
 
+// ===== 渲染：LeetCode 每日题目清单 =====
+function lcPlanKey(monthKey, gi, pi) {
+  return "lcplan|" + monthKey + "|" + gi + "|" + pi;
+}
+
+function renderLeetcodePlan(m) {
+  const wrap = document.getElementById("leetcode-plan");
+  if (!wrap || typeof LEETCODE_PLAN === "undefined") return;
+  wrap.innerHTML = "";
+
+  const plan = LEETCODE_PLAN[m.key];
+  if (!plan) {
+    const empty = document.createElement("p");
+    empty.className = "lc-plan-empty";
+    empty.textContent = "本月暂无逐题清单，按自己的节奏刷即可（目标 " + m.leetcodeGoal + " 题）。";
+    wrap.appendChild(empty);
+    return;
+  }
+
+  const summary = document.createElement("p");
+  summary.className = "lc-plan-summary";
+  summary.textContent = plan.summary;
+  wrap.appendChild(summary);
+
+  function updateGroup(gi) {
+    const group = plan.days[gi];
+    const total = group.problems.length;
+    let done = 0;
+    group.problems.forEach((_, pi) => {
+      if (state.items[lcPlanKey(m.key, gi, pi)]) done++;
+    });
+    const prog = document.getElementById("lcprog-" + m.key + "-" + gi);
+    if (prog) prog.textContent = done + "/" + total;
+  }
+
+  plan.days.forEach((group, gi) => {
+    const card = document.createElement("details");
+    card.className = "module";
+
+    const sum = document.createElement("summary");
+    sum.className = "module-summary";
+    const left = document.createElement("div");
+    left.className = "module-left";
+    const name = document.createElement("span");
+    name.className = "module-name";
+    name.textContent = group.topic;
+    const range = document.createElement("span");
+    range.className = "module-range";
+    range.textContent = group.day;
+    left.append(name, range);
+    const prog = document.createElement("span");
+    prog.className = "module-progress";
+    prog.id = "lcprog-" + m.key + "-" + gi;
+    sum.append(left, prog);
+
+    const body = document.createElement("div");
+    body.className = "module-body";
+
+    group.problems.forEach((p, pi) => {
+      const key = lcPlanKey(m.key, gi, pi);
+      const label = document.createElement("label");
+      label.className = "item lc-problem";
+      if (state.items[key]) label.classList.add("done");
+
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.checked = !!state.items[key];
+      cb.addEventListener("change", () => {
+        state.items[key] = cb.checked;
+        saveState();
+        label.classList.toggle("done", cb.checked);
+        updateGroup(gi);
+      });
+
+      const span = document.createElement("span");
+      const link = document.createElement("a");
+      link.href = "https://leetcode.cn/problems/" + p.slug + "/";
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.textContent = p.id + ". " + p.name;
+      const diff = document.createElement("em");
+      diff.className = "lc-diff lc-diff-" + (p.diff === "简单" ? "easy" : p.diff === "中等" ? "mid" : "hard");
+      diff.textContent = p.diff;
+      span.append(link, diff);
+      label.append(cb, span);
+      body.appendChild(label);
+    });
+
+    card.append(sum, body);
+    wrap.appendChild(card);
+    updateGroup(gi);
+  });
+}
+
 // ===== 渲染：日历 =====
 function renderCalendar(m) {
   const grid = document.getElementById("cal-grid");
@@ -285,6 +381,7 @@ function renderMonth() {
   document.getElementById("month-theme").textContent = m.theme;
 
   renderLeetcode(m);
+  renderLeetcodePlan(m);
   renderCalendar(m);
   renderModuleList(document.getElementById("month-modules"), m.modules, m.key, updateMonthStats);
 
@@ -533,6 +630,153 @@ function copyData() {
   }
 }
 
+// ===== 云端同步（Puter.js · 全平台自动共享） =====
+const CLOUD_KEY = "study-plan-state";
+const TS_KEY = STORAGE_KEY + "-ts";
+let cloudSignedIn = false;
+
+function cloudAvailable() {
+  return typeof puter !== "undefined" && puter && puter.kv && puter.auth;
+}
+
+function localTs() {
+  return Number(localStorage.getItem(TS_KEY)) || 0;
+}
+
+function setLocalTs(t) {
+  localStorage.setItem(TS_KEY, String(t));
+}
+
+function timeAgo(t) {
+  if (!t) return "";
+  const s = Math.max(0, Math.floor((Date.now() - t) / 1000));
+  if (s < 60) return "刚刚";
+  if (s < 3600) return Math.floor(s / 60) + " 分钟前";
+  if (s < 86400) return Math.floor(s / 3600) + " 小时前";
+  return Math.floor(s / 86400) + " 天前";
+}
+
+function cloudStatus(msg) {
+  const el = document.getElementById("cloud-status");
+  if (el) el.textContent = msg;
+}
+
+function updateCloudUI(signedIn) {
+  document.getElementById("btn-cloud-login").hidden = signedIn;
+  document.getElementById("btn-cloud-sync").hidden = !signedIn;
+  document.getElementById("btn-cloud-logout").hidden = !signedIn;
+}
+
+function applyRemoteState(remoteState, ts) {
+  state = Object.assign(defaultState(), remoteState);
+  currentMonthKey = state.currentMonth || YEAR_MONTHS[0].key;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  setLocalTs(ts);
+  renderAll();
+}
+
+async function pushCloudState() {
+  if (!cloudAvailable() || !cloudSignedIn) return;
+  try {
+    await puter.kv.set(CLOUD_KEY, { ts: localTs(), state: state });
+    cloudStatus("已同步到云端 " + timeAgo(localTs()));
+  } catch (e) {
+    cloudStatus("同步失败：" + e.message);
+  }
+}
+
+let cloudPushTimer = null;
+function scheduleCloudPush() {
+  if (!cloudAvailable() || !cloudSignedIn) return;
+  clearTimeout(cloudPushTimer);
+  cloudPushTimer = setTimeout(pushCloudState, 1200);
+}
+
+async function cloudPull() {
+  if (!cloudAvailable() || !cloudSignedIn) return;
+  try {
+    const remote = await puter.kv.get(CLOUD_KEY);
+    if (remote && remote.state && remote.ts > localTs()) {
+      applyRemoteState(remote.state, remote.ts);
+      cloudStatus("已同步其他设备的更新");
+    }
+  } catch (e) {
+    /* 静默，下次再试 */
+  }
+}
+
+async function initCloud() {
+  if (!cloudAvailable()) {
+    cloudStatus("云端不可用 · 已用本地保存");
+    updateCloudUI(false);
+    return;
+  }
+  try {
+    const signedIn = await puter.auth.isSignedIn();
+    if (!signedIn) {
+      cloudSignedIn = false;
+      cloudStatus("未登录 · 本地保存中");
+      updateCloudUI(false);
+      return;
+    }
+    cloudSignedIn = true;
+    updateCloudUI(true);
+    const user = await puter.auth.getUser();
+    const name = user && (user.username || user.email) ? (user.username || user.email) : "用户";
+    cloudStatus("已登录 · " + name);
+    const remote = await puter.kv.get(CLOUD_KEY);
+    if (remote && remote.state && remote.ts > localTs()) {
+      applyRemoteState(remote.state, remote.ts);
+      cloudStatus("已从云端同步 · " + name);
+    } else if (!remote || !remote.ts || remote.ts < localTs()) {
+      await pushCloudState();
+    }
+  } catch (e) {
+    cloudSignedIn = false;
+    updateCloudUI(false);
+    cloudStatus("云端同步出错：" + e.message);
+  }
+}
+
+async function cloudLogin() {
+  if (!cloudAvailable()) { cloudStatus("云端不可用"); return; }
+  try {
+    cloudStatus("正在打开登录…");
+    await puter.auth.signIn();
+    await initCloud();
+  } catch (e) {
+    cloudStatus("登录失败：" + e.message);
+  }
+}
+
+async function cloudLogout() {
+  try { await puter.auth.signOut(); } catch (e) {}
+  cloudSignedIn = false;
+  updateCloudUI(false);
+  cloudStatus("已退出 · 本地保存中");
+}
+
+async function cloudManualSync() {
+  if (!cloudAvailable() || !cloudSignedIn) { cloudStatus("请先登录"); return; }
+  try {
+    const remote = await puter.kv.get(CLOUD_KEY);
+    if (remote && remote.state && remote.ts > localTs()) {
+      applyRemoteState(remote.state, remote.ts);
+      cloudStatus("已从云端拉取最新数据");
+    } else {
+      await pushCloudState();
+      cloudStatus("已把本机数据推到云端");
+    }
+  } catch (e) {
+    cloudStatus("同步失败：" + e.message);
+  }
+}
+
+async function cloudPoll() {
+  if (!cloudAvailable() || !cloudSignedIn) return;
+  await cloudPull();
+}
+
 // ===== 初始化 =====
 document.getElementById("lc-minus").addEventListener("click", () => changeLC(-1));
 document.getElementById("lc-plus").addEventListener("click", () => changeLC(1));
@@ -569,4 +813,10 @@ document.getElementById("btn-paste-confirm").addEventListener("click", () => {
   }
 });
 
+document.getElementById("btn-cloud-login").addEventListener("click", cloudLogin);
+document.getElementById("btn-cloud-sync").addEventListener("click", cloudManualSync);
+document.getElementById("btn-cloud-logout").addEventListener("click", cloudLogout);
+
 renderAll();
+initCloud();
+setInterval(cloudPoll, 20000);

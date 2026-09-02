@@ -36,6 +36,20 @@
       </div>
     </details>
 
+    <!-- 云端同步 -->
+    <div class="card cloud-card">
+      <div class="cloud-head">
+        <span class="cloud-title">☁️ 云端同步</span>
+        <span class="cloud-status" id="cloud-status">检测中…</span>
+      </div>
+      <p class="cloud-hint">登录一次后，任何改动都会自动同步到云端；手机 / 电脑打开即共享同一份数据，不用再手动导出导入。</p>
+      <div class="cloud-buttons">
+        <button class="sync-btn primary" id="btn-cloud-login">登录并开启同步</button>
+        <button class="sync-btn" id="btn-cloud-sync" hidden>立即同步</button>
+        <button class="sync-btn" id="btn-cloud-logout" hidden>退出登录</button>
+      </div>
+    </div>
+
     <!-- 每日安排 -->
     <div id="daily-wrap"></div>
 
@@ -82,6 +96,9 @@
       </div>
       <div class="progress-bar"><div class="progress-fill lc" id="lc-fill"></div></div>
 
+      <h3 class="sub-title">🗂️ LeetCode 每日题目</h3>
+      <div id="leetcode-plan"></div>
+
       <h3 class="sub-title">🔥 每日练习打卡</h3>
       <div class="cal-stats">
         <span>已打卡 <b id="cal-days">0</b> 天</span>
@@ -103,6 +120,7 @@
     <div id="english-wrap"></div>
   </main>
 
+  <script src="https://js.puter.com/v2/"></script>
   <script src="plan-data.js"></script>
   <script src="app.js"></script>
 </body>
