@@ -200,6 +200,25 @@ function renderRoadmap() {
   });
 }
 
+// ===== 渲染：项目完成时间表 =====
+function renderProjects() {
+  const tbody = document.getElementById("project-body");
+  if (!tbody || typeof PROJECTS === "undefined") return;
+  tbody.innerHTML = "";
+  PROJECTS.forEach((p) => {
+    const tr = document.createElement("tr");
+    const level = p.level + (p.star ? " ⭐" : "");
+    tr.innerHTML =
+      "<td>" + p.when + "</td>" +
+      "<td><b>" + p.name + "</b></td>" +
+      "<td>" + p.scene + "</td>" +
+      "<td>" + level + "</td>" +
+      "<td>" + p.stack + "</td>" +
+      "<td>" + p.value + "</td>";
+    tbody.appendChild(tr);
+  });
+}
+
 // ===== 渲染：LeetCode =====
 function renderLeetcode(m) {
   document.getElementById("lc-solved").textContent = state.leetcode[m.key] || 0;
@@ -720,6 +739,7 @@ function renderAll() {
   renderDaily();
   renderMonthNav();
   renderRoadmap();
+  renderProjects();
   renderMonth();
   renderDsMap();
   renderEnglish();
