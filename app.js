@@ -646,7 +646,7 @@ function renderDailyPlan() {
 
   const hint = document.createElement("p");
   hint.className = "dailyplan-hint";
-  hint.textContent = "每天三条线各一件：🧱 数据结构刷题（C++）· 🐍 Python 练手（够用即停）· 💙 TS 学+写。空着的那条代表当天已停 / 机动。";
+  hint.textContent = "每天三条线各一件：🧱 数据结构刷题（C++）· 🐍 Python 练手（够用即停）· 💙 TS 学+写。空着的那条代表当天已停；💤 表示周六休息。";
   card.appendChild(hint);
 
   const now = new Date();
