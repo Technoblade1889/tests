@@ -631,6 +631,69 @@ function renderDaily() {
   wrap.appendChild(card);
 }
 
+// ===== 渲染：逐日具体计划 =====
+function renderDailyPlan() {
+  const wrap = document.getElementById("daily-wrap");
+  if (!wrap || typeof DAILY_PLAN === "undefined") return;
+
+  const card = document.createElement("section");
+  card.className = "card daily";
+
+  const h = document.createElement("h2");
+  h.className = "daily-title";
+  h.textContent = "📅 逐日具体计划（每天不一样）";
+  card.appendChild(h);
+
+  const hint = document.createElement("p");
+  hint.className = "dailyplan-hint";
+  hint.textContent = "每天三条线各一件：🧱 数据结构刷题（C++）· 🐍 Python 练手（够用即停）· 💙 TS 学+写。空着的那条代表当天已停 / 机动。";
+  card.appendChild(hint);
+
+  const now = new Date();
+  const todayKey = (now.getMonth() + 1) + "." + now.getDate();
+
+  DAILY_PLAN.forEach((d) => {
+    const row = document.createElement("div");
+    row.className = "dp-day" + (d.date === todayKey ? " dp-today" : "");
+
+    const head = document.createElement("div");
+    head.className = "dp-head";
+    const date = document.createElement("span");
+    date.className = "dp-date";
+    date.textContent = d.date + (d.week ? " · " + d.week : "");
+    head.appendChild(date);
+    if (d.date === todayKey) {
+      const badge = document.createElement("span");
+      badge.className = "dp-badge";
+      badge.textContent = "今天";
+      head.appendChild(badge);
+    }
+    row.appendChild(head);
+
+    const body = document.createElement("div");
+    body.className = "dp-body";
+    [
+      { cls: "dp-ds", label: "🧱 刷题", text: d.ds },
+      { cls: "dp-py", label: "🐍 Python", text: d.py },
+      { cls: "dp-ts", label: "💙 TS", text: d.ts },
+    ].forEach((it) => {
+      if (!it.text) return;
+      const line = document.createElement("div");
+      line.className = "dp-item " + it.cls;
+      const lab = document.createElement("b");
+      lab.textContent = it.label + "：";
+      const txt = document.createElement("span");
+      txt.textContent = it.text;
+      line.append(lab, txt);
+      body.appendChild(line);
+    });
+    row.appendChild(body);
+    card.appendChild(row);
+  });
+
+  wrap.appendChild(card);
+}
+
 // ===== 其他 =====
 function renderHeader() {
   const now = new Date();
@@ -642,6 +705,7 @@ function renderHeader() {
 function renderAll() {
   renderHeader();
   renderDaily();
+  renderDailyPlan();
   renderMonthNav();
   renderRoadmap();
   renderProjects();

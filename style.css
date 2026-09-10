@@ -765,6 +765,69 @@ body {
   flex-direction: column;
 }
 
+/* ===== 逐日具体计划 ===== */
+.dailyplan-hint {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.dp-day {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: var(--card);
+}
+
+.dp-today {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.dp-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+
+.dp-date {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.dp-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+
+.dp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dp-item {
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.dp-item b {
+  font-weight: 600;
+}
+
+.dp-ds b { color: #b25000; }
+.dp-py b { color: #248a3d; }
+.dp-ts b { color: var(--accent); }
+
 /* ===== 数据同步 ===== */
 .sync-summary {
   cursor: pointer;
