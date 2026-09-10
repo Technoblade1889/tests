@@ -792,6 +792,8 @@ body {
   align-items: center;
   gap: 8px;
   margin-bottom: 7px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .dp-date {
@@ -833,6 +835,37 @@ body {
   font-size: 13px;
   font-style: italic;
 }
+
+.dp-head:hover .dp-date { color: var(--accent); }
+.dp-day:not(.dp-open) .dp-head { margin-bottom: 0; }
+.dp-day-arrow {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.dp-month-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 10px 14px;
+  margin: 14px 0 8px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+  user-select: none;
+}
+.dp-month-head:hover { background: var(--accent-soft); }
+.dp-month-arrow {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 13px;
+}
+.dp-month-body { margin-bottom: 4px; }
 
 /* ===== 数据同步 ===== */
 .sync-summary {
