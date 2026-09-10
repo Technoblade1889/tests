@@ -672,21 +672,28 @@ function renderDailyPlan() {
 
     const body = document.createElement("div");
     body.className = "dp-body";
-    [
-      { cls: "dp-ds", label: "🧱 刷题", text: d.ds },
-      { cls: "dp-py", label: "🐍 Python", text: d.py },
-      { cls: "dp-ts", label: "💙 TS", text: d.ts },
-    ].forEach((it) => {
-      if (!it.text) return;
+    if (d.rest) {
       const line = document.createElement("div");
-      line.className = "dp-item " + it.cls;
-      const lab = document.createElement("b");
-      lab.textContent = it.label + "：";
-      const txt = document.createElement("span");
-      txt.textContent = it.text;
-      line.append(lab, txt);
+      line.className = "dp-item dp-rest";
+      line.textContent = "💤 " + d.rest;
       body.appendChild(line);
-    });
+    } else {
+      [
+        { cls: "dp-ds", label: "🧱 刷题", text: d.ds },
+        { cls: "dp-py", label: "🐍 Python", text: d.py },
+        { cls: "dp-ts", label: "💙 TS", text: d.ts },
+      ].forEach((it) => {
+        if (!it.text) return;
+        const line = document.createElement("div");
+        line.className = "dp-item " + it.cls;
+        const lab = document.createElement("b");
+        lab.textContent = it.label + "：";
+        const txt = document.createElement("span");
+        txt.textContent = it.text;
+        line.append(lab, txt);
+        body.appendChild(line);
+      });
+    }
     row.appendChild(body);
     card.appendChild(row);
   });

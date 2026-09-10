@@ -828,6 +828,12 @@ body {
 .dp-py b { color: #248a3d; }
 .dp-ts b { color: var(--accent); }
 
+.dp-rest {
+  color: var(--muted);
+  font-size: 13px;
+  font-style: italic;
+}
+
 /* ===== 数据同步 ===== */
 .sync-summary {
   cursor: pointer;
