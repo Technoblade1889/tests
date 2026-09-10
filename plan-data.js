@@ -5,7 +5,9 @@
 // 每个 module：name / range / goal / items[]
 // 说明：已学过 高数/线代/离散，概率论与复变由学校课程覆盖，不再单排数学。
 // 主线：数据结构(学校) → TS → Node/后端 → LLM → RAG/Agent → Agent 工程化 + 研读开源
-// 副线：Python 够用即可（会读会改 + 调 API）；后端 TS/Node 为主、FastAPI 为辅。
+// 副线：Python 够用即停（到「字典+文件+函数」就停，每章写个小脚本）；后端 TS/Node 为主、FastAPI 为辅。
+// 刷题：只用 C++（STL 方言）。题目统一在「数据结构学习地图 DS_MAP」一处，跟着当前节刷 2-3 道，不刷题海。
+// 每日节奏：白天看数据结构 → 下午看 Python + 写小练习 → 晚上整块 = TS（主线，先）+ 数据结构手写/刷题。
 // ============================================================
 
 const YEAR_MONTHS = [
@@ -26,19 +28,21 @@ const YEAR_MONTHS = [
         ],
       },
       {
-        name: "Python 够用", range: "9.1 – 9.12", goal: "会读会改即可",
+        name: "Python 够用", range: "9.1 – 9.12", goal: "够用即停：到「字典+文件+函数」就停",
         items: [
           "语法快速过（对比 C/C++）",
           "列表 / 字典 / 集合 / 函数",
-          "常用内置模块 + 文件读写",
+          "文件读写 + 常用内置模块",
+          "每章学完写一个 10 行小脚本（统计词频 / 列表去重）",
         ],
       },
       {
-        name: "TS 起步", range: "9.13 – 9.30", goal: "类型系统打底",
+        name: "TS 起步", range: "9.13 – 9.30", goal: "会写会跑，不是会看",
         items: [
-          "环境 + 基本类型 / 接口 / 类型注解",
-          "函数 / 类 / 泛型入门",
-          "TS 与 JS 的区别",
+          "装 Node + tsx，跑通第一个 .ts 脚本",
+          "基本类型 / 接口 / 类型注解（每天写一个带类型的小函数）",
+          "函数 / 类 / 泛型入门（写 first<T>、用 interface 描述对象）",
+          "async/await：写一个读文件或 fetch 的小脚本",
         ],
       },
       {
@@ -68,29 +72,29 @@ const YEAR_MONTHS = [
         ],
       },
       {
-        name: "TS 进阶", range: "10.1 – 10.20", goal: "工程化语法",
+        name: "TS 进阶", range: "10.1 – 10.20", goal: "能独立写一个小工具",
         items: [
-          "泛型 / 工具类型（Partial / Pick）",
-          "模块 / 命名空间 / 导入导出",
-          "类与接口组合 / 类型守卫",
-          "简单 TS 小项目练手",
+          "泛型 / 工具类型（Partial / Pick）各写一个例子",
+          "模块 / 导入导出：拆成多文件的小项目",
+          "async/await + fetch：写一个调用 JSON 接口的命令行工具",
+          "产出：一个能跑的控制台小工具（如查天气 / 待办清单）",
         ],
       },
       {
-        name: "前端基础复习", range: "10.21 – 10.31", goal: "HTML/CSS/JS 收口",
+        name: "JS 异步 + fetch", range: "10.21 – 10.31", goal: "为 12 月调 API 铺路",
         items: [
-          "HTML / CSS 快速回顾",
-          "JS 异步 / Promise / async-await",
-          "DOM 操作 / 事件",
+          "Promise / async-await 彻底搞懂（配合 TS 练手）",
+          "fetch 调 REST API + JSON 解析 + 错误处理",
+          "HTML / CSS 快速回顾（够部署展示页即可）",
         ],
       },
     ],
   },
   {
     key: "2026-11", year: 2026, month: 10, label: "2026.11",
-    title: "Node/TS 后端 + MySQL",
-    theme: "后端主线启动：Node + Express 起步，MySQL 打底，做出第一个 CRUD 接口。",
-    core: "Node/TS 后端 / MySQL", aux: "刷题", project: "后端 CRUD 小项目",
+    title: "Node/TS 后端 + 部署",
+    theme: "后端主线启动：Node + Express 起步，学会部署，为 12 月项目①铺路。",
+    core: "Node/TS 后端 / 部署", aux: "刷题", project: "一个能上线的接口",
     leetcodeGoal: 20,
     modules: [
       {
@@ -102,19 +106,12 @@ const YEAR_MONTHS = [
         ],
       },
       {
-        name: "Express / NestJS", range: "11.13 – 11.22", goal: "框架",
+        name: "Express + HTTP + 部署", range: "11.13 – 11.30", goal: "能上线一个接口",
         items: [
           "Express 中间件 / 路由 / 请求响应",
-          "REST API 设计",
-          "NestJS 入门（模块 / 控制器 / 服务）",
-        ],
-      },
-      {
-        name: "MySQL", range: "11.23 – 11.30", goal: "会写会优化",
-        items: [
-          "SQL 增删改查 / 多表连接",
-          "索引 / 事务",
-          "Node 操作 MySQL（TypeORM / Prisma）",
+          "REST API 设计 + fetch 调通自己的接口",
+          "部署：Vercel / Cloudflare Workers（为项目①铺路）",
+          "（NestJS、MySQL 推迟到寒假做问数系统时再学）",
         ],
       },
     ],
@@ -424,104 +421,13 @@ const PROJECTS = [
   { no: 10, name: "全流程 AI 影视生产", scene: "音视频", when: "选做", level: "选做·最难", stack: "多模态 · 视频生成", value: "小说→分镜→短剧，最后有余力再做", star: false },
 ];
 
-// ============================================================
-// LeetCode 每日题目清单（数据结构主线：9 月栈/队列/递归 + 10 月树/哈希/图/排序/查找）
-// 每个月份 key 对应一组 day 块；每个 problem 是具体到「每天该刷哪道题」。
-// problem：{ id, name, slug, diff }，slug 用于生成力扣链接。
-// ============================================================
-
-const LEETCODE_PLAN = {
-  "2026-09": {
-    summary: "数据结构收尾 · 共 15 题。栈 / 队列 / 递归，配合 Python 重写，约每 2 天 1 题，剩下时间留给语法与项目。",
-    days: [
-      {
-        topic: "栈 Stack", day: "9.1 – 9.6",
-        problems: [
-          { id: 20, name: "有效的括号", slug: "valid-parentheses", diff: "简单" },
-          { id: 155, name: "最小栈", slug: "min-stack", diff: "简单" },
-          { id: 232, name: "用栈实现队列", slug: "implement-queue-using-stacks", diff: "简单" },
-          { id: 225, name: "用队列实现栈", slug: "implement-stack-using-queues", diff: "简单" },
-          { id: 150, name: "逆波兰表达式求值", slug: "evaluate-reverse-polish-notation", diff: "中等" },
-          { id: 394, name: "字符串解码", slug: "decode-string", diff: "中等" },
-        ],
-      },
-      {
-        topic: "队列 Queue", day: "9.7 – 9.12",
-        problems: [
-          { id: 933, name: "最近的请求次数", slug: "number-of-recent-calls", diff: "简单" },
-          { id: 622, name: "设计循环队列", slug: "design-circular-queue", diff: "中等" },
-        ],
-      },
-      {
-        topic: "递归 Recursion", day: "9.13 – 9.30",
-        problems: [
-          { id: 509, name: "斐波那契数", slug: "fibonacci-number", diff: "简单" },
-          { id: 344, name: "反转字符串", slug: "reverse-string", diff: "简单" },
-          { id: 206, name: "反转链表", slug: "reverse-linked-list", diff: "简单" },
-          { id: 21, name: "合并两个有序链表", slug: "merge-two-sorted-lists", diff: "简单" },
-          { id: 24, name: "两两交换链表中的节点", slug: "swap-nodes-in-pairs", diff: "中等" },
-          { id: 70, name: "爬楼梯", slug: "climbing-stairs", diff: "简单" },
-          { id: 104, name: "二叉树的最大深度", slug: "maximum-depth-of-binary-tree", diff: "简单" },
-        ],
-      },
-    ],
-  },
-  "2026-10": {
-    summary: "数据结构 + 算法 · 共 25 题。树 → 哈希/图 → 排序/查找 → 算法起步，按模块逐块刷透。",
-    days: [
-      {
-        topic: "树 Tree", day: "10.1 – 10.10",
-        problems: [
-          { id: 144, name: "二叉树的前序遍历", slug: "binary-tree-preorder-traversal", diff: "简单" },
-          { id: 94, name: "二叉树的中序遍历", slug: "binary-tree-inorder-traversal", diff: "简单" },
-          { id: 145, name: "二叉树的后序遍历", slug: "binary-tree-postorder-traversal", diff: "简单" },
-          { id: 102, name: "二叉树的层序遍历", slug: "binary-tree-level-order-traversal", diff: "中等" },
-          { id: 104, name: "二叉树的最大深度", slug: "maximum-depth-of-binary-tree", diff: "简单" },
-          { id: 101, name: "对称二叉树", slug: "symmetric-tree", diff: "简单" },
-          { id: 226, name: "翻转二叉树", slug: "invert-binary-tree", diff: "简单" },
-          { id: 98, name: "验证二叉搜索树", slug: "validate-binary-search-tree", diff: "中等" },
-          { id: 230, name: "二叉搜索树中第K小的元素", slug: "kth-smallest-element-in-a-bst", diff: "中等" },
-        ],
-      },
-      {
-        topic: "哈希与图 Hash / Graph", day: "10.11 – 10.18",
-        problems: [
-          { id: 1, name: "两数之和", slug: "two-sum", diff: "简单" },
-          { id: 217, name: "存在重复元素", slug: "contains-duplicate", diff: "简单" },
-          { id: 242, name: "有效的字母异位词", slug: "valid-anagram", diff: "简单" },
-          { id: 49, name: "字母异位词分组", slug: "group-anagrams", diff: "中等" },
-          { id: 128, name: "最长连续序列", slug: "longest-consecutive-sequence", diff: "中等" },
-          { id: 200, name: "岛屿数量", slug: "number-of-islands", diff: "中等" },
-          { id: 733, name: "图像渲染", slug: "flood-fill", diff: "简单" },
-        ],
-      },
-      {
-        topic: "排序与查找 Sort / Binary Search", day: "10.19 – 10.26",
-        problems: [
-          { id: 912, name: "排序数组", slug: "sort-an-array", diff: "中等" },
-          { id: 704, name: "二分查找", slug: "binary-search", diff: "简单" },
-          { id: 35, name: "搜索插入位置", slug: "search-insert-position", diff: "简单" },
-          { id: 34, name: "在排序数组中查找元素的第一个和最后一个位置", slug: "find-first-and-last-position-of-element-in-sorted-array", diff: "中等" },
-          { id: 33, name: "搜索旋转排序数组", slug: "search-in-rotated-sorted-array", diff: "中等" },
-        ],
-      },
-      {
-        topic: "算法起步 双指针 / 回溯", day: "10.27 – 10.31",
-        problems: [
-          { id: 283, name: "移动零", slug: "move-zeroes", diff: "简单" },
-          { id: 3, name: "无重复字符的最长子串", slug: "longest-substring-without-repeating-characters", diff: "中等" },
-          { id: 11, name: "盛最多水的容器", slug: "container-with-most-water", diff: "中等" },
-          { id: 46, name: "全排列", slug: "permutations", diff: "中等" },
-        ],
-      },
-    ],
-  },
-};
+// （已移除 LEETCODE_PLAN：刷题题目统一放在下面的「数据结构学习地图」DS_MAP，每节 2-3 道，用 C++。）
 
 // ============================================================
-// 数据结构学习地图（25 节 · 按真实课程顺序）
+// 数据结构学习地图（25 节 · 按真实课程顺序）—— 刷题唯一入口
 // 每个 section：no / part(1|2) / title / points[] / problems[]
 // problems 为空表示本节以概念理解与手写为主，暂无直接对应题。
+// 刷题规则：跟着「当前节」走，每节挑 2-3 道 problems 用 C++ 手写，不刷题海。
 // ============================================================
 
 const DS_MAP = [
@@ -932,19 +838,20 @@ const ENGLISH = [
 
 const DAILY = {
   schedule: [
-    { time: "07:30 – 08:00", title: "背 40 个六级单词", note: "晨起记忆最佳，用「不背单词 / 墨墨」" },
-    { time: "12:30 – 13:00", title: "午间复习", note: "回顾早上单词 + 扫一眼今日主线笔记" },
-    { time: "21:00 – 22:00", title: "主线学习", note: "当月模块（数据结构 / TS / 后端 / Agent）" },
-    { time: "22:00 – 22:30", title: "BBC 六分钟英语", note: "先盲听 1 遍 → 看字幕 → 跟读" },
-    { time: "22:30 – 23:00", title: "复盘 + 打卡", note: "写笔记、勾每日任务、日历打卡" },
+    { time: "早上空闲", title: "背 40 个六级单词", note: "晨起 / 课间碎片时间，用「不背单词 / 墨墨」" },
+    { time: "白天", title: "数据结构看 1 节", note: "学校课 / 网课，只「看」这一节，晚上再动手" },
+    { time: "下午", title: "Python 看 1 章 + 写 20 分钟", note: "看到「字典+文件+函数」就停；看完立刻写个小脚本" },
+    { time: "晚上（整块）", title: "① TS 主线（先）", note: "学 20 分钟 + 写 40 分钟，从装 Node 写第一个 .ts 开始" },
+    { time: "晚上（整块）", title: "② 数据结构手写 + C++ 刷题", note: "手写白天那节，用 C++ 刷对应 2-3 道题" },
+    { time: "晚上（收尾）", title: "③ Python 小练习 + 复盘", note: "下午没写完的补上，写笔记、勾任务、日历打卡" },
   ],
-  weekend: "周末：把「主线学习」延长到 2–3 小时；周六集中复习本周学过的题（按下面的遗忘曲线表），周日补漏 + 完整模块，或加刷 3–4 道新题。",
+  weekend: "周末：把「晚上整块」延长；周六集中复习本周学过的题（按下面的遗忘曲线表），周日补漏 + 完整模块，或加刷 2-3 道新题。",
   tasks: [
     { id: "words", label: "背 40 个六级单词" },
     { id: "bbc", label: "听 BBC 六分钟英语" },
-    { id: "leetcode", label: "刷 2 道 LeetCode（新题）" },
-    { id: "review-old", label: "按遗忘曲线复习旧题" },
-    { id: "main", label: "完成今日主线学习（当月模块）" },
+    { id: "ts", label: "写 TS（主线，学 + 写）" },
+    { id: "ds", label: "数据结构手写 + C++ 刷当前节 2-3 题" },
+    { id: "py", label: "Python 小练习（当天那章）" },
     { id: "review", label: "复盘 + 写笔记" },
   ],
 };

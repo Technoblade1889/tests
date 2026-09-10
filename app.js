@@ -237,100 +237,6 @@ function changeLC(delta) {
   updateMonthStats();
 }
 
-// ===== 渲染：LeetCode 每日题目清单 =====
-function lcPlanKey(monthKey, gi, pi) {
-  return "lcplan|" + monthKey + "|" + gi + "|" + pi;
-}
-
-function renderLeetcodePlan(m) {
-  const wrap = document.getElementById("leetcode-plan");
-  if (!wrap || typeof LEETCODE_PLAN === "undefined") return;
-  wrap.innerHTML = "";
-
-  const plan = LEETCODE_PLAN[m.key];
-  if (!plan) {
-    const empty = document.createElement("p");
-    empty.className = "lc-plan-empty";
-    empty.textContent = "本月暂无逐题清单，按自己的节奏刷即可（目标 " + m.leetcodeGoal + " 题）。";
-    wrap.appendChild(empty);
-    return;
-  }
-
-  const summary = document.createElement("p");
-  summary.className = "lc-plan-summary";
-  summary.textContent = plan.summary;
-  wrap.appendChild(summary);
-
-  function updateGroup(gi) {
-    const group = plan.days[gi];
-    const total = group.problems.length;
-    let done = 0;
-    group.problems.forEach((_, pi) => {
-      if (state.items[lcPlanKey(m.key, gi, pi)]) done++;
-    });
-    const prog = document.getElementById("lcprog-" + m.key + "-" + gi);
-    if (prog) prog.textContent = done + "/" + total;
-  }
-
-  plan.days.forEach((group, gi) => {
-    const card = document.createElement("details");
-    card.className = "module";
-
-    const sum = document.createElement("summary");
-    sum.className = "module-summary";
-    const left = document.createElement("div");
-    left.className = "module-left";
-    const name = document.createElement("span");
-    name.className = "module-name";
-    name.textContent = group.topic;
-    const range = document.createElement("span");
-    range.className = "module-range";
-    range.textContent = group.day;
-    left.append(name, range);
-    const prog = document.createElement("span");
-    prog.className = "module-progress";
-    prog.id = "lcprog-" + m.key + "-" + gi;
-    sum.append(left, prog);
-
-    const body = document.createElement("div");
-    body.className = "module-body";
-
-    group.problems.forEach((p, pi) => {
-      const key = lcPlanKey(m.key, gi, pi);
-      const label = document.createElement("label");
-      label.className = "item lc-problem";
-      if (state.items[key]) label.classList.add("done");
-
-      const cb = document.createElement("input");
-      cb.type = "checkbox";
-      cb.checked = !!state.items[key];
-      cb.addEventListener("change", () => {
-        state.items[key] = cb.checked;
-        saveState();
-        label.classList.toggle("done", cb.checked);
-        updateGroup(gi);
-      });
-
-      const span = document.createElement("span");
-      const link = document.createElement("a");
-      link.href = "https://leetcode.cn/problems/" + p.slug + "/";
-      link.target = "_blank";
-      link.rel = "noopener";
-      link.textContent = p.id + ". " + p.name;
-      const diff = document.createElement("em");
-      diff.className = "lc-diff lc-diff-" + (p.diff === "简单" ? "easy" : p.diff === "中等" ? "mid" : "hard");
-      diff.textContent = p.diff;
-      span.append(link, diff);
-      label.append(cb, span);
-      body.appendChild(label);
-    });
-
-    card.append(sum, body);
-    wrap.appendChild(card);
-    updateGroup(gi);
-  });
-}
-
 // ===== 渲染：数据结构学习地图 =====
 function dsKey(no, pi) {
   return "ds|" + no + "|" + pi;
@@ -533,7 +439,6 @@ function renderMonth() {
   document.getElementById("month-theme").textContent = m.theme;
 
   renderLeetcode(m);
-  renderLeetcodePlan(m);
   renderCalendar(m);
   renderModuleList(document.getElementById("month-modules"), m.modules, m.key, updateMonthStats);
 
