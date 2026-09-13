@@ -1,22 +1,24 @@
 // ============================================================
-// 全年学习计划数据（2026.9 – 2027.8）—— Agent 工程化 + 后端方向
+// 全年学习计划数据（2026.9 – 2027.8）—— 后端 + AI 应用方向（大二 · 多段实习）
 // 每个 month：key / year / month(0-11) / label / title / theme
 //            / core / aux / project / leetcodeGoal / modules[]
 // 每个 module：name / range / goal / items[]
-// 说明：已学过 高数/线代/离散，概率论与复变由学校课程覆盖，不再单排数学。
+// 目标：大二暑假拿下第一段实习（中厂暑期优先，大厂日常也试）→ 大三冲大厂暑期转正实习。
 // 主线：数据结构(学校) → TS → Node/后端 → LLM → RAG/Agent → Agent 工程化 + 研读开源
-// 副线：Python 够用即停（到「字典+文件+函数」就停，每章写个小脚本）；后端 TS/Node 为主、FastAPI 为辅。
-// 刷题：只用 C++（STL 方言）。题目统一在「数据结构学习地图 DS_MAP」一处，跟着当前节刷 2-3 道，不刷题海。
-// 每日节奏：白天看数据结构 → 下午看 Python + 写小练习 → 晚上整块 = TS（主线，先）+ 数据结构手写/刷题。
+// 副线：Python 够用即停（到「字典+文件+函数」就停）；后端 TS/Node 为主、FastAPI 为辅。不加第二门语言，专注 TS/Node。
+// 刷题：只用 C++（STL 方言）。题目统一在「数据结构学习地图 DS_MAP」一处，每周稳定刷 5-7 道，第一段实习前累计 250+ 题，不刷题海。
+// 八股：计网 / OS / 数据库 / Redis 从本月起每周碎化一点，6 月只做收口冲刺。
+// 项目：整体提前约 1 个月；每个项目加一个「深度点」（SQL 注入防护 / 重排评估等）进简历。
+// 每日节奏：白天看数据结构 → 下午 Python + 小练习 → 晚上 TS 主线 + 数据结构手写/刷题 + 八股碎片。
 // ============================================================
 
 const YEAR_MONTHS = [
   {
     key: "2026-09", year: 2026, month: 8, label: "2026.9",
     title: "数据结构收尾 + Python 够用 + TS 起步",
-    theme: "学校数据结构快速推进；Python 只学到「会读会改」；TS 开始打底，为后端与 Agent 落地铺路。",
-    core: "数据结构 / TS 起步", aux: "Python 够用 / git", project: "LeetCode 15 题",
-    leetcodeGoal: 15,
+    theme: "学校数据结构快速推进；Python 只学到「会读会改」；TS 开始打底。算法每周稳定刷 5-7 道，本月养成习惯。",
+    core: "数据结构 / TS 起步", aux: "Python 够用 / git", project: "LeetCode 30 题",
+    leetcodeGoal: 30,
     modules: [
       {
         name: "数据结构（学校课）", range: "全月 · 快速过", goal: "从第 8 节推进到第 13 节",
@@ -58,9 +60,9 @@ const YEAR_MONTHS = [
   {
     key: "2026-10", year: 2026, month: 9, label: "2026.10",
     title: "数据结构收尾 + TS 进阶",
-    theme: "学校数据结构到查找/排序收尾；TS 进阶补齐，为 11 月 Node 后端做准备。",
-    core: "数据结构 / TS", aux: "刷题", project: "LeetCode 25 题",
-    leetcodeGoal: 25,
+    theme: "学校数据结构到查找/排序收尾；TS 进阶补齐，为 11 月 Node 后端做准备。八股碎片开始：计网每周啃一点。",
+    core: "数据结构 / TS", aux: "刷题", project: "LeetCode 30 题",
+    leetcodeGoal: 30,
     modules: [
       {
         name: "数据结构（学校课）", range: "10.1 – 10.31", goal: "第 14-25 节收尾",
@@ -92,13 +94,13 @@ const YEAR_MONTHS = [
   },
   {
     key: "2026-11", year: 2026, month: 10, label: "2026.11",
-    title: "Node/TS 后端 + 部署",
-    theme: "后端主线启动：Node + Express 起步，学会部署，为 12 月项目①铺路。",
-    core: "Node/TS 后端 / 部署", aux: "刷题", project: "一个能上线的接口",
-    leetcodeGoal: 20,
+    title: "Node/TS 后端 + 部署 + 项目①",
+    theme: "后端主线启动：Node + Express 起步并部署，11 月就做出第一个上线项目①（AI 资讯日报）。",
+    core: "Node/TS 后端 / 部署", aux: "刷题", project: "项目① AI 资讯日报",
+    leetcodeGoal: 30,
     modules: [
       {
-        name: "Node.js 基础", range: "11.1 – 11.12", goal: "服务端起步",
+        name: "Node.js 基础", range: "11.1 – 11.10", goal: "服务端起步",
         items: [
           "Node 运行模型 / 事件循环 / 模块",
           "npm / 包管理 / 常用库",
@@ -106,22 +108,31 @@ const YEAR_MONTHS = [
         ],
       },
       {
-        name: "Express + HTTP + 部署", range: "11.13 – 11.30", goal: "能上线一个接口",
+        name: "Express + HTTP + 部署", range: "11.11 – 11.22", goal: "能上线一个接口",
         items: [
           "Express 中间件 / 路由 / 请求响应",
           "REST API 设计 + fetch 调通自己的接口",
-          "部署：Vercel / Cloudflare Workers（为项目①铺路）",
-          "（NestJS、MySQL 推迟到寒假做问数系统时再学）",
+          "部署：Vercel / Cloudflare Workers",
+          "（NestJS、MySQL 推迟到做问数系统时再学）",
+        ],
+      },
+      {
+        name: "项目① AI 资讯日报", range: "11.23 – 11.30", goal: "第一个上线项目",
+        items: [
+          "Cloudflare Workers + 定时抓取",
+          "调 Gemini 做摘要",
+          "发布到 GitHub Pages",
+          "写 README 进简历",
         ],
       },
     ],
   },
   {
     key: "2026-12", year: 2026, month: 11, label: "2026.12",
-    title: "后端深入 + 计网 + 项目①",
-    theme: "后端补鉴权/部署，计网八股过一遍，做出第一个能上线的 TS 项目（AI 资讯日报）。",
-    core: "后端深入 / 计网", aux: "八股", project: "项目① AI 资讯日报",
-    leetcodeGoal: 15,
+    title: "后端进阶 + 计网 + LLM API 入门",
+    theme: "后端补鉴权/部署，计网八股过一遍，并提前上手调大模型 API（12 月还有六级考试，节奏适当留白）。",
+    core: "后端深入 / 计网 / LLM API", aux: "八股", project: "项目② 问数系统【强烈推荐】",
+    leetcodeGoal: 25,
     modules: [
       {
         name: "后端进阶", range: "12.1 – 12.12", goal: "鉴权 / 部署",
@@ -140,49 +151,48 @@ const YEAR_MONTHS = [
         ],
       },
       {
-        name: "项目① AI 资讯日报", range: "12.23 – 12.31", goal: "第一个上线项目",
+        name: "LLM API 入门 + 问数起步", range: "12.23 – 12.31", goal: "会调大模型",
         items: [
-          "Cloudflare Workers + 定时抓取",
-          "调 Gemini 做摘要",
-          "发布到 GitHub Pages",
-          "写 README 进简历",
+          "调 OpenAI / 国产大模型 API（fetch + JSON）",
+          "Prompt Engineering / 结构化输出（要求返回 JSON）",
+          "问数系统前置：调 LLM 把自然语言生成 SQL",
         ],
       },
     ],
   },
   {
     key: "2027-01", year: 2027, month: 0, label: "2027.1",
-    title: "大模型 API + 问数系统②（寒假）",
-    theme: "寒假集中：搞懂大模型 API 与 Prompt，做出「自然语言转 SQL」问数系统（简历旗舰项目）。",
-    core: "LLM API / Prompt", aux: "寒假刷题", project: "项目② 问数系统【强烈推荐】",
-    leetcodeGoal: 25,
+    title: "问数系统② + 开源研读起步（寒假）",
+    theme: "寒假集中：把「自然语言转 SQL」问数系统做成旗舰项目，同时开始研读第一个大厂开源项目。",
+    core: "问数系统 / 开源研读", aux: "寒假刷题", project: "项目② 问数系统【强烈推荐】",
+    leetcodeGoal: 40,
     modules: [
       {
-        name: "大模型基础", range: "1.1 – 1.10", goal: "会用 API",
-        items: [
-          "大模型发展脉络 / 能力边界",
-          "调 OpenAI / 国产大模型 API",
-          "Prompt Engineering / 结构化输出",
-        ],
-      },
-      {
-        name: "项目② 大模型问数系统", range: "1.11 – 1.31", goal: "旗舰项目",
+        name: "项目② 大模型问数系统", range: "1.1 – 1.20", goal: "旗舰项目",
         items: [
           "自然语言 → SQL 的 Prompt 设计",
           "后端：FastAPI 或 Node 接 LLM",
           "连数据库执行 SQL + 结果可视化",
-          "安全：SQL 注入防护 / 权限",
+          "安全：SQL 注入防护 / 权限（深度点）",
           "写 README + 进简历",
+        ],
+      },
+      {
+        name: "开源研读（第一个）", range: "1.21 – 1.31", goal: "跑通源码",
+        items: [
+          "选一个大厂开源项目（Agent / RAG 方向）",
+          "跑通源码 + 读核心模块",
+          "写一份读后笔记（面试能讲）",
         ],
       },
     ],
   },
   {
     key: "2027-02", year: 2027, month: 1, label: "2027.2",
-    title: "RAG + 知识库项目③（寒假）",
-    theme: "RAG 检索增强 + 向量库，做出知识库问答系统，这是 AI 岗最核心的落地能力。",
-    core: "RAG / 向量库", aux: "刷题", project: "项目③ 知识库问答",
-    leetcodeGoal: 15,
+    title: "RAG + 知识库③ + 开源研读继续（寒假）",
+    theme: "RAG 检索增强 + 向量库，做出知识库问答系统（加深度点：重排 + 评估），并继续开源研读。",
+    core: "RAG / 向量库", aux: "刷题 / 开源研读", project: "项目③ 知识库问答",
+    leetcodeGoal: 35,
     modules: [
       {
         name: "向量检索基础", range: "2.1 – 2.8", goal: "Embedding",
@@ -203,7 +213,7 @@ const YEAR_MONTHS = [
         name: "项目③ 知识库问答", range: "2.19 – 2.28", goal: "项目",
         items: [
           "做私有知识库问答（语析 / PandaWiki 风格）",
-          "多文档 + 来源引用",
+          "多文档 + 来源引用 + 重排/评估（深度点）",
           "写 README + 进简历",
         ],
       },
@@ -211,10 +221,10 @@ const YEAR_MONTHS = [
   },
   {
     key: "2027-03", year: 2027, month: 2, label: "2027.3",
-    title: "Agent 开发 + 项目④",
-    theme: "从 LLM 到 Agent：Function Calling + 多智能体编排，做出客服/业务 Agent。",
-    core: "Agent / 工具调用", aux: "刷题", project: "项目④ 客服/业务 Agent",
-    leetcodeGoal: 15,
+    title: "Agent 开发 + 项目④ + 投第一段实习",
+    theme: "从 LLM 到 Agent：Function Calling + 多智能体编排，做出客服/业务 Agent；本月开始投第一段实习（中厂日常/暑期）。",
+    core: "Agent / 工具调用", aux: "刷题 / 投递", project: "项目④ 客服/业务 Agent",
+    leetcodeGoal: 30,
     modules: [
       {
         name: "Agent 基础", range: "3.1 – 3.10", goal: "Function Calling",
@@ -233,11 +243,19 @@ const YEAR_MONTHS = [
         ],
       },
       {
-        name: "项目④ 业务 Agent", range: "3.21 – 3.31", goal: "项目",
+        name: "项目④ 业务 Agent", range: "3.21 – 3.27", goal: "项目",
         items: [
           "闲鱼客服 / 简历投递 Agent 选一",
           "多专家协同 + 上下文对话",
           "写 README + 进简历",
+        ],
+      },
+      {
+        name: "投第一段实习", range: "3.28 – 3.31", goal: "简历 + 海投",
+        items: [
+          "简历初版（2-3 个 AI 项目 + 量化结果）",
+          "牛客 / 官网 / 内推投递（中厂优先，大厂日常也试）",
+          "笔试准备：算法高频题 + 八股",
         ],
       },
     ],
@@ -246,8 +264,8 @@ const YEAR_MONTHS = [
     key: "2027-04", year: 2027, month: 3, label: "2027.4",
     title: "Agent 工程化 + 研读开源 + 项目⑤",
     theme: "进阶关键月：读大厂开源项目、搞懂 harness/loop，把 Agent 做成工程化产品。",
-    core: "Agent 工程化 / 开源研读", aux: "刷题", project: "项目⑤ 内容发现 Agent",
-    leetcodeGoal: 15,
+    core: "Agent 工程化 / 开源研读", aux: "刷题 / 投递", project: "项目⑤ 内容发现 Agent",
+    leetcodeGoal: 30,
     modules: [
       {
         name: "Agent 工程化", range: "4.1 – 4.12", goal: "harness / loop",
@@ -258,7 +276,7 @@ const YEAR_MONTHS = [
         ],
       },
       {
-        name: "研读大厂开源", range: "4.13 – 4.22", goal: "跑通源码",
+        name: "研读大厂开源（加深）", range: "4.13 – 4.22", goal: "吃透 2-3 个",
         items: [
           "阿里 zg(zvec-grep) 代码检索",
           "TencentDB Agent Memory 记忆方案",
@@ -279,9 +297,9 @@ const YEAR_MONTHS = [
   {
     key: "2027-05", year: 2027, month: 4, label: "2027.5",
     title: "后端强化 + 操作系统 + 项目⑥",
-    theme: "后端补 Redis/缓存/OS 八股，微调(LoRA)够用即可，再做一个多智能体项目。",
+    theme: "后端补 Redis/缓存/OS 八股（此前八股碎化的系统化收口），微调(LoRA)够用即可，再做一个多智能体项目。",
     core: "操作系统 / Redis", aux: "八股 / 微调", project: "项目⑥ 文旅/办公 Agent",
-    leetcodeGoal: 15,
+    leetcodeGoal: 20,
     modules: [
       {
         name: "操作系统", range: "5.1 – 5.14", goal: "八股",
@@ -317,10 +335,10 @@ const YEAR_MONTHS = [
   },
   {
     key: "2027-06", year: 2027, month: 5, label: "2027.6",
-    title: "算法冲刺 + 八股 + 项目深挖",
-    theme: "面试硬门槛集中冲刺：LeetCode 高频题 + 各科八股，项目打磨成简历语言。",
-    core: "算法 / 八股", aux: "LeetCode 冲刺", project: "LeetCode 40 题",
-    leetcodeGoal: 40,
+    title: "算法冲刺 + 八股收口 + 项目深挖",
+    theme: "面试硬门槛收口冲刺：LeetCode 高频题 + 各科八股（此前已碎化学过，本月系统收口），项目打磨成简历语言。",
+    core: "算法 / 八股", aux: "LeetCode 冲刺", project: "LeetCode 50 题",
+    leetcodeGoal: 50,
     modules: [
       {
         name: "数据结构全面复习", range: "6.1 – 6.10", goal: "全部手写",
@@ -339,7 +357,7 @@ const YEAR_MONTHS = [
         ],
       },
       {
-        name: "八股 + 项目深挖", range: "6.21 – 6.30", goal: "面试语言",
+        name: "八股收口 + 项目深挖", range: "6.21 – 6.30", goal: "面试语言",
         items: [
           "Python / TS / ML / Agent 八股",
           "计网 / OS / 数据库 / Node 八股",
@@ -351,7 +369,7 @@ const YEAR_MONTHS = [
   {
     key: "2027-07", year: 2027, month: 6, label: "2027.7",
     title: "项目成型 + 简历 + 部署",
-    theme: "把 2-3 个核心项目打磨上线，简历成型，GitHub 整理，为投递做准备。",
+    theme: "把 2-3 个核心项目打磨上线，简历成型，GitHub 整理，为入职/下一段实习做准备。",
     core: "项目打磨 / 简历", aux: "GitHub / 部署", project: "简历 + GitHub 整理",
     leetcodeGoal: 20,
     modules: [
@@ -375,25 +393,32 @@ const YEAR_MONTHS = [
   },
   {
     key: "2027-08", year: 2027, month: 7, label: "2027.8",
-    title: "面试冲刺 + 投递",
-    theme: "八股全面过、模拟面试，开始投递暑期实习。",
-    core: "八股 / 模拟面试", aux: "投递", project: "投递暑期实习",
-    leetcodeGoal: 20,
+    title: "第一段实习（大二暑假）进行中 + 复盘",
+    theme: "大二暑假 = 第一段实习进行时（中厂暑期 / 大厂日常）。以工作为主，周末复盘补漏，并为秋季冲大厂日常实习做规划。",
+    core: "实习 / 复盘", aux: "周末补漏", project: "第一段实习复盘 + 下一段规划",
+    leetcodeGoal: 15,
     modules: [
       {
-        name: "八股全面整理", range: "8.1 – 8.15", goal: "系统化",
+        name: "实习（工作优先）", range: "8.1 – 8.31", goal: "边做边学",
         items: [
-          "Python / TS / ML / Agent 八股",
-          "计网 / OS / 数据库 / Node 八股",
-          "项目深挖话术",
+          "以实习任务为第一优先级",
+          "记录工作中学到的工程/业务经验",
+          "积累简历可写的「实习产出」",
         ],
       },
       {
-        name: "面试冲刺", range: "8.16 – 8.31", goal: "投递",
+        name: "周末复盘 + 补漏", range: "全月周末", goal: "稳住基本功",
         items: [
-          "模拟面试",
-          "高频题复习",
-          "开始投递暑期实习",
+          "复习本周遇到的知识盲区",
+          "保持每周 3-4 道算法手感",
+          "复盘：这段实习哪里没做好、下一段怎么挑",
+        ],
+      },
+      {
+        name: "下一段规划", range: "8 月下旬", goal: "冲大厂日常",
+        items: [
+          "更新简历（加这段实习经历）",
+          "梳理秋季大厂日常实习目标 + 内推资源",
         ],
       },
     ],
@@ -409,9 +434,9 @@ const YEAR_MONTHS = [
 // ============================================================
 
 const PROJECTS = [
-  { no: 1, name: "AI 资讯日报", scene: "资讯 / 内容", when: "2026.12", level: "必做·入门", stack: "TS · Cloudflare Workers · Gemini API", value: "第一个上线项目，练 TS + 调 API + 部署", star: false },
-  { no: 2, name: "大模型问数系统", scene: "数据查询", when: "2027.1", level: "必做·旗舰", stack: "LLM · SQL · FastAPI / Node", value: "自然语言转 SQL，企业高频，简历含金量最高", star: true },
-  { no: 3, name: "知识库问答（RAG）", scene: "知识库 / RAG", when: "2027.2", level: "必做·旗舰", stack: "RAG · 向量库 · LangChain", value: "AI 岗最核心的落地能力（语析 / PandaWiki 风格）", star: true },
+  { no: 1, name: "AI 资讯日报", scene: "资讯 / 内容", when: "2026.11", level: "必做·入门", stack: "TS · Cloudflare Workers · Gemini API", value: "第一个上线项目，练 TS + 调 API + 部署", star: false },
+  { no: 2, name: "大模型问数系统", scene: "数据查询", when: "2026.12–2027.1", level: "必做·旗舰", stack: "LLM · SQL · FastAPI / Node", value: "自然语言转 SQL，企业高频，简历含金量最高；深度点：SQL 注入防护", star: true },
+  { no: 3, name: "知识库问答（RAG）", scene: "知识库 / RAG", when: "2027.1–2", level: "必做·旗舰", stack: "RAG · 向量库 · LangChain", value: "AI 岗最核心的落地能力（语析 / PandaWiki 风格）；深度点：重排 + 来源引用评估", star: true },
   { no: 4, name: "客服 / 业务 Agent", scene: "客服 / 自动化", when: "2027.3", level: "必做", stack: "Agent · Function Calling · LangGraph", value: "闲鱼客服 / 简历投递选一，多专家协同", star: true },
   { no: 5, name: "跨平台内容发现 Agent", scene: "内容推荐", when: "2027.4", level: "必做", stack: "Agent · 爬虫 · 用户画像", value: "结合开源研读，本地私有运行", star: false },
   { no: 6, name: "文旅 / 办公多智能体", scene: "生活 / 办公", when: "2027.5", level: "选做", stack: "HelloAgents · 多智能体", value: "TripStar 文旅 / AI-PPT 选一", star: false },
@@ -842,17 +867,19 @@ const DAILY = {
     { time: "白天", title: "数据结构看 1 节", note: "学校课 / 网课，只「看」这一节，晚上再动手" },
     { time: "下午", title: "Python 看 1 章 + 写 20 分钟", note: "看到「字典+文件+函数」就停；看完立刻写个小脚本" },
     { time: "晚上（整块）", title: "① TS 主线（先）", note: "学 20 分钟 + 写 40 分钟，从装 Node 写第一个 .ts 开始" },
-    { time: "晚上（整块）", title: "② 数据结构手写 + C++ 刷题", note: "手写白天那节，用 C++ 刷对应 2-3 道题" },
-    { time: "晚上（收尾）", title: "③ Python 小练习 + 复盘", note: "下午没写完的补上，写笔记、勾任务、日历打卡" },
+    { time: "晚上（整块）", title: "② 数据结构手写 + C++ 刷题", note: "每周稳定刷 5-7 道，用 C++ 刷对应节 2-3 道题" },
+    { time: "晚上（收尾）", title: "③ 八股碎片（计网/OS/DB/Redis 轮换）", note: "每周 2-3 次，每次 15 分钟啃一个点，6 月只收口" },
+    { time: "晚上（收尾）", title: "④ 复盘 + 每周产出", note: "写笔记、勾任务、日历打卡；每周一份可交付产出（能跑的代码 / 笔记）" },
   ],
-  weekend: "周末：把「晚上整块」延长；周六集中复习本周学过的题（按下面的遗忘曲线表），周日补漏 + 完整模块，或加刷 2-3 道新题。",
+  weekend: "周末：把「晚上整块」延长；周六集中复习本周学过的题（按下面的遗忘曲线表），周日补漏 + 完整模块，或加刷 2-3 道新题。每月一次里程碑复盘，对照月度目标查漏。",
   tasks: [
     { id: "words", label: "背 40 个六级单词" },
     { id: "bbc", label: "听 BBC 六分钟英语" },
     { id: "ts", label: "写 TS（主线，学 + 写）" },
     { id: "ds", label: "数据结构手写 + C++ 刷当前节 2-3 题" },
     { id: "py", label: "Python 小练习（当天那章）" },
-    { id: "review", label: "复盘 + 写笔记" },
+    { id: "bagu", label: "八股碎片（计网/OS/DB/Redis 轮换）" },
+    { id: "review", label: "复盘 + 每周产出" },
   ],
 };
 
