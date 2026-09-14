@@ -567,18 +567,22 @@ function renderSkills() {
   if (!wrap || typeof SKILLS === "undefined") return;
   wrap.innerHTML = "";
 
-  const card = document.createElement("section");
+  const card = document.createElement("details");
   card.className = "card skills-card";
+  card.open = true;
 
-  const h = document.createElement("h2");
-  h.className = "skills-title";
-  h.textContent = "📊 学习进度总览";
-  card.appendChild(h);
+  const sum = document.createElement("summary");
+  sum.className = "roadmap-summary";
+  sum.textContent = "📊 学习进度总览（全年 " + SKILLS.length + " 科 · 点击收起/展开）";
+  card.appendChild(sum);
+
+  const body = document.createElement("div");
+  body.className = "skills-body";
 
   const hint = document.createElement("p");
   hint.className = "skills-hint";
   hint.textContent = "打勾即自动更新 · 数据结构跟「当前第几节」走，想改就在 plan-data.js 里改 DS_CURRENT";
-  card.appendChild(hint);
+  body.appendChild(hint);
 
   SKILLS.forEach((skill) => {
     const p = skillProgress(skill);
@@ -621,9 +625,10 @@ function renderSkills() {
     meta.textContent = metaText;
 
     row.append(head, bar, meta);
-    card.appendChild(row);
+    body.appendChild(row);
   });
 
+  card.appendChild(body);
   wrap.appendChild(card);
 }
 
