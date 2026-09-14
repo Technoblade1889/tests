@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>全年学习计划 · 2026.9 – 2027.8</title>
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=5" />
 </head>
 <body>
   <main class="app">
@@ -17,41 +17,19 @@
     <!-- 学习进度总览 -->
     <div id="skills-wrap"></div>
 
-    <!-- 数据同步 -->
-    <details class="card sync-card">
-      <summary class="sync-summary">📦 数据同步（手机 ↔ 电脑）</summary>
-      <div class="sync-body">
-        <p class="sync-hint">电脑点「导出」→ 把文件/文字传到手机 → 手机点「导入/粘贴」即可。导入会覆盖本机数据，并自动备份。</p>
-        <div class="sync-buttons">
-          <button class="sync-btn primary" id="btn-export">⬇️ 导出文件</button>
-          <button class="sync-btn" id="btn-import">⬆️ 导入文件</button>
-        </div>
-        <div class="sync-buttons">
-          <button class="sync-btn" id="btn-copy">📋 复制数据</button>
-          <button class="sync-btn" id="btn-paste">📥 粘贴导入</button>
-        </div>
-        <div class="sync-paste" id="sync-paste" hidden>
-          <textarea class="note" id="paste-area" placeholder="长按此处粘贴复制的数据…"></textarea>
-          <button class="sync-btn primary" id="btn-paste-confirm">确认导入</button>
-        </div>
-        <p class="sync-status" id="sync-status"></p>
-        <input type="file" id="import-file" accept=".json,application/json" hidden />
-      </div>
-    </details>
-
     <!-- 云端同步 -->
-    <div class="card cloud-card">
-      <div class="cloud-head">
+    <details class="card cloud-card">
+      <summary class="cloud-head">
         <span class="cloud-title">☁️ 云端同步</span>
         <span class="cloud-status" id="cloud-status">检测中…</span>
-      </div>
-      <p class="cloud-hint">登录一次后，任何改动都会自动同步到云端；手机 / 电脑打开即共享同一份数据，不用再手动导出导入。</p>
+      </summary>
+      <p class="cloud-hint">登录一次后，任何改动都会自动同步到云端；手机 / 电脑打开即共享同一份数据。</p>
       <div class="cloud-buttons">
         <button class="sync-btn primary" id="btn-cloud-login">登录并开启同步</button>
         <button class="sync-btn" id="btn-cloud-sync" hidden>立即同步</button>
         <button class="sync-btn" id="btn-cloud-logout" hidden>退出登录</button>
       </div>
-    </div>
+    </details>
 
     <!-- 每日安排 -->
     <div id="daily-wrap"></div>
@@ -86,11 +64,13 @@
     </details>
 
     <!-- 当前月份 -->
-    <section class="card month">
-      <div class="month-head">
-        <h2 id="month-title"></h2>
-        <span class="month-theme" id="month-theme"></span>
-      </div>
+    <details class="card month">
+      <summary class="month-summary">
+        <div class="month-head">
+          <h2 id="month-title"></h2>
+          <span class="month-theme" id="month-theme"></span>
+        </div>
+      </summary>
 
       <div class="overview">
         <div class="overview-number" id="month-progress-pct">0%</div>
@@ -127,7 +107,7 @@
 
       <h3 class="sub-title">📓 本月日记 / 总结</h3>
       <textarea class="note diary" id="month-diary" placeholder="这个月学了什么、卡在哪、下个月怎么调整…"></textarea>
-    </section>
+    </details>
 
     <!-- 数据结构学习地图 -->
     <details class="card roadmap">
@@ -141,6 +121,6 @@
 
   <script src="https://js.puter.com/v2/"></script>
   <script src="plan-data.js?v=5"></script>
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>

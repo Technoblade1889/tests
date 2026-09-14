@@ -1049,3 +1049,30 @@ body {
   gap: 10px;
 }
 
+/* ===== 可收起卡片：summary 通用 reset ===== */
+.month-summary,
+.cloud-card summary.cloud-head {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.month-summary::-webkit-details-marker,
+.cloud-card summary.cloud-head::-webkit-details-marker {
+  display: none;
+}
+
+.month:not([open]) .month-head {
+  margin-bottom: 0;
+}
+
+/* 英语专区内部子节 */
+.english-sec {
+  padding: 2px 0 16px;
+}
+
+.english-sec + .english-sec {
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+

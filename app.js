@@ -469,15 +469,18 @@ function renderEnglish() {
   const wrap = document.getElementById("english-wrap");
   wrap.innerHTML = "";
 
-  const h = document.createElement("h2");
-  h.className = "english-title";
-  h.textContent = "🌍 英语专区（六级 + 雅思）";
-  wrap.appendChild(h);
+  const card = document.createElement("details");
+  card.className = "card english-card";
+
+  const sum = document.createElement("summary");
+  sum.className = "roadmap-summary";
+  sum.textContent = "🌍 英语专区（六级 + 雅思）· 点击展开/收起";
+  card.appendChild(sum);
 
   ENGLISH.forEach((sec) => {
     const prefix = "en-" + sec.key;
-    const card = document.createElement("section");
-    card.className = "card";
+    const section = document.createElement("section");
+    section.className = "english-sec";
 
     const title = document.createElement("h3");
     title.style.fontSize = "17px";
@@ -499,11 +502,13 @@ function renderEnglish() {
 
     const modWrap = document.createElement("div");
 
-    card.append(title, tag, advice, modWrap);
-    wrap.appendChild(card);
+    section.append(title, tag, advice, modWrap);
+    card.appendChild(section);
 
     renderModuleList(modWrap, sec.modules, prefix, null);
   });
+
+  wrap.appendChild(card);
 }
 
 // ===== 学习进度总览（科目进度条） =====
@@ -644,13 +649,13 @@ function renderDaily() {
   if (!wrap || typeof DAILY === "undefined") return;
   wrap.innerHTML = "";
 
-  const card = document.createElement("section");
+  const card = document.createElement("details");
   card.className = "card daily";
 
-  const h = document.createElement("h2");
-  h.className = "daily-title";
-  h.textContent = "📅 每日安排";
-  card.appendChild(h);
+  const sum = document.createElement("summary");
+  sum.className = "roadmap-summary";
+  sum.textContent = "📅 每日安排 · 点击展开/收起";
+  card.appendChild(sum);
 
   const sTitle = document.createElement("h3");
   sTitle.className = "sub-title";
@@ -761,13 +766,13 @@ function renderDailyPlan() {
   const wrap = document.getElementById("daily-wrap");
   if (!wrap || typeof DAILY_PLAN === "undefined") return;
 
-  const card = document.createElement("section");
+  const card = document.createElement("details");
   card.className = "card daily";
 
-  const h = document.createElement("h2");
-  h.className = "daily-title";
-  h.textContent = "📅 逐日具体计划（每天不一样）";
-  card.appendChild(h);
+  const sum = document.createElement("summary");
+  sum.className = "roadmap-summary";
+  sum.textContent = "📅 逐日具体计划（每天不一样）· 点击展开/收起";
+  card.appendChild(sum);
 
   const hint = document.createElement("p");
   hint.className = "dailyplan-hint";
@@ -900,79 +905,6 @@ function renderAll() {
   renderMonth();
   renderDsMap();
   renderEnglish();
-}
-
-// ===== 数据导出 / 导入（手动同步） =====
-function exportPayload() {
-  return {
-    app: "study-plan",
-    version: 3,
-    exportedAt: new Date().toISOString(),
-    state: state,
-  };
-}
-
-let syncTimer = null;
-function syncStatus(msg) {
-  const el = document.getElementById("sync-status");
-  if (!el) return;
-  el.textContent = msg;
-  clearTimeout(syncTimer);
-  syncTimer = setTimeout(() => { el.textContent = ""; }, 5000);
-}
-
-function downloadExport() {
-  const blob = new Blob([JSON.stringify(exportPayload(), null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  const d = new Date();
-  const stamp = d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0");
-  a.href = url;
-  a.download = "study-data-" + stamp + ".json";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-  syncStatus("✅ 已导出文件，把它传到另一台设备再「导入」");
-}
-
-function importState(raw) {
-  const incoming = raw && raw.state ? raw.state : raw;
-  if (!incoming || typeof incoming !== "object" || Array.isArray(incoming)) {
-    throw new Error("数据格式不正确");
-  }
-  // 导入前自动备份本机旧数据
-  localStorage.setItem(STORAGE_KEY + "-backup-" + Date.now(), JSON.stringify(state));
-  state = Object.assign(defaultState(), incoming);
-  currentMonthKey = state.currentMonth || YEAR_MONTHS[0].key;
-  saveState();
-  renderAll();
-}
-
-function handleImportFile(file) {
-  const reader = new FileReader();
-  reader.onload = () => {
-    try {
-      importState(JSON.parse(reader.result));
-      syncStatus("✅ 导入成功（旧数据已自动备份）");
-    } catch (e) {
-      syncStatus("❌ 导入失败：" + e.message);
-    }
-  };
-  reader.onerror = () => syncStatus("❌ 文件读取失败");
-  reader.readAsText(file);
-}
-
-function copyData() {
-  const text = JSON.stringify(exportPayload());
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(
-      () => syncStatus("✅ 已复制，到另一台设备「粘贴导入」"),
-      () => syncStatus("❌ 复制失败，请改用「导出文件」")
-    );
-  } else {
-    syncStatus("❌ 浏览器不支持复制，请改用「导出文件」");
-  }
 }
 
 // ===== 云端同步（Puter.js · 全平台自动共享） =====
@@ -1129,33 +1061,6 @@ document.getElementById("lc-quick").addEventListener("click", () => changeLC(1))
 document.getElementById("month-diary").addEventListener("input", (e) => {
   state.diary[currentMonthKey] = e.target.value;
   saveState();
-});
-
-document.getElementById("btn-export").addEventListener("click", downloadExport);
-document.getElementById("btn-import").addEventListener("click", () => {
-  document.getElementById("import-file").click();
-});
-document.getElementById("import-file").addEventListener("change", (e) => {
-  const f = e.target.files && e.target.files[0];
-  if (f) handleImportFile(f);
-  e.target.value = "";
-});
-document.getElementById("btn-copy").addEventListener("click", copyData);
-document.getElementById("btn-paste").addEventListener("click", () => {
-  const wrap = document.getElementById("sync-paste");
-  wrap.hidden = !wrap.hidden;
-  if (!wrap.hidden) document.getElementById("paste-area").focus();
-});
-document.getElementById("btn-paste-confirm").addEventListener("click", () => {
-  const ta = document.getElementById("paste-area");
-  try {
-    importState(JSON.parse(ta.value));
-    ta.value = "";
-    document.getElementById("sync-paste").hidden = true;
-    syncStatus("✅ 导入成功（旧数据已自动备份）");
-  } catch (e) {
-    syncStatus("❌ 导入失败：" + e.message);
-  }
 });
 
 document.getElementById("btn-cloud-login").addEventListener("click", cloudLogin);
