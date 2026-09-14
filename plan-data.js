@@ -933,3 +933,41 @@ const DAILY_PLAN = [
   { date: "9.29", week: "二", ds: "省份数量 · LC547", py: "", ts: "整理 9 月 TS 产出，写一份「我会什么」清单" },
   { date: "9.30", week: "三", ds: "月底复盘：手写一个完整结构（反转链表 + 二叉树遍历）", py: "", ts: "月底复盘：跑通一个完整小工具，准备进 10 月 TS 进阶" },
 ];
+
+// ============================================================
+// 学习进度总览（科目进度条 · 备注起始时间）
+// 每个 skill：id / emoji / name / color(进度条颜色) / start(起始时间)
+//            / end(截止时间，空 = 无明确截止) / note(一句话说明)
+//            / src + 对应数据源：
+//              - src:"ds"        → 数据结构，进度 = DS_CURRENT / DS_MAP 节数
+//              - src:"mods"      → 按月模块，mods:[ [月份key, 模块下标], ... ]
+//              - src:"problems"  → 刷题，进度 = 地图里已勾题 / 总题数
+//              - src:"en"        → 英语，en:"cet6" / "ielts"
+// 想加新科目：照抄一行，src 选对数据源即可。
+// ============================================================
+
+const SKILLS = [
+  // —— 语言与基础（9–10 月）——
+  { id: "ds",   emoji: "🧱", name: "数据结构",   color: "#ff9f0a", start: "2026.9.1",  end: "",            note: "学校课 · 25 节地图 · 6 月全面复习", src: "ds" },
+  { id: "py",   emoji: "🐍", name: "Python",     color: "#34c759", start: "2026.9.1",  end: "2026.9.18",   note: "够用即停（到字典+文件+函数）", src: "mods", mods: [["2026-09", 1]] },
+  { id: "ts",   emoji: "💙", name: "TypeScript", color: "#0071e3", start: "2026.9.13", end: "2026.10.31",  note: "主线 · 会写会跑", src: "mods", mods: [["2026-09", 2], ["2026-10", 1], ["2026-10", 2]] },
+  { id: "git",  emoji: "🌿", name: "git",        color: "#5856d6", start: "2026.9.1",  end: "",            note: "版本控制", src: "mods", mods: [["2026-09", 3]] },
+  // —— 后端（11–12 月）——
+  { id: "node", emoji: "⚙️", name: "Node + Express", color: "#30b0c7", start: "2026.11.1",  end: "",        note: "后端主线 · 部署上线", src: "mods", mods: [["2026-11", 0], ["2026-11", 1]] },
+  { id: "sec",  emoji: "🔐", name: "后端进阶",   color: "#af52de", start: "2026.12.1",  end: "",            note: "JWT 鉴权 / 环境变量 / 部署", src: "mods", mods: [["2026-12", 0]] },
+  { id: "net",  emoji: "🌐", name: "计算机网络", color: "#ff2d55", start: "2026.12.13", end: "",            note: "八股 · TCP / HTTP / DNS", src: "mods", mods: [["2026-12", 1]] },
+  { id: "llm",  emoji: "🤖", name: "LLM API",    color: "#0a84ff", start: "2026.12.23", end: "",            note: "调大模型 · Prompt · 结构化输出", src: "mods", mods: [["2026-12", 2]] },
+  // —— AI 主线（2027.1–4 月）——
+  { id: "oss",  emoji: "📚", name: "开源研读",   color: "#8e8e93", start: "2027.1.21", end: "",            note: "跑通大厂 Agent / RAG 源码", src: "mods", mods: [["2027-01", 1], ["2027-04", 1]] },
+  { id: "rag",  emoji: "🔍", name: "RAG / 向量库", color: "#ff9f0a", start: "2027.2.1",  end: "",          note: "Embedding · 检索 · 重排", src: "mods", mods: [["2027-02", 0], ["2027-02", 1]] },
+  { id: "agent", emoji: "🧠", name: "Agent 开发", color: "#5856d6", start: "2027.3.1",  end: "",            note: "Function Calling · 多智能体", src: "mods", mods: [["2027-03", 0], ["2027-03", 1]] },
+  { id: "agent-eng", emoji: "⚡", name: "Agent 工程化", color: "#30b0c7", start: "2027.4.1", end: "",        note: "harness / loop / 评测", src: "mods", mods: [["2027-04", 0]] },
+  // —— 强化与收口（2027.5 月）——
+  { id: "os",   emoji: "🖥️", name: "操作系统",   color: "#ff9500", start: "2027.5.1",  end: "",            note: "八股 · 进程 / 内存 / 死锁", src: "mods", mods: [["2027-05", 0]] },
+  { id: "redis", emoji: "💾", name: "Redis / 缓存", color: "#ff3b30", start: "2027.5.15", end: "",          note: "缓存穿透 / 击穿 / 雪崩", src: "mods", mods: [["2027-05", 1]] },
+  { id: "ft",   emoji: "🎛️", name: "微调 + FastAPI", color: "#34c759", start: "2027.5.23", end: "",         note: "LoRA 入门 · 模型服务", src: "mods", mods: [["2027-05", 2]] },
+  // —— 全程 & 英语 ——
+  { id: "lc",   emoji: "🔥", name: "刷题 / 算法", color: "#ff3b30", start: "2026.9.13", end: "",            note: "全程 · 只用 C++ · 跟地图每节 2-3 道", src: "problems" },
+  { id: "en6",  emoji: "🌍", name: "英语六级",   color: "#0071e3", start: "2026.9.1",  end: "2026.12",     note: "目标 550+ · 每日固定任务", src: "en", en: "cet6" },
+  { id: "ielts", emoji: "🎓", name: "雅思",      color: "#af52de", start: "2027.1.1",  end: "",            note: "目标 6.5–7.0 · 2027 春首考", src: "en", en: "ielts" },
+];

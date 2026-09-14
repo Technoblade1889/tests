@@ -506,6 +506,127 @@ function renderEnglish() {
   });
 }
 
+// ===== 学习进度总览（科目进度条） =====
+function parseDate(str) {
+  const p = String(str).split(".").map(Number);
+  if (p.length === 3) return new Date(p[0], p[1] - 1, p[2]);
+  if (p.length === 2) return new Date(p[0], p[1] - 1, 1);
+  return new Date(p[0], 0, 1);
+}
+
+function skillProgress(skill) {
+  if (skill.src === "ds") {
+    const total = DS_MAP.length;
+    const cur = DS_CURRENT || 0;
+    return { done: cur, total, pct: Math.round((cur / total) * 100), sub: "第 " + cur + " / " + total + " 节" };
+  }
+  if (skill.src === "problems") {
+    let total = 0, done = 0;
+    DS_MAP.forEach((sec) => sec.problems.forEach((_, pi) => {
+      total++;
+      if (state.items[dsKey(sec.no, pi)]) done++;
+    }));
+    return { done, total, pct: total ? Math.round((done / total) * 100) : 0, sub: done + " / " + total + " 题" };
+  }
+  if (skill.src === "mods") {
+    let total = 0, done = 0;
+    (skill.mods || []).forEach(([mk, idx]) => {
+      const m = monthByKey[mk];
+      if (!m || !m.modules[idx]) return;
+      m.modules[idx].items.forEach((_, ii) => {
+        total++;
+        if (state.items[itemKey(mk, idx, ii)]) done++;
+      });
+    });
+    return { done, total, pct: total ? Math.round((done / total) * 100) : 0, sub: done + " / " + total + " 项" };
+  }
+  if (skill.src === "en") {
+    const sec = (typeof ENGLISH !== "undefined" && ENGLISH.find((e) => e.key === skill.en)) || null;
+    let total = 0, done = 0;
+    if (sec) sec.modules.forEach((mod, mi) => mod.items.forEach((_, ii) => {
+      total++;
+      if (state.items[itemKey("en-" + sec.key, mi, ii)]) done++;
+    }));
+    return { done, total, pct: total ? Math.round((done / total) * 100) : 0, sub: done + " / " + total + " 项" };
+  }
+  return { done: 0, total: 0, pct: 0, sub: "" };
+}
+
+function skillStatus(skill, pct) {
+  const today = new Date();
+  if (today < parseDate(skill.start)) return { label: "未开始", cls: "todo" };
+  if (skill.end && today > parseDate(skill.end)) {
+    return pct >= 100 ? { label: "已完成", cls: "done" } : { label: "已停", cls: "paused" };
+  }
+  if (pct >= 100) return { label: "已完成", cls: "done" };
+  return { label: "进行中", cls: "doing" };
+}
+
+function renderSkills() {
+  const wrap = document.getElementById("skills-wrap");
+  if (!wrap || typeof SKILLS === "undefined") return;
+  wrap.innerHTML = "";
+
+  const card = document.createElement("section");
+  card.className = "card skills-card";
+
+  const h = document.createElement("h2");
+  h.className = "skills-title";
+  h.textContent = "📊 学习进度总览";
+  card.appendChild(h);
+
+  const hint = document.createElement("p");
+  hint.className = "skills-hint";
+  hint.textContent = "打勾即自动更新 · 数据结构跟「当前第几节」走，想改就在 plan-data.js 里改 DS_CURRENT";
+  card.appendChild(hint);
+
+  SKILLS.forEach((skill) => {
+    const p = skillProgress(skill);
+    const st = skillStatus(skill, p.pct);
+
+    const row = document.createElement("div");
+    row.className = "skill-row";
+
+    const head = document.createElement("div");
+    head.className = "skill-head";
+
+    const name = document.createElement("span");
+    name.className = "skill-name";
+    name.textContent = skill.emoji + " " + skill.name;
+
+    const badge = document.createElement("span");
+    badge.className = "skill-badge skill-badge-" + st.cls;
+    badge.textContent = st.label;
+
+    const pct = document.createElement("span");
+    pct.className = "skill-pct";
+    pct.textContent = p.pct + "%";
+
+    head.append(name, badge, pct);
+
+    const bar = document.createElement("div");
+    bar.className = "progress-bar";
+    const fill = document.createElement("div");
+    fill.className = "progress-fill";
+    fill.style.background = skill.color;
+    fill.style.width = p.pct + "%";
+    bar.appendChild(fill);
+
+    const meta = document.createElement("div");
+    meta.className = "skill-meta";
+    let metaText = "起始 " + skill.start;
+    if (skill.end) metaText += " · 截止 " + skill.end;
+    if (skill.note) metaText += " · " + skill.note;
+    metaText += " · " + p.sub;
+    meta.textContent = metaText;
+
+    row.append(head, bar, meta);
+    card.appendChild(row);
+  });
+
+  wrap.appendChild(card);
+}
+
 // ===== 每日安排 =====
 function todayStr() {
   const d = new Date();
@@ -766,6 +887,7 @@ function renderHeader() {
 
 function renderAll() {
   renderHeader();
+  renderSkills();
   renderDaily();
   renderDailyPlan();
   renderMonthNav();
