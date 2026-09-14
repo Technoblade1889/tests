@@ -569,11 +569,10 @@ function renderSkills() {
 
   const card = document.createElement("details");
   card.className = "card skills-card";
-  card.open = true;
 
   const sum = document.createElement("summary");
   sum.className = "roadmap-summary";
-  sum.textContent = "📊 学习进度总览（全年 " + SKILLS.length + " 科 · 点击收起/展开）";
+  sum.textContent = "📊 学习进度总览（全年 " + SKILLS.length + " 科 · 点击展开/收起）";
   card.appendChild(sum);
 
   const body = document.createElement("div");
