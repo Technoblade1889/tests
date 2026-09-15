@@ -525,6 +525,11 @@ function renderVersions() {
   sum.textContent = "🕰️ 版本 / 更新日志（" + VERSIONS.length + " 个版本 · 点击展开/收起）";
   card.appendChild(sum);
 
+  const hint = document.createElement("p");
+  hint.className = "version-hint";
+  hint.textContent = "点某个版本的「查看快照」会在新标签打开当时网站的只读存档，看完点右下角「返回当前版」回来。";
+  card.appendChild(hint);
+
   const list = document.createElement("div");
   list.className = "version-list";
 
@@ -540,10 +545,16 @@ function renderVersions() {
     const title = document.createElement("span");
     title.className = "version-title";
     title.textContent = v.title;
+    const view = document.createElement("a");
+    view.className = "version-view";
+    view.href = "versions/" + v.v + ".html";
+    view.target = "_blank";
+    view.rel = "noopener";
+    view.textContent = "👁 查看快照";
     const date = document.createElement("span");
     date.className = "version-date";
     date.textContent = v.date;
-    head.append(tag, title, date);
+    head.append(tag, title, view, date);
 
     const desc = document.createElement("p");
     desc.className = "version-desc";
