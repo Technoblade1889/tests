@@ -826,9 +826,11 @@ body {
   font-weight: 600;
 }
 
-.dp-ds b { color: #b25000; }
-.dp-py b { color: #248a3d; }
-.dp-ts b { color: var(--accent); }
+.dp-lc b { color: #b25000; }
+.dp-main b { color: var(--accent); }
+.dp-aux b { color: #248a3d; }
+.dp-proj b { color: #7c4dff; }
+.dp-bagu b { color: #0f8b8d; }
 
 .dp-rest {
   color: var(--muted);

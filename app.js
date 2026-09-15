@@ -761,126 +761,95 @@ function renderDaily() {
   wrap.appendChild(card);
 }
 
-// ===== 渲染：逐日具体计划（按月分组 + 点击展开/收起） =====
+// ===== 渲染：逐日具体计划（跟随当前月份） =====
 function renderDailyPlan() {
   const wrap = document.getElementById("daily-wrap");
   if (!wrap || typeof DAILY_PLAN === "undefined") return;
+
+  const m = monthByKey[currentMonthKey];
+  const days = DAILY_PLAN[currentMonthKey] || [];
 
   const card = document.createElement("details");
   card.className = "card daily";
 
   const sum = document.createElement("summary");
   sum.className = "roadmap-summary";
-  sum.textContent = "📅 逐日具体计划（每天不一样）· 点击展开/收起";
+  sum.textContent = "📅 逐日具体计划 · " + (m ? m.label : currentMonthKey) + "（每天不一样）· 点击展开/收起";
   card.appendChild(sum);
 
   const hint = document.createElement("p");
   hint.className = "dailyplan-hint";
-  hint.textContent = "点日期展开 / 收起；今天默认展开，其余（含过去的）收起。🧱 刷题 · 🐍 Python · 💙 TS 每天各一件，💤 表示周六休息。";
+  hint.textContent = "跟着上方「月份」走：点哪个月，这里就显示哪个月的逐日计划。点日期展开 / 收起，今天默认展开；💤 表示周六休息。";
   card.appendChild(hint);
+
+  if (days.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "dailyplan-hint";
+    empty.textContent = "这个月暂未排逐日计划。";
+    card.appendChild(empty);
+    wrap.appendChild(card);
+    return;
+  }
 
   const now = new Date();
   const todayKey = (now.getMonth() + 1) + "." + now.getDate();
-  const thisMonth = now.getMonth() + 1;
 
-  // 按月份分组
-  const groups = [];
-  DAILY_PLAN.forEach((d) => {
-    const m = parseInt(d.date.split(".")[0], 10);
-    let g = groups.find((x) => x.month === m);
-    if (!g) { g = { month: m, days: [] }; groups.push(g); }
-    g.days.push(d);
-  });
+  days.forEach((d) => {
+    const isToday = d.date === todayKey;
 
-  groups.forEach((group) => {
-    const isThisMonth = group.month === thisMonth;
+    const row = document.createElement("div");
+    row.className = "dp-day" + (isToday ? " dp-today dp-open" : "");
 
-    // 月份标题（点击折叠整月）
-    const mHead = document.createElement("div");
-    mHead.className = "dp-month-head" + (isThisMonth ? " dp-month-open" : "");
-    const mTitle = document.createElement("span");
-    mTitle.textContent = group.month + " 月";
-    const mArrow = document.createElement("span");
-    mArrow.className = "dp-month-arrow";
-    mArrow.textContent = isThisMonth ? "▾" : "▸";
-    mHead.appendChild(mTitle);
-    mHead.appendChild(mArrow);
+    const head = document.createElement("div");
+    head.className = "dp-head";
+    const date = document.createElement("span");
+    date.className = "dp-date";
+    date.textContent = d.date + (d.week ? " · " + d.week : "");
+    head.appendChild(date);
+    if (isToday) {
+      const badge = document.createElement("span");
+      badge.className = "dp-badge";
+      badge.textContent = "今天";
+      head.appendChild(badge);
+    }
+    const arrow = document.createElement("span");
+    arrow.className = "dp-day-arrow";
+    arrow.textContent = isToday ? "▾" : "▸";
+    head.appendChild(arrow);
 
-    const mBody = document.createElement("div");
-    mBody.className = "dp-month-body";
-    mBody.style.display = isThisMonth ? "" : "none";
+    const body = document.createElement("div");
+    body.className = "dp-body";
+    body.style.display = isToday ? "" : "none";
 
-    mHead.addEventListener("click", () => {
-      const open = mBody.style.display !== "none";
-      mBody.style.display = open ? "none" : "";
-      mArrow.textContent = open ? "▸" : "▾";
-      mHead.classList.toggle("dp-month-open", !open);
-    });
-
-    group.days.forEach((d) => {
-      const isToday = d.date === todayKey;
-
-      const row = document.createElement("div");
-      row.className = "dp-day" + (isToday ? " dp-today dp-open" : "");
-
-      const head = document.createElement("div");
-      head.className = "dp-head";
-      const date = document.createElement("span");
-      date.className = "dp-date";
-      date.textContent = d.date + (d.week ? " · " + d.week : "");
-      head.appendChild(date);
-      if (isToday) {
-        const badge = document.createElement("span");
-        badge.className = "dp-badge";
-        badge.textContent = "今天";
-        head.appendChild(badge);
-      }
-      const arrow = document.createElement("span");
-      arrow.className = "dp-day-arrow";
-      arrow.textContent = isToday ? "▾" : "▸";
-      head.appendChild(arrow);
-
-      const body = document.createElement("div");
-      body.className = "dp-body";
-      body.style.display = isToday ? "" : "none";
-
-      if (d.rest) {
+    if (d.rest) {
+      const line = document.createElement("div");
+      line.className = "dp-item dp-rest";
+      line.textContent = "💤 " + d.rest;
+      body.appendChild(line);
+    } else if (d.lines) {
+      d.lines.forEach((it) => {
+        if (!it || !it.text) return;
         const line = document.createElement("div");
-        line.className = "dp-item dp-rest";
-        line.textContent = "💤 " + d.rest;
+        line.className = "dp-item " + (it.c || "");
+        const lab = document.createElement("b");
+        lab.textContent = it.label ? it.label + "：" : "";
+        const txt = document.createElement("span");
+        txt.textContent = it.text;
+        line.append(lab, txt);
         body.appendChild(line);
-      } else {
-        [
-          { cls: "dp-ds", label: "🧱 刷题", text: d.ds },
-          { cls: "dp-py", label: "🐍 Python", text: d.py },
-          { cls: "dp-ts", label: "💙 TS", text: d.ts },
-        ].forEach((it) => {
-          if (!it.text) return;
-          const line = document.createElement("div");
-          line.className = "dp-item " + it.cls;
-          const lab = document.createElement("b");
-          lab.textContent = it.label + "：";
-          const txt = document.createElement("span");
-          txt.textContent = it.text;
-          line.append(lab, txt);
-          body.appendChild(line);
-        });
-      }
-
-      head.addEventListener("click", () => {
-        const open = body.style.display !== "none";
-        body.style.display = open ? "none" : "";
-        arrow.textContent = open ? "▸" : "▾";
-        row.classList.toggle("dp-open", !open);
       });
+    }
 
-      row.appendChild(head);
-      row.appendChild(body);
-      mBody.appendChild(row);
+    head.addEventListener("click", () => {
+      const open = body.style.display !== "none";
+      body.style.display = open ? "none" : "";
+      arrow.textContent = open ? "▸" : "▾";
+      row.classList.toggle("dp-open", !open);
     });
 
-    card.appendChild(mHead);
-    card.appendChild(mBody);
+    row.appendChild(head);
+    row.appendChild(body);
+    card.appendChild(row);
   });
 
   wrap.appendChild(card);
