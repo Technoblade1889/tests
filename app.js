@@ -511,6 +511,52 @@ function renderEnglish() {
   wrap.appendChild(card);
 }
 
+// ===== 渲染：版本 / 更新日志 =====
+function renderVersions() {
+  const wrap = document.getElementById("version-wrap");
+  if (!wrap || typeof VERSIONS === "undefined") return;
+  wrap.innerHTML = "";
+
+  const card = document.createElement("details");
+  card.className = "card roadmap";
+
+  const sum = document.createElement("summary");
+  sum.className = "roadmap-summary";
+  sum.textContent = "🕰️ 版本 / 更新日志（" + VERSIONS.length + " 个版本 · 点击展开/收起）";
+  card.appendChild(sum);
+
+  const list = document.createElement("div");
+  list.className = "version-list";
+
+  VERSIONS.forEach((v) => {
+    const item = document.createElement("div");
+    item.className = "version-item";
+
+    const head = document.createElement("div");
+    head.className = "version-head";
+    const tag = document.createElement("span");
+    tag.className = "version-tag";
+    tag.textContent = v.v;
+    const title = document.createElement("span");
+    title.className = "version-title";
+    title.textContent = v.title;
+    const date = document.createElement("span");
+    date.className = "version-date";
+    date.textContent = v.date;
+    head.append(tag, title, date);
+
+    const desc = document.createElement("p");
+    desc.className = "version-desc";
+    desc.textContent = v.desc;
+
+    item.append(head, desc);
+    list.appendChild(item);
+  });
+
+  card.appendChild(list);
+  wrap.appendChild(card);
+}
+
 // ===== 学习进度总览（科目进度条） =====
 function parseDate(str) {
   const p = String(str).split(".").map(Number);
@@ -874,6 +920,7 @@ function renderAll() {
   renderMonth();
   renderDsMap();
   renderEnglish();
+  renderVersions();
 }
 
 // ===== 云端同步（Puter.js · 全平台自动共享） =====
