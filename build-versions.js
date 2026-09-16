@@ -32,6 +32,7 @@ const VERSIONS = [
   { v: "v11", commit: "5b78699" }, // 全年学习进度总览
   { v: "v12", commit: "dbc4113" }, // UI 优化
   { v: "v13", commit: "9625f65" }, // 逐日计划全年 12 个月
+  { v: "v14", commit: "40456f3" }, // 去 JS、TS 顺带学语法
 ];
 
 function show(commit, file) {
