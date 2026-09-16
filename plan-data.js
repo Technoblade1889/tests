@@ -39,10 +39,10 @@ const YEAR_MONTHS = [
         ],
       },
       {
-        name: "JS 速成 → TS 起步", range: "9.13 – 9.30", goal: "会写会跑，不是会看",
+        name: "TS 起步（JS 语法顺带学）", range: "9.13 – 9.30", goal: "会写会跑，不是会看",
         items: [
-          "JS 速成（9.13–9.18）：变量/数组/对象、函数与箭头、map/filter、class/模块、Promise/async-await",
-          "TS 类型（9.20–9.25）：基本类型注解 / interface / 函数类型 / 类 / 泛型 / 联合类型与类型守卫",
+          "TS 语法（9.13–9.18）：变量/数组/对象、函数与箭头、map/filter、class/继承/模块、Promise/async-await（JS 语法随 TS 一起学）",
+          "TS 类型（9.20–9.24）：基本类型注解 / interface / 函数类型 / 类与继承 / 泛型 / 联合类型与类型守卫",
           "综合产出（9.25–9.30）：命令行待办清单（内存→持久化→拆模块→补类型）+ fetch 查天气小工具",
           "async/await + fetch：读文件、调公开 JSON 接口（贯穿全程）",
         ],
@@ -83,7 +83,7 @@ const YEAR_MONTHS = [
         ],
       },
       {
-        name: "JS 异步 + fetch", range: "10.21 – 10.31", goal: "为 12 月调 API 铺路",
+        name: "异步 + fetch + 前端回顾", range: "10.21 – 10.31", goal: "为 12 月调 API 铺路",
         items: [
           "Promise / async-await 彻底搞懂（配合 TS 练手）",
           "fetch 调 REST API + JSON 解析 + 错误处理",
@@ -923,22 +923,22 @@ const DAILY_PLAN = {
     { date: "9.14", week: "一", lines: [
       { c: "lc", label: "🧱 刷题", text: "二叉树中序遍历 · LC94" },
       { c: "aux", label: "🐍 Python", text: "字典进阶：写「姓名→分数」查分脚本（增删改查）" },
-      { c: "main", label: "💙 TS", text: "JS 变量 let/const + 数组 [] / 对象 {}（把 C++ 的 struct 翻译成 JS 对象）" },
+      { c: "main", label: "💙 TS", text: "TS 变量 let/const + 数组 [] / 对象 {}（把 C++ 的 struct 翻译成 TS 对象）" },
     ]},
     { date: "9.15", week: "二", lines: [
       { c: "lc", label: "🧱 刷题", text: "二叉树后序遍历 · LC145" },
       { c: "aux", label: "🐍 Python", text: "字典收尾 + 集合 set：列表去重 / 交集差集" },
-      { c: "main", label: "💙 TS", text: "JS 函数 function vs 箭头函数 + 默认参数 + 回调（重点）" },
+      { c: "main", label: "💙 TS", text: "TS 函数 function vs 箭头函数 + 默认参数 + 回调（重点）" },
     ]},
     { date: "9.16", week: "三", lines: [
       { c: "lc", label: "🧱 刷题", text: "层序遍历 · LC102（+ 手写三种遍历再一遍）" },
       { c: "aux", label: "🐍 Python", text: "函数：写判断素数 / 斐波那契" },
-      { c: "main", label: "💙 TS", text: "数组高阶方法 map / filter / find（拿一道 LC 题用 JS 重写）" },
+      { c: "main", label: "💙 TS", text: "数组高阶方法 map / filter / find（拿一道 LC 题用 TS 重写）" },
     ]},
     { date: "9.17", week: "四", lines: [
       { c: "lc", label: "🧱 刷题", text: "前+中序构造二叉树 · LC105" },
       { c: "aux", label: "🐍 Python", text: "文件读写：读一个 txt 统计词频 top5" },
-      { c: "main", label: "💙 TS", text: "对象 + this + class（语法糖）+ 模块 import / export（Node）" },
+      { c: "main", label: "💙 TS", text: "对象 + this + class + 继承 extends（语法糖）+ 模块 import / export（Node）" },
     ]},
     { date: "9.18", week: "五", lines: [
       { c: "lc", label: "🧱 刷题", text: "中+后序构造二叉树 · LC106" },
@@ -956,7 +956,7 @@ const DAILY_PLAN = {
     ]},
     { date: "9.22", week: "二", lines: [
       { c: "lc", label: "🧱 刷题", text: "N 叉树层序遍历 · LC429" },
-      { c: "main", label: "💙 TS", text: "类 class + 类型：写一个类并实例化" },
+      { c: "main", label: "💙 TS", text: "类 class + 继承 + 类型：写一个类、子类继承并实例化" },
     ]},
     { date: "9.23", week: "三", lines: [
       { c: "lc", label: "🧱 刷题", text: "二叉树层平均值 · LC637" },
@@ -1073,43 +1073,43 @@ const DAILY_PLAN = {
     ]},
     { date: "10.21", week: "三", lines: [
       { c: "lc", label: "🧱 刷题", text: "数据流中的第 K 大元素 · LC703" },
-      { c: "main", label: "🧩 JS 异步", text: "Promise 彻底搞懂：then / catch / 链式" },
+      { c: "main", label: "🧩 异步", text: "Promise 彻底搞懂：then / catch / 链式" },
     ]},
     { date: "10.22", week: "四", lines: [
       { c: "lc", label: "🧱 刷题", text: "排序链表 · LC148（归并）" },
-      { c: "main", label: "🧩 JS 异步", text: "async/await 彻底搞懂（配合 TS 练手）" },
+      { c: "main", label: "🧩 异步", text: "async/await 彻底搞懂（配合 TS 练手）" },
       { c: "aux", label: "📚 数据结构", text: "第22节 高效排序" },
     ]},
     { date: "10.23", week: "五", lines: [
       { c: "lc", label: "🧱 刷题", text: "颜色分类 · LC75" },
-      { c: "main", label: "🧩 JS 异步", text: "fetch 调 REST API + JSON 解析" },
+      { c: "main", label: "🧩 异步", text: "fetch 调 REST API + JSON 解析" },
     ]},
     { date: "10.24", week: "六", rest: "周六休息：不排学习" },
     { date: "10.25", week: "日", lines: [
       { c: "lc", label: "🧱 刷题", text: "搜索旋转排序数组 · LC33" },
-      { c: "main", label: "🧩 JS 异步", text: "fetch + 错误处理：超时 / 状态码 / try-catch" },
+      { c: "main", label: "🧩 异步", text: "fetch + 错误处理：超时 / 状态码 / try-catch" },
     ]},
     { date: "10.26", week: "一", lines: [
       { c: "lc", label: "🧱 刷题", text: "在排序数组中查找首末位置 · LC34" },
-      { c: "main", label: "🧩 JS 异步", text: "fetch 调自己的接口（本地起一个服务）" },
+      { c: "main", label: "🧩 异步", text: "fetch 调自己的接口（本地起一个服务）" },
     ]},
     { date: "10.27", week: "二", lines: [
       { c: "lc", label: "🧱 刷题", text: "两个正序数组的中位数 · LC4" },
-      { c: "main", label: "🧩 JS 异步", text: "HTML / CSS 快速回顾①：结构 + 语义标签" },
+      { c: "main", label: "🧩 异步", text: "HTML / CSS 快速回顾①：结构 + 语义标签" },
     ]},
     { date: "10.28", week: "三", lines: [
       { c: "lc", label: "🧱 刷题", text: "排序综合：手写快排 + 归并" },
-      { c: "main", label: "🧩 JS 异步", text: "HTML / CSS 快速回顾②：Flex + 布局" },
+      { c: "main", label: "🧩 异步", text: "HTML / CSS 快速回顾②：Flex + 布局" },
       { c: "aux", label: "📚 数据结构", text: "第23节 内部排序真题" },
     ]},
     { date: "10.29", week: "四", lines: [
       { c: "lc", label: "🧱 刷题", text: "查找综合：二分 + 哈希各 1 题" },
-      { c: "main", label: "🧩 JS 异步", text: "HTML / CSS 快速回顾③：响应式 + 表单" },
+      { c: "main", label: "🧩 异步", text: "HTML / CSS 快速回顾③：响应式 + 表单" },
       { c: "aux", label: "📚 数据结构", text: "第24节 外部排序" },
     ]},
     { date: "10.30", week: "五", lines: [
       { c: "lc", label: "🧱 刷题", text: "月底复盘：排序 + 查找各手写 1 题" },
-      { c: "main", label: "🧩 JS 异步", text: "HTML / CSS 回顾④：做一个部署展示页" },
+      { c: "main", label: "🧩 异步", text: "HTML / CSS 回顾④：做一个部署展示页" },
       { c: "aux", label: "📚 数据结构", text: "第25节 查找与排序大题" },
     ]},
     { date: "10.31", week: "六", rest: "周六休息：不排学习" },
@@ -2277,6 +2277,7 @@ const SKILLS = [
 // ============================================================
 
 const VERSIONS = [
+  { v: "v14", date: "2026-09-16", title: "去 JS、TS 顺带学语法", desc: "去掉独立 JS 速成，JS 语法随 TS 一起学（TS=JS+类型）；TS 进度推进到「继承」，class 条目补上 extends；10 月「JS 异步」改名「异步 + fetch + 前端回顾」。" },
   { v: "v13", date: "2026-09-15", title: "逐日计划全年 12 个月", desc: "逐日具体计划从只有 9 月扩展到全年 12 个月，每天带具体刷题题目；点上方月份即可切换对应月份的逐日计划；TS 起步前前置 JS 速成。" },
   { v: "v12", date: "2026-09-14", title: "UI 优化", desc: "学习进度总览及其余卡片改为可收起、默认收起；删除数据同步栏（文件导入 / 导出）。" },
   { v: "v11", date: "2026-09-14", title: "全年学习进度总览", desc: "新增全年 18 个科目进度条，每科带起始 / 截止时间。" },
