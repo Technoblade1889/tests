@@ -2292,3 +2292,45 @@ const VERSIONS = [
   { v: "v2", date: "2026-08-29", title: "数据同步", desc: "支持手动导出 / 导入文件 + 复制 / 粘贴备份。" },
   { v: "v1", date: "2026-08-29", title: "网站初版", desc: "AI 向学习计划 + 每日安排（时间表 / 任务清单）+ 英语专区上线。" },
 ];
+
+// ============================================================
+// LeetCode 题号 → slug 补充表（逐日计划里点题跳转用）
+// 数据结构地图（DS_MAP）里已带 slug 的题会自动复用，这里只补地图没覆盖到的题号。
+// 题号顺序按数字排，方便查找。
+// ============================================================
+
+const LC_SLUG_EXTRA = {
+  2: "add-two-numbers",
+  3: "longest-substring-without-repeating-characters",
+  5: "longest-palindromic-substring",
+  11: "container-with-most-water",
+  15: "3sum",
+  19: "remove-nth-node-from-end-of-list",
+  21: "merge-two-sorted-lists",
+  22: "generate-parentheses",
+  23: "merge-k-sorted-lists",
+  39: "combination-sum",
+  42: "trapping-rain-water",
+  45: "jump-game-ii",
+  46: "permutations",
+  53: "maximum-subarray",
+  55: "jump-game",
+  62: "unique-paths",
+  72: "edit-distance",
+  76: "minimum-window-substring",
+  78: "subsets",
+  98: "validate-binary-search-tree",
+  146: "lru-cache",
+  153: "find-minimum-in-rotated-sorted-array",
+  155: "min-stack",
+  198: "house-robber",
+  236: "lowest-common-ancestor-of-a-binary-tree",
+  239: "sliding-window-maximum",
+  300: "longest-increasing-subsequence",
+  322: "coin-change",
+  438: "find-all-anagrams-in-a-string",
+  739: "daily-temperatures",
+  763: "partition-labels",
+  994: "rotting-oranges",
+  1143: "longest-common-subsequence",
+};

@@ -818,6 +818,29 @@ function renderDaily() {
   wrap.appendChild(card);
 }
 
+// ===== LeetCode 题号 → slug（逐日计划里点题跳转） =====
+const LC_SLUGS = {};
+if (typeof DS_MAP !== "undefined") {
+  DS_MAP.forEach((sec) => {
+    (sec.problems || []).forEach((p) => {
+      if (p.id && p.slug) LC_SLUGS[p.id] = p.slug;
+    });
+  });
+}
+if (typeof LC_SLUG_EXTRA !== "undefined") {
+  Object.assign(LC_SLUGS, LC_SLUG_EXTRA);
+}
+
+// 把文本里的「LC144」这类题号转成可点击的 LeetCode 链接（新标签打开）
+function linkifyLc(text) {
+  const esc = String(text).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  return esc.replace(/LC(\d+)/g, (full, num) => {
+    const slug = LC_SLUGS[num];
+    if (!slug) return full;
+    return '<a class="dp-lc-link" href="https://leetcode.cn/problems/' + slug + '/" target="_blank" rel="noopener">' + full + '</a>';
+  });
+}
+
 // ===== 渲染：逐日具体计划（跟随当前月份） =====
 function renderDailyPlan() {
   const wrap = document.getElementById("daily-wrap");
@@ -836,7 +859,7 @@ function renderDailyPlan() {
 
   const hint = document.createElement("p");
   hint.className = "dailyplan-hint";
-  hint.textContent = "跟着上方「月份」走：点哪个月，这里就显示哪个月的逐日计划。点日期展开 / 收起，今天默认展开；💤 表示周六休息。";
+  hint.textContent = "跟着上方「月份」走：点哪个月，这里就显示哪个月的逐日计划。点日期展开 / 收起，今天默认展开；💤 表示周六休息；蓝色 LC 题号可直接点开刷题。";
   card.appendChild(hint);
 
   if (days.length === 0) {
@@ -891,7 +914,7 @@ function renderDailyPlan() {
         const lab = document.createElement("b");
         lab.textContent = it.label ? it.label + "：" : "";
         const txt = document.createElement("span");
-        txt.textContent = it.text;
+        txt.innerHTML = linkifyLc(it.text);
         line.append(lab, txt);
         body.appendChild(line);
       });

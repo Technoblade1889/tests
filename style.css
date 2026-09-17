@@ -826,6 +826,18 @@ body {
   font-weight: 600;
 }
 
+.dp-item a.dp-lc-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 113, 227, 0.4);
+}
+
+.dp-item a.dp-lc-link:hover {
+  border-bottom-style: solid;
+  opacity: 0.8;
+}
+
 .dp-lc b { color: #b25000; }
 .dp-main b { color: var(--accent); }
 .dp-aux b { color: #248a3d; }
