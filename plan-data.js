@@ -955,39 +955,48 @@ const DAILY_PLAN = {
       { c: "main", label: "💙 TS", text: "TS 基本类型注解 + 接口 interface：给「学生 / 商品」对象写类型并打印" },
     ]},
     { date: "9.21", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文模板 / 翻译 1 段（打基础）" },
       { c: "lc", label: "🧱 刷题", text: "第10节 哈夫曼树（概念手写，无题）" },
       { c: "main", label: "💙 TS", text: "函数类型 + 可选/默认参数：写个带类型的计算器函数" },
     ]},
     { date: "9.22", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文模板 / 翻译 1 段（打基础）" },
       { c: "lc", label: "🧱 刷题", text: "N 叉树层序遍历 · LC429" },
       { c: "main", label: "💙 TS", text: "类 class + 继承 + 类型：写一个类、子类继承并实例化" },
     ]},
     { date: "9.23", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文模板 / 翻译 1 段（打基础）" },
       { c: "lc", label: "🧱 刷题", text: "二叉树层平均值 · LC637" },
       { c: "main", label: "💙 TS", text: "泛型 generics：写 first<T> 和一个泛型函数" },
     ]},
     { date: "9.24", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文模板 / 翻译 1 段（打基础）" },
       { c: "lc", label: "🧱 刷题", text: "星型图中心节点 · LC1791" },
       { c: "main", label: "💙 TS", text: "联合类型 + 类型守卫：写类型收窄的例子" },
     ]},
     { date: "9.25", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文模板 / 翻译 1 段（打基础）" },
       { c: "lc", label: "🧱 刷题", text: "小镇法官 · LC997" },
       { c: "main", label: "💙 TS", text: "综合小工具①：命令行待办清单（增删改查，存内存）" },
     ]},
     { date: "9.26", week: "六", rest: "周六休息：不排学习" },
     { date: "9.27", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文模板 / 翻译 1 段（打基础）" },
       { c: "lc", label: "🧱 刷题", text: "岛屿数量 · LC200" },
       { c: "main", label: "💙 TS", text: "待办清单②：加文件持久化（读写 JSON）+ 错误处理" },
     ]},
     { date: "9.28", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文模板 / 翻译 1 段（打基础）" },
       { c: "lc", label: "🧱 刷题", text: "图像渲染 · LC733" },
       { c: "main", label: "💙 TS", text: "待办清单③：拆模块 + 补全类型 + 整理 README" },
     ]},
     { date: "9.29", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文模板 / 翻译 1 段（打基础）" },
       { c: "lc", label: "🧱 刷题", text: "省份数量 · LC547" },
       { c: "main", label: "💙 TS", text: "fetch 实战：写一个查天气 / 查 IP 的小工具（async/await 应用）" },
     ]},
     { date: "9.30", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文模板 / 翻译 1 段（打基础）" },
       { c: "lc", label: "🧱 刷题", text: "月底复盘：手写完整结构（反转链表 + 二叉树遍历）" },
       { c: "main", label: "💙 TS", text: "月底复盘：跑通完整小工具 + 写「我会什么」清单，进 10 月 TS 进阶" },
     ]},
@@ -995,123 +1004,149 @@ const DAILY_PLAN = {
 
   "2026-10": [
     { date: "10.1", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "二分查找 · LC704 + 二叉搜索树中的搜索 · LC700" },
       { c: "main", label: "💙 TS", text: "工具类型 Partial / Pick：各写一个例子" },
       { c: "aux", label: "📚 数据结构", text: "第16节 顺序查找 / 折半查找 / BST" },
     ]},
     { date: "10.2", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "搜索插入位置 · LC35" },
       { c: "main", label: "💙 TS", text: "工具类型 Readonly / Record：各写一个例子" },
       { c: "aux", label: "📚 数据结构", text: "第17节 折半查找判定树 / AVL" },
     ]},
     { date: "10.3", week: "六", rest: "周六休息：不排学习" },
     { date: "10.4", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "网络延迟时间 · LC743（Dijkstra）" },
       { c: "main", label: "💙 TS", text: "模块 import / export：拆成多文件的小项目" },
       { c: "aux", label: "📚 数据结构", text: "第14节 最短路径" },
     ]},
     { date: "10.5", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "K 站中转内最便宜的航班 · LC787" },
       { c: "main", label: "💙 TS", text: "多文件小项目：把待办清单拆成多个模块" },
       { c: "aux", label: "📚 数据结构", text: "第15节 拓扑排序 / 关键路径" },
     ]},
     { date: "10.6", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "课程表 · LC207（拓扑排序）" },
       { c: "main", label: "💙 TS", text: "多文件小项目：模块间 import 打通" },
       { c: "aux", label: "📚 数据结构", text: "第15节 AOE 网 / 关键路径" },
     ]},
     { date: "10.7", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "课程表 II · LC210" },
       { c: "main", label: "💙 TS", text: "多文件小项目收尾：跑通 + 整理结构" },
     ]},
     { date: "10.8", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "平衡二叉树 · LC110" },
       { c: "main", label: "💙 TS", text: "async/await：写一个读文件的小脚本" },
       { c: "aux", label: "📚 数据结构", text: "第17节 AVL 旋转（LL/RR/LR/RL）" },
     ]},
     { date: "10.9", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "将有序数组转换为二叉搜索树 · LC108" },
       { c: "main", label: "💙 TS", text: "async/await + fetch：调一个公开 JSON 接口" },
       { c: "aux", label: "📚 数据结构", text: "第18节 B 树 / B+ 树" },
     ]},
     { date: "10.10", week: "六", rest: "周六休息：不排学习" },
     { date: "10.11", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "两数之和 · LC1" },
       { c: "main", label: "💙 TS", text: "命令行工具：fetch 调 JSON 接口（查天气）" },
       { c: "aux", label: "📚 数据结构", text: "第19节 散列表 / 哈希冲突" },
     ]},
     { date: "10.12", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "有效的字母异位词 · LC242" },
       { c: "main", label: "💙 TS", text: "命令行工具：解析 JSON + 打印" },
     ]},
     { date: "10.13", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "字母异位词分组 · LC49" },
       { c: "main", label: "💙 TS", text: "命令行工具：加错误处理 + 参数" },
     ]},
     { date: "10.14", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "最长连续序列 · LC128" },
       { c: "main", label: "💙 TS", text: "产出小工具①：命令行待办清单（存内存）" },
     ]},
     { date: "10.15", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "排序数组 · LC912（手写冒泡 / 插入）" },
       { c: "main", label: "💙 TS", text: "产出小工具②：待办清单加增删改查" },
       { c: "aux", label: "📚 数据结构", text: "第20节 简单排序" },
     ]},
     { date: "10.16", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "移动零 · LC283" },
       { c: "main", label: "💙 TS", text: "产出小工具③：待办清单文件持久化" },
     ]},
     { date: "10.17", week: "六", rest: "周六休息：不排学习" },
     { date: "10.18", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "对链表进行插入排序 · LC147" },
       { c: "main", label: "💙 TS", text: "产出小工具④：待办清单拆模块 + README" },
     ]},
     { date: "10.19", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "数组中的第 K 个最大元素 · LC215（堆）" },
       { c: "main", label: "💙 TS", text: "产出小工具⑤：待办清单补全类型 + 错误处理" },
       { c: "aux", label: "📚 数据结构", text: "第21节 堆 / 堆排序" },
     ]},
     { date: "10.20", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "前 K 个高频元素 · LC347" },
       { c: "main", label: "💙 TS", text: "TS 进阶复盘：整理一个能跑的完整小工具" },
     ]},
     { date: "10.21", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "数据流中的第 K 大元素 · LC703" },
       { c: "main", label: "🧩 异步", text: "Promise 彻底搞懂：then / catch / 链式" },
     ]},
     { date: "10.22", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "排序链表 · LC148（归并）" },
       { c: "main", label: "🧩 异步", text: "async/await 彻底搞懂（配合 TS 练手）" },
       { c: "aux", label: "📚 数据结构", text: "第22节 高效排序" },
     ]},
     { date: "10.23", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "颜色分类 · LC75" },
       { c: "main", label: "🧩 异步", text: "fetch 调 REST API + JSON 解析" },
     ]},
     { date: "10.24", week: "六", rest: "周六休息：不排学习" },
     { date: "10.25", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "搜索旋转排序数组 · LC33" },
       { c: "main", label: "🧩 异步", text: "fetch + 错误处理：超时 / 状态码 / try-catch" },
     ]},
     { date: "10.26", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "在排序数组中查找首末位置 · LC34" },
       { c: "main", label: "🧩 异步", text: "fetch 调自己的接口（本地起一个服务）" },
     ]},
     { date: "10.27", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "两个正序数组的中位数 · LC4" },
       { c: "main", label: "🧩 异步", text: "HTML / CSS 快速回顾①：结构 + 语义标签" },
     ]},
     { date: "10.28", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "排序综合：手写快排 + 归并" },
       { c: "main", label: "🧩 异步", text: "HTML / CSS 快速回顾②：Flex + 布局" },
       { c: "aux", label: "📚 数据结构", text: "第23节 内部排序真题" },
     ]},
     { date: "10.29", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "查找综合：二分 + 哈希各 1 题" },
       { c: "main", label: "🧩 异步", text: "HTML / CSS 快速回顾③：响应式 + 表单" },
       { c: "aux", label: "📚 数据结构", text: "第24节 外部排序" },
     ]},
     { date: "10.30", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 精听 1 篇真题 + 作文（每周写 1–2 篇）/ 翻译 1 段" },
       { c: "lc", label: "🧱 刷题", text: "月底复盘：排序 + 查找各手写 1 题" },
       { c: "main", label: "🧩 异步", text: "HTML / CSS 回顾④：做一个部署展示页" },
       { c: "aux", label: "📚 数据结构", text: "第25节 查找与排序大题" },
@@ -1121,110 +1156,136 @@ const DAILY_PLAN = {
 
   "2026-11": [
     { date: "11.1", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "两数之和 · LC1 + 有效的字母异位词 · LC242" },
       { c: "main", label: "🟩 Node", text: "Node 运行模型 / 事件循环" },
     ]},
     { date: "11.2", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "反转链表 · LC206 + 合并两个有序链表 · LC21" },
       { c: "main", label: "🟩 Node", text: "模块系统：CommonJS / ESM" },
     ]},
     { date: "11.3", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "环形链表 · LC141 + 删除链表倒数第 N 个结点 · LC19" },
       { c: "main", label: "🟩 Node", text: "npm / 包管理 / 常用库" },
     ]},
     { date: "11.4", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "有效的括号 · LC20 + 最小栈 · LC155" },
       { c: "main", label: "🟩 Node", text: "HTTP 模块 / 路由" },
     ]},
     { date: "11.5", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "用栈实现队列 · LC232 + 用队列实现栈 · LC225" },
       { c: "main", label: "🟩 Node", text: "HTTP 路由实践：写一个简单接口" },
     ]},
     { date: "11.6", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "每日温度 · LC739" },
       { c: "main", label: "🟩 Node", text: "Node 基础收尾：跑通一个服务端脚本" },
     ]},
     { date: "11.7", week: "六", rest: "周六休息：不排学习" },
     { date: "11.8", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "二叉树的层序遍历 · LC102 + 中序遍历 · LC94" },
       { c: "main", label: "🟩 Express", text: "Express 中间件 / 路由" },
     ]},
     { date: "11.9", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "验证二叉搜索树 · LC98 + 最近公共祖先 · LC236" },
       { c: "main", label: "🟩 Express", text: "Express 路由 + 请求响应" },
     ]},
     { date: "11.10", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "无重复字符的最长子串 · LC3" },
       { c: "main", label: "🟩 Express", text: "中间件进阶：日志 / 解析 body" },
     ]},
     { date: "11.11", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "最小覆盖子串 · LC76" },
       { c: "main", label: "🟩 Express", text: "REST API 设计：GET / POST / PUT / DELETE" },
     ]},
     { date: "11.12", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "找到字符串中所有字母异位词 · LC438" },
       { c: "main", label: "🟩 Express", text: "REST API：写一个完整的 CRUD 接口" },
     ]},
     { date: "11.13", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "滑动窗口最大值 · LC239" },
       { c: "main", label: "🟩 Express", text: "fetch 调通自己的接口" },
     ]},
     { date: "11.14", week: "六", rest: "周六休息：不排学习" },
     { date: "11.15", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "三数之和 · LC15 + 盛最多水的容器 · LC11" },
       { c: "main", label: "🚀 部署", text: "部署：Vercel" },
     ]},
     { date: "11.16", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "接雨水 · LC42" },
       { c: "main", label: "🚀 部署", text: "部署：Cloudflare Workers" },
     ]},
     { date: "11.17", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "爬楼梯 · LC70 + 最大子数组和 · LC53" },
       { c: "main", label: "🚀 部署", text: "部署收尾：环境变量 / 配置管理" },
     ]},
     { date: "11.18", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "最长递增子序列 · LC300" },
       { c: "proj", label: "🛠 项目①", text: "AI 资讯日报：需求拆解 + 技术选型" },
     ]},
     { date: "11.19", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "零钱兑换 · LC322" },
       { c: "proj", label: "🛠 项目①", text: "Cloudflare Workers + 定时抓取" },
     ]},
     { date: "11.20", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "最长公共子序列 · LC1143" },
       { c: "proj", label: "🛠 项目①", text: "调 Gemini 做摘要" },
     ]},
     { date: "11.21", week: "六", rest: "周六休息：不排学习" },
     { date: "11.22", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "打家劫舍 · LC198" },
       { c: "proj", label: "🛠 项目①", text: "发布到 GitHub Pages" },
     ]},
     { date: "11.23", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "不同路径 · LC62" },
       { c: "proj", label: "🛠 项目①", text: "写 README 进简历" },
     ]},
     { date: "11.24", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "全排列 · LC46 + 子集 · LC78" },
       { c: "proj", label: "🛠 项目①", text: "打磨：加错误处理 + 边界" },
     ]},
     { date: "11.25", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "组合总和 · LC39" },
       { c: "proj", label: "🛠 项目①", text: "上线验收：跑通全流程" },
     ]},
     { date: "11.26", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "括号生成 · LC22" },
       { c: "proj", label: "🛠 项目①", text: "写「简历条目」：技术栈 + 量化结果" },
     ]},
     { date: "11.27", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "最长回文子串 · LC5" },
       { c: "proj", label: "🛠 项目①", text: "复盘：这个项目学到什么" },
     ]},
     { date: "11.28", week: "六", rest: "周六休息：不排学习" },
     { date: "11.29", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "搜索旋转排序数组 · LC33 + 旋转数组最小值 · LC153" },
       { c: "main", label: "🟩 Node", text: "11 月复盘：后端 / 部署 / 项目① 查漏" },
     ]},
     { date: "11.30", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 真题阅读 / 听力专项 + 作文 / 翻译（刷真题）" },
       { c: "lc", label: "🧱 刷题", text: "两个正序数组的中位数 · LC4" },
       { c: "main", label: "🟩 Node", text: "月度里程碑：准备进 12 月后端进阶" },
     ]},
@@ -1232,114 +1293,141 @@ const DAILY_PLAN = {
 
   "2026-12": [
     { date: "12.1", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "两数之和 · LC1 + 移动零 · LC283" },
       { c: "main", label: "🟩 后端", text: "JWT 鉴权 / 中间件" },
     ]},
     { date: "12.2", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "反转链表 · LC206 + 环形链表 · LC141" },
       { c: "main", label: "🟩 后端", text: "JWT 鉴权实战：登录 → 下发 token" },
     ]},
     { date: "12.3", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "有效的括号 · LC20 + 每日温度 · LC739" },
       { c: "main", label: "🟩 后端", text: "环境变量 / 配置管理" },
     ]},
     { date: "12.4", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "二叉树的层序遍历 · LC102" },
       { c: "main", label: "🟩 后端", text: "部署：Vercel / Cloudflare Workers" },
     ]},
     { date: "12.5", week: "六", rest: "周六休息：不排学习（或刷六级真题）" },
     { date: "12.6", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "三数之和 · LC15 + 盛最多水的容器 · LC11" },
       { c: "main", label: "🟩 后端", text: "后端进阶收尾：鉴权 + 部署跑通" },
     ]},
     { date: "12.7", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "无重复字符的最长子串 · LC3" },
       { c: "main", label: "🟩 后端", text: "部署收尾 + 错误处理" },
     ]},
     { date: "12.8", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "滑动窗口最大值 · LC239" },
       { c: "main", label: "🟩 后端", text: "后端小项目：写一个带鉴权的接口" },
     ]},
     { date: "12.9", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "爬楼梯 · LC70 + 最大子数组和 · LC53" },
       { c: "main", label: "🟩 后端", text: "后端小项目：配置 + 环境变量" },
     ]},
     { date: "12.10", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "最长递增子序列 · LC300" },
       { c: "main", label: "🟩 后端", text: "后端小项目收尾 + 部署上线" },
     ]},
     { date: "12.11", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "零钱兑换 · LC322" },
       { c: "main", label: "🟩 后端", text: "后端进阶阶段复盘" },
     ]},
     { date: "12.12", week: "六", rest: "周六休息：不排学习（或刷六级真题）" },
     { date: "12.13", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "全排列 · LC46 + 子集 · LC78" },
       { c: "bagu", label: "📡 计网", text: "OSI / TCP-IP 分层模型" },
     ]},
     { date: "12.14", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "组合总和 · LC39" },
       { c: "bagu", label: "📡 计网", text: "TCP 三次握手 / 四次挥手" },
     ]},
     { date: "12.15", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "括号生成 · LC22" },
       { c: "bagu", label: "📡 计网", text: "TCP 拥塞控制 / 流量控制" },
     ]},
     { date: "12.16", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "最长回文子串 · LC5" },
       { c: "bagu", label: "📡 计网", text: "HTTP / HTTPS / DNS" },
     ]},
     { date: "12.17", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "岛屿数量 · LC200" },
       { c: "bagu", label: "📡 计网", text: "HTTP 状态码 / 方法 / 缓存" },
     ]},
     { date: "12.18", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "图像渲染 · LC733" },
       { c: "bagu", label: "📡 计网", text: "计网八股过一遍：高频题自测" },
     ]},
     { date: "12.19", week: "六", rest: "周六休息：不排学习（或刷六级真题）" },
     { date: "12.20", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "省份数量 · LC547" },
       { c: "bagu", label: "📡 计网", text: "计网收口：错题 + 重点复盘" },
     ]},
     { date: "12.21", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "课程表 · LC207" },
       { c: "bagu", label: "📡 计网", text: "计网八股收尾" },
     ]},
     { date: "12.22", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "课程表 II · LC210" },
       { c: "bagu", label: "📡 计网", text: "计网阶段复盘" },
     ]},
     { date: "12.23", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "数组中的第 K 个最大元素 · LC215" },
       { c: "main", label: "🤖 LLM", text: "调 OpenAI / 国产大模型 API（fetch + JSON）" },
     ]},
     { date: "12.24", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "前 K 个高频元素 · LC347" },
       { c: "main", label: "🤖 LLM", text: "Prompt Engineering 入门" },
     ]},
     { date: "12.25", week: "五", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "合并 K 个升序链表 · LC23" },
       { c: "main", label: "🤖 LLM", text: "结构化输出：要求返回 JSON" },
     ]},
     { date: "12.26", week: "六", rest: "周六休息：不排学习" },
     { date: "12.27", week: "日", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "搜索旋转排序数组 · LC33" },
       { c: "main", label: "🤖 LLM", text: "问数前置：调 LLM 把自然语言生成 SQL" },
     ]},
     { date: "12.28", week: "一", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "在排序数组中查找首末位置 · LC34" },
       { c: "main", label: "🤖 LLM", text: "LLM API：错误处理 + 限流重试" },
     ]},
     { date: "12.29", week: "二", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "LRU 缓存 · LC146" },
       { c: "main", label: "🤖 LLM", text: "LLM API 阶段复盘" },
     ]},
     { date: "12.30", week: "三", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "12 月复盘：八股 + 算法各挑 2 题" },
       { c: "main", label: "🤖 LLM", text: "12 月复盘：准备寒假问数系统" },
     ]},
     { date: "12.31", week: "四", lines: [
+      { c: "en", label: "🌍 六级", text: "背 40 词 + 全真模考（每周 1 次）+ 作文 / 翻译复盘（冲刺）" },
       { c: "lc", label: "🧱 刷题", text: "跨年：本周算法手感保持 2 题" },
       { c: "main", label: "🤖 LLM", text: "年度复盘：写下「我会什么」清单" },
     ]},
@@ -2281,6 +2369,7 @@ const SKILLS = [
 // ============================================================
 
 const VERSIONS = [
+  { v: "v16", date: "2026-09-20", title: "逐日计划加入六级", desc: "逐日具体计划 9.21–12 月底每天加一条「🌍 六级」（背 40 词 + 精听 + 作文/翻译，随阶段推进到冲刺模考），周六休息日跳过。" },
   { v: "v15", date: "2026-09-20", title: "六级每日任务加作文 / 翻译 / 精听", desc: "每日时间表与任务清单新增六级作文、翻译、真题精听三项，从 9.21 起每天固定；英语专区建议同步更新为「每日固定节奏」。" },
   { v: "v14", date: "2026-09-16", title: "去 JS、TS 顺带学语法", desc: "去掉独立 JS 速成，JS 语法随 TS 一起学（TS=JS+类型）；TS 进度推进到「继承」，class 条目补上 extends；10 月「JS 异步」改名「异步 + fetch + 前端回顾」。" },
   { v: "v13", date: "2026-09-15", title: "逐日计划全年 12 个月", desc: "逐日具体计划从只有 9 月扩展到全年 12 个月，每天带具体刷题题目；点上方月份即可切换对应月份的逐日计划；TS 起步前前置 JS 速成。" },
