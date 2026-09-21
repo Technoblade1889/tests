@@ -846,17 +846,20 @@ body {
 .dp-en b { color: #248a3d; }
 .dp-fit b { color: #e03131; }
 
-.dp-item a.dp-en-link {
-  margin-left: 6px;
+.dp-links {
+  margin-top: 6px;
   font-size: 12px;
-  color: #248a3d;
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(36, 138, 61, 0.4);
-  white-space: nowrap;
+  color: #888;
 }
 
-.dp-item a.dp-en-link:hover {
+.dp-links a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 113, 227, 0.4);
+}
+
+.dp-links a:hover {
   border-bottom-style: solid;
   opacity: 0.8;
 }

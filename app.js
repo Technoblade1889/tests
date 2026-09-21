@@ -908,22 +908,19 @@ function linkifyLc(text) {
   });
 }
 
-// 英语逐日任务 → 可点开的资源链接（按 label 关键词匹配）
-function enResourceLink(label) {
-  const map = [
-    { key: "听力", text: "真题听力音频", url: "https://zhenti.burningvocabulary.com/" },
-    { key: "词汇", text: "背单词", url: "https://www.maimemo.com/" },
-    { key: "写作", text: "真题 / 范文", url: "https://zhenti.burningvocabulary.com/" },
-  ];
-  const hit = map.find((m) => label && label.indexOf(m.key) >= 0);
-  if (!hit) return null;
-  const a = document.createElement("a");
-  a.className = "dp-en-link";
-  a.href = hit.url;
-  a.target = "_blank";
-  a.rel = "noopener";
-  a.textContent = " 🔗 " + hit.text;
-  return a;
+// 收集当天英语任务对应的资源链接（去重）
+function dayResourceLinks(lines) {
+  if (!lines) return [];
+  let needZhenti = false, needWords = false;
+  lines.forEach((it) => {
+    const l = (it && it.label) || "";
+    if (/听力|阅读|写作|翻译/.test(l)) needZhenti = true;
+    if (/词汇/.test(l)) needWords = true;
+  });
+  const links = [];
+  if (needZhenti) links.push({ text: "真题题库（音频·阅读·范文）", url: "https://zhenti.burningvocabulary.com/" });
+  if (needWords) links.push({ text: "背单词（墨墨）", url: "https://www.maimemo.com/" });
+  return links;
 }
 
 // ===== 渲染：逐日具体计划（跟随当前月份） =====
@@ -1001,12 +998,27 @@ function renderDailyPlan() {
         const txt = document.createElement("span");
         txt.innerHTML = linkifyLc(it.text);
         line.append(lab, txt);
-        if (it.c === "en") {
-          const a = enResourceLink(it.label);
-          if (a) line.appendChild(a);
-        }
         body.appendChild(line);
       });
+
+      const links = dayResourceLinks(d.lines);
+      if (links.length) {
+        const lrow = document.createElement("div");
+        lrow.className = "dp-links";
+        const lhead = document.createElement("span");
+        lhead.textContent = "🔗 今日资源：";
+        lrow.appendChild(lhead);
+        links.forEach((lk, i) => {
+          if (i) lrow.appendChild(document.createTextNode("  ·  "));
+          const a = document.createElement("a");
+          a.href = lk.url;
+          a.target = "_blank";
+          a.rel = "noopener";
+          a.textContent = lk.text;
+          lrow.appendChild(a);
+        });
+        body.appendChild(lrow);
+      }
     }
 
     head.addEventListener("click", () => {
