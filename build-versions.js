@@ -19,6 +19,7 @@ const path = require("path");
 
 // 版本 -> 提交（从 git log --reverse 对齐；vN 对应其代表性提交）
 const VERSIONS = [
+  { v: "v17", commit: "a1d114b" }, // 六级精细到逐日+逐月
   { v: "v1",  commit: "dcfb66c" }, // 网站初版
   { v: "v2",  commit: "e827941" }, // 数据同步
   { v: "v3",  commit: "2feaf4a" }, // LeetCode 清单 + 云端同步
