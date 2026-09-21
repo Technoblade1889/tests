@@ -471,6 +471,7 @@ function renderEnglish() {
 
   const card = document.createElement("details");
   card.className = "card english-card";
+  card.open = true;
 
   const sum = document.createElement("summary");
   sum.className = "roadmap-summary";
@@ -907,6 +908,24 @@ function linkifyLc(text) {
   });
 }
 
+// 英语逐日任务 → 可点开的资源链接（按 label 关键词匹配）
+function enResourceLink(label) {
+  const map = [
+    { key: "听力", text: "真题听力音频", url: "https://zhenti.burningvocabulary.com/" },
+    { key: "词汇", text: "背单词", url: "https://www.maimemo.com/" },
+    { key: "写作", text: "真题 / 范文", url: "https://zhenti.burningvocabulary.com/" },
+  ];
+  const hit = map.find((m) => label && label.indexOf(m.key) >= 0);
+  if (!hit) return null;
+  const a = document.createElement("a");
+  a.className = "dp-en-link";
+  a.href = hit.url;
+  a.target = "_blank";
+  a.rel = "noopener";
+  a.textContent = " 🔗 " + hit.text;
+  return a;
+}
+
 // ===== 渲染：逐日具体计划（跟随当前月份） =====
 function renderDailyPlan() {
   const wrap = document.getElementById("daily-wrap");
@@ -982,6 +1001,10 @@ function renderDailyPlan() {
         const txt = document.createElement("span");
         txt.innerHTML = linkifyLc(it.text);
         line.append(lab, txt);
+        if (it.c === "en") {
+          const a = enResourceLink(it.label);
+          if (a) line.appendChild(a);
+        }
         body.appendChild(line);
       });
     }
