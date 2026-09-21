@@ -19,6 +19,7 @@ const path = require("path");
 
 // 版本 -> 提交（从 git log --reverse 对齐；vN 对应其代表性提交）
 const VERSIONS = [
+  { v: "v21", commit: "198e120" }, // 逐日计划每天贴当日资源链接
   { v: "v20", commit: "cac6496" }, // 逐日计划英语任务加可点链接
   { v: "v19", commit: "5512fa5" }, // 新增健身专区 + 健身进逐日计划
   { v: "v18", commit: "0c6e572" }, // 六级加资源链接
