@@ -843,6 +843,8 @@ body {
 .dp-aux b { color: #248a3d; }
 .dp-proj b { color: #7c4dff; }
 .dp-bagu b { color: #0f8b8d; }
+.dp-en b { color: #248a3d; }
+.dp-fit b { color: #e03131; }
 
 .dp-rest {
   color: var(--muted);

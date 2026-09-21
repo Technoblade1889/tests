@@ -531,6 +531,52 @@ function renderEnglish() {
   wrap.appendChild(card);
 }
 
+// ===== 渲染：健身专区 =====
+function renderFitness() {
+  const wrap = document.getElementById("fitness-wrap");
+  if (!wrap || typeof FITNESS === "undefined") return;
+  wrap.innerHTML = "";
+
+  const card = document.createElement("details");
+  card.className = "card english-card";
+
+  const sum = document.createElement("summary");
+  sum.className = "roadmap-summary";
+  sum.textContent = "💪 健身专区（增肌 · 护腰 · 增重）· 点击展开/收起";
+  card.appendChild(sum);
+
+  FITNESS.forEach((sec) => {
+    const prefix = "fit-" + sec.key;
+    const section = document.createElement("section");
+    section.className = "english-sec";
+
+    const title = document.createElement("h3");
+    title.style.fontSize = "17px";
+    title.style.marginBottom = "4px";
+    title.textContent = sec.title;
+
+    const tag = document.createElement("p");
+    tag.className = "subtitle";
+    tag.style.marginBottom = "12px";
+    tag.textContent = sec.tag;
+
+    const advice = document.createElement("ul");
+    advice.className = "advice";
+    sec.advice.forEach((a) => {
+      const li = document.createElement("li");
+      li.textContent = a;
+      advice.appendChild(li);
+    });
+
+    const modWrap = document.createElement("div");
+    section.append(title, tag, advice, modWrap);
+    card.appendChild(section);
+    renderModuleList(modWrap, sec.modules, prefix, null);
+  });
+
+  wrap.appendChild(card);
+}
+
 // ===== 渲染：版本 / 更新日志 =====
 function renderVersions() {
   const wrap = document.getElementById("version-wrap");
@@ -974,6 +1020,7 @@ function renderAll() {
   renderMonth();
   renderDsMap();
   renderEnglish();
+  renderFitness();
   renderVersions();
 }
 
