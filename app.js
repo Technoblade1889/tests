@@ -503,6 +503,26 @@ function renderEnglish() {
     const modWrap = document.createElement("div");
 
     section.append(title, tag, advice, modWrap);
+
+    if (sec.links && sec.links.length) {
+      const linksBox = document.createElement("div");
+      linksBox.className = "english-links";
+      const linksTitle = document.createElement("p");
+      linksTitle.className = "subtitle";
+      linksTitle.textContent = "🔗 常用资源链接（点击直接打开）";
+      linksBox.appendChild(linksTitle);
+      sec.links.forEach((lk) => {
+        const a = document.createElement("a");
+        a.className = "english-link";
+        a.href = lk.url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = lk.text;
+        linksBox.appendChild(a);
+      });
+      section.append(linksBox);
+    }
+
     card.appendChild(section);
 
     renderModuleList(modWrap, sec.modules, prefix, null);

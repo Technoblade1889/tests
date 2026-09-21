@@ -1090,6 +1090,28 @@ body {
   padding-top: 18px;
 }
 
+.english-links {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+
+.english-links .subtitle {
+  margin-bottom: 8px;
+}
+
+.english-link {
+  display: block;
+  margin: 6px 0;
+  font-size: 14px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.english-link:hover {
+  text-decoration: underline;
+}
+
 
 /* ===== 版本 / 更新日志 ===== */
 .version-list {
