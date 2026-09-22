@@ -19,28 +19,11 @@ const path = require("path");
 
 // 版本 -> 提交（从 git log --reverse 对齐；vN 对应其代表性提交）
 const VERSIONS = [
-  { v: "v22", commit: "01bd09c" }, // 周一训练顺延到周二 + 周一不额外学英语
-  { v: "v21", commit: "198e120" }, // 逐日计划每天贴当日资源链接
-  { v: "v20", commit: "cac6496" }, // 逐日计划英语任务加可点链接
   { v: "v19", commit: "5512fa5" }, // 新增健身专区 + 健身进逐日计划
-  { v: "v18", commit: "0c6e572" }, // 六级加资源链接
-  { v: "v17", commit: "a1d114b" }, // 六级精细到逐日+逐月
-  { v: "v1",  commit: "dcfb66c" }, // 网站初版
-  { v: "v2",  commit: "e827941" }, // 数据同步
-  { v: "v3",  commit: "2feaf4a" }, // LeetCode 清单 + 云端同步
-  { v: "v4",  commit: "b134bdb" }, // 数据结构学习地图
-  { v: "v5",  commit: "e679c86" }, // 遗忘曲线复习表
-  { v: "v6",  commit: "a85c8ba" }, // 主线改版 + 苹果风视觉
-  { v: "v7",  commit: "928b1ce" }, // 刷题统一
-  { v: "v8",  commit: "c40891f" }, // 逐日具体计划
-  { v: "v9",  commit: "f622aa8" }, // 逐日计划细化
-  { v: "v10", commit: "c9cf969" }, // 加码版计划
-  { v: "v11", commit: "5b78699" }, // 全年学习进度总览
-  { v: "v12", commit: "dbc4113" }, // UI 优化
-  { v: "v13", commit: "9625f65" }, // 逐日计划全年 12 个月
-  { v: "v14", commit: "40456f3" }, // 去 JS、TS 顺带学语法
-  { v: "v15", commit: "eebec03" }, // 六级每日任务加作文/翻译/精听
   { v: "v16", commit: "a7cfec4" }, // 逐日计划加入六级
+  { v: "v13", commit: "9625f65" }, // 逐日计划全年 12 个月
+  { v: "v6",  commit: "a85c8ba" }, // 主线改版 + 苹果风视觉
+  { v: "v1",  commit: "dcfb66c" }, // 网站初版
 ];
 
 function show(commit, file) {
