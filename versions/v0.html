@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>全年学习计划 · 2026.9 – 2027.8</title>
+  <style>
+:root {
+  --bg: #f5f6fa;
+  --card: #ffffff;
+  --text: #2d3436;
+  --muted: #636e72;
+  --border: #e6e8ef;
+  --accent: #6c5ce7;
+  --accent-soft: #f0eefe;
+  --green: #00b894;
+  --green-soft: #e6f9f3;
+  --amber: #e17055;
+  --amber-soft: #fdeeea;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.app {
+  width: 100%;
+  max-width: 680px;
+}
+
+.header {
+  margin-bottom: 18px;
+}
+
+.header h1 {
+  font-size: 26px;
+  margin-bottom: 4px;
+}
+
+.date {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.subtitle b {
+  color: var(--accent);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+/* 月份导航 */
+.month-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+}
+
+.chip {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.15s;
+}
+
+.chip.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.chip .chip-label {
+  font-weight: 600;
+}
+
+.chip .chip-progress {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.chip.active .chip-progress {
+  opacity: 0.9;
+}
+
+/* 路线图 */
+.roadmap-summary {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.roadmap-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.roadmap-table th,
+.roadmap-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.roadmap-table th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.roadmap-table td:first-child {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* 月份详情 */
+.month-head {
+  margin-bottom: 14px;
+}
+
+.month-head h2 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.month-theme {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.overview {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.overview-number {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.overview-label {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 6px 0 12px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.progress-fill.lc {
+  background: var(--green);
+}
+
+.overview-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 14px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.stat-name {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.sub-title {
+  font-size: 15px;
+  margin: 22px 0 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+/* LeetCode */
+.lc-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.lc-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.lc-btn:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.lc-count {
+  font-size: 22px;
+}
+
+#lc-solved {
+  font-weight: 700;
+  color: var(--green);
+}
+
+.lc-goal {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.lc-quick {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: var(--green);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.lc-quick:hover {
+  background: #00a381;
+}
+
+/* 打卡 */
+.cal-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.cal-stats b {
+  color: var(--text);
+  font-size: 15px;
+}
+
+.cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  background: var(--bg);
+  color: var(--text);
+  transition: all 0.15s;
+}
+
+.cal-day.blank {
+  background: transparent;
+  cursor: default;
+}
+
+.cal-day:hover {
+  background: var(--accent-soft);
+}
+
+.cal-day.checked {
+  background: var(--accent);
+  color: #fff;
+}
+
+.cal-day.today {
+  box-shadow: 0 0 0 2px var(--amber);
+}
+
+/* 学习模块 */
+.module {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.module-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.module-summary::-webkit-details-marker {
+  display: none;
+}
+
+.module-summary:hover {
+  background: var(--accent-soft);
+}
+
+.module-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.module-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.module-range {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.module-progress {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.module-body {
+  padding: 4px 14px 14px;
+  border-top: 1px solid var(--border);
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.item input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.item span {
+  word-break: break-all;
+}
+
+.item.done span {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+/* 笔记 / 日记 */
+.note-label {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 10px 0 6px;
+}
+
+.note {
+  width: 100%;
+  min-height: 72px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+  background: var(--bg);
+}
+
+.note:focus {
+  border-color: var(--accent);
+  background: #fff;
+}
+
+.note.diary {
+  min-height: 110px;
+  margin-top: 4px;
+}
+
+/* 英语专区 */
+.english-title {
+  font-size: 18px;
+  margin: 6px 0 12px;
+}
+
+.advice {
+  margin: 0 0 14px;
+  padding-left: 18px;
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.advice li {
+  margin-bottom: 5px;
+}
+
+/* 每日安排 */
+.daily-title {
+  font-size: 18px;
+  margin: 2px 0 6px;
+}
+
+.daily-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.schedule-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.schedule-time {
+  flex-shrink: 0;
+  width: 110px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 8px;
+  padding: 6px 8px;
+  text-align: center;
+}
+
+.schedule-info {
+  flex: 1;
+}
+
+.schedule-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.schedule-note {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.daily-weekend {
+  font-size: 12.5px;
+  color: var(--amber);
+  background: var(--amber-soft);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.daily-tasks {
+  display: flex;
+  flex-direction: column;
+}
+
+</style>
+</head>
+<body>
+<div style="position:fixed;right:14px;bottom:14px;z-index:99999;background:#0071e3;color:#fff;font:12px/1.6 -apple-system,Segoe UI,Roboto,sans-serif;padding:8px 14px;border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.28);">🕰️ v0 历史快照 · <a href="../index.html" style="color:#fff;text-decoration:underline;">返回当前版</a></div>
+  <main class="app">
+    <header class="header">
+      <h1>📚 全年学习计划</h1>
+      <p class="date" id="date"></p>
+      <p class="subtitle">2026.9 – 2027.8 · 全年总进度 <b id="year-progress">0%</b></p>
+    </header>
+
+    <!-- 每日安排 -->
+    <div id="daily-wrap"></div>
+
+    <!-- 月份导航 -->
+    <nav class="month-nav" id="month-nav"></nav>
+
+    <!-- 全年路线图 -->
+    <details class="card roadmap">
+      <summary class="roadmap-summary">🗺️ 全年路线图（点击展开 / 收起）</summary>
+      <div class="table-wrap">
+        <table class="roadmap-table">
+          <thead>
+            <tr><th>月份</th><th>核心学习</th><th>辅助学习</th><th>项目 / 目标</th></tr>
+          </thead>
+          <tbody id="roadmap-body"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- 当前月份 -->
+    <section class="card month">
+      <div class="month-head">
+        <h2 id="month-title"></h2>
+        <span class="month-theme" id="month-theme"></span>
+      </div>
+
+      <div class="overview">
+        <div class="overview-number" id="month-progress-pct">0%</div>
+        <div class="overview-label">本月进度</div>
+        <div class="progress-bar"><div class="progress-fill" id="month-progress-fill"></div></div>
+        <div class="overview-stats">
+          <div class="stat"><span class="stat-value" id="stat-modules">0/0</span><span class="stat-name">任务项</span></div>
+          <div class="stat"><span class="stat-value" id="stat-leetcode">0/0</span><span class="stat-name">LeetCode</span></div>
+          <div class="stat"><span class="stat-value" id="stat-checkin">0/0</span><span class="stat-name">打卡</span></div>
+        </div>
+      </div>
+
+      <h3 class="sub-title">🧩 LeetCode</h3>
+      <div class="lc-row">
+        <button class="lc-btn" id="lc-minus">−</button>
+        <div class="lc-count"><span id="lc-solved">0</span><span class="lc-goal" id="lc-goal">/ 20 题</span></div>
+        <button class="lc-btn" id="lc-plus">＋</button>
+        <button class="lc-quick" id="lc-quick">今日 +1</button>
+      </div>
+      <div class="progress-bar"><div class="progress-fill lc" id="lc-fill"></div></div>
+
+      <h3 class="sub-title">🔥 每日练习打卡</h3>
+      <div class="cal-stats">
+        <span>已打卡 <b id="cal-days">0</b> 天</span>
+        <span>最长连续 <b id="cal-streak">0</b> 天</span>
+      </div>
+      <div class="cal-weekdays">
+        <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+
+      <h3 class="sub-title">📖 本月学习模块</h3>
+      <div id="month-modules"></div>
+
+      <h3 class="sub-title">📓 本月日记 / 总结</h3>
+      <textarea class="note diary" id="month-diary" placeholder="这个月学了什么、卡在哪、下个月怎么调整…"></textarea>
+    </section>
+
+    <!-- 英语专区 -->
+    <div id="english-wrap"></div>
+  </main>
+
+  <script>
+// ============================================================
+// 全年学习计划数据（2026.9 – 2027.8）—— AI 应用方向
+// 每个 month：key / year / month(0-11) / label / title / theme
+//            / core / aux / project / leetcodeGoal / modules[]
+// 每个 module：name / range / goal / items[]
+// 说明：已学过 高数/线代/离散，概率论与复变由学校课程覆盖，不再单排数学。
+// 主线：Python → 数据结构算法 → 后端基础 → 机器学习 → 深度学习 → 大模型应用(RAG/Agent)
+// ============================================================
+
+const YEAR_MONTHS = [
+  {
+    key: "2026-09", year: 2026, month: 8, label: "2026.9",
+    title: "Python 基础 + 数据结构收尾",
+    theme: "有 C/C++ 底子，Python 语法快速过；数据结构用 Python 重写收尾。",
+    core: "Python 基础", aux: "数据结构 / git", project: "LeetCode 15 题",
+    leetcodeGoal: 15,
+    modules: [
+      {
+        name: "Python 基础", range: "9.1 – 9.12", goal: "快速过（对比 C/C++）",
+        items: [
+          "环境搭建：Python + PyCharm / VS Code",
+          "基础语法（对比 C/C++ 快速过）",
+          "列表 / 元组 / 字典 / 集合",
+          "函数与作用域",
+          "面向对象",
+        ],
+      },
+      {
+        name: "Python 常用", range: "9.13 – 9.20", goal: "进阶技巧",
+        items: [
+          "列表推导式 / 生成器",
+          "常用内置模块（os / sys / collections）",
+          "文件读写",
+          "异常处理",
+        ],
+      },
+      {
+        name: "数据结构收尾", range: "9.1 – 9.30", goal: "用 Python 重写",
+        items: [
+          "栈（Python 重写）",
+          "队列（Python 重写）",
+          "递归（Python 重写）",
+        ],
+      },
+      {
+        name: "git 基础", range: "全月", goal: "版本控制",
+        items: [
+          "git 常用命令",
+          "分支 / 合并",
+          "远程仓库与推送",
+        ],
+      },
+    ],
+  },
+  {
+    key: "2026-10", year: 2026, month: 9, label: "2026.10",
+    title: "数据结构 + 算法",
+    theme: "用 Python 把树、堆、哈希、图、排序全部过一遍，配合刷题。",
+    core: "数据结构 / 算法", aux: "刷题", project: "LeetCode 25 题",
+    leetcodeGoal: 25,
+    modules: [
+      {
+        name: "树", range: "10.1 – 10.10", goal: "遍历 + BST + 堆",
+        items: [
+          "二叉树定义与遍历（前 / 中 / 后 / 层）",
+          "二叉搜索树 BST",
+          "堆与堆排序",
+        ],
+      },
+      {
+        name: "哈希与图", range: "10.11 – 10.18", goal: "哈希 + DFS/BFS",
+        items: [
+          "哈希表（dict / set）",
+          "图与遍历（DFS / BFS）",
+        ],
+      },
+      {
+        name: "排序与查找", range: "10.19 – 10.26", goal: "快排 / 归并 / 二分",
+        items: [
+          "快排 / 归并 / 堆排",
+          "二分查找",
+        ],
+      },
+      {
+        name: "算法起步", range: "10.27 – 10.31", goal: "双指针 / 回溯",
+        items: [
+          "双指针 / 滑动窗口",
+          "贪心 / 回溯入门",
+        ],
+      },
+    ],
+  },
+  {
+    key: "2026-11", year: 2026, month: 10, label: "2026.11",
+    title: "Python 进阶 + MySQL",
+    theme: "Python 进阶补全；MySQL 是取数和面试的通用基础。",
+    core: "Python 进阶 / MySQL", aux: "刷题", project: "LeetCode 25 题",
+    leetcodeGoal: 25,
+    modules: [
+      {
+        name: "Python 进阶", range: "11.1 – 11.12", goal: "底层机制",
+        items: [
+          "装饰器 / 闭包",
+          "生成器 / 迭代器",
+          "模块与包 / 虚拟环境",
+          "面向对象进阶（魔法方法 / 继承）",
+        ],
+      },
+      {
+        name: "SQL / MySQL", range: "11.13 – 11.30", goal: "会写会优化",
+        items: [
+          "SQL 增删改查",
+          "多表查询 / 连接",
+          "索引与事务",
+          "Python 操作 MySQL（pymysql / SQLAlchemy）",
+        ],
+      },
+    ],
+  },
+  {
+    key: "2026-12", year: 2026, month: 11, label: "2026.12",
+    title: "计算机网络 + 数据分析",
+    theme: "计网是八股核心；NumPy/Pandas 是 AI 数据处理的必备。",
+    core: "计网 / 数据分析", aux: "八股", project: "数据分析小项目 + LeetCode 20 题",
+    leetcodeGoal: 20,
+    modules: [
+      {
+        name: "计算机网络", range: "12.1 – 12.15", goal: "八股核心",
+        items: [
+          "OSI / TCP-IP 分层",
+          "TCP 三次握手 / 四次挥手",
+          "HTTP / HTTPS",
+          "DNS",
+        ],
+      },
+      {
+        name: "NumPy", range: "12.16 – 12.20", goal: "数组运算",
+        items: [
+          "数组创建 / 索引 / 广播",
+          "矩阵运算",
+        ],
+      },
+      {
+        name: "Pandas + 可视化", range: "12.21 – 12.27", goal: "数据处理",
+        items: [
+          "DataFrame / 数据清洗",
+          "分组聚合",
+          "Matplotlib 绘图",
+        ],
+      },
+      {
+        name: "数据分析小项目", range: "12.28 – 12.31", goal: "练手",
+        items: [
+          "Titanic 分析",
+          "整理成项目笔记",
+        ],
+      },
+    ],
+  },
+  {
+    key: "2027-01", year: 2027, month: 0, label: "2027.1",
+    title: "机器学习入门",
+    theme: "配合学校概率论，用 sklearn 把经典算法过一遍，参加 Kaggle 入门赛。",
+    core: "机器学习 / sklearn", aux: "概率论（学校）", project: "Kaggle 入门赛① + LeetCode 20 题",
+    leetcodeGoal: 20,
+    modules: [
+      {
+        name: "机器学习基础", range: "1.1 – 1.10", goal: "监督 / 无监督",
+        items: [
+          "监督 / 无监督概念",
+          "线性回归 / 逻辑回归",
+          "模型评估（准确率 / 召回 / F1）",
+        ],
+      },
+      {
+        name: "经典算法", range: "1.11 – 1.20", goal: "sklearn",
+        items: [
+          "决策树 / 随机森林",
+          "SVM",
+          "K-means",
+          "交叉验证 / 网格搜索",
+        ],
+      },
+      {
+        name: "Kaggle 入门赛①", range: "1.21 – 1.31", goal: "实战",
+        items: [
+          "Titanic 比赛",
+          "房价预测",
+          "提交并复盘",
+        ],
+      },
+    ],
+  },
+  {
+    key: "2027-02", year: 2027, month: 1, label: "2027.2",
+    title: "深度学习 PyTorch",
+    theme: "从张量到全连接网络到 CNN，做出第一个图像分类项目。",
+    core: "PyTorch / CNN", aux: "刷题", project: "图像分类项目② + LeetCode 15 题",
+    leetcodeGoal: 15,
+    modules: [
+      {
+        name: "PyTorch 基础", range: "2.1 – 2.8", goal: "张量",
+        items: [
+          "张量 / 自动求导",
+          "数据集与 DataLoader",
+        ],
+      },
+      {
+        name: "全连接网络", range: "2.9 – 2.14", goal: "训练循环",
+        items: [
+          "nn.Module / Linear",
+          "损失函数 / 优化器 / 训练循环",
+        ],
+      },
+      {
+        name: "CNN", range: "2.15 – 2.22", goal: "卷积",
+        items: [
+          "卷积 / 池化",
+          "搭建 CNN",
+        ],
+      },
+      {
+        name: "图像分类项目②", range: "2.23 – 2.28", goal: "项目",
+        items: [
+          "训练并评估",
+          "整理进简历",
+        ],
+      },
+    ],
+  },
+  {
+    key: "2027-03", year: 2027, month: 2, label: "2027.3",
+    title: "大模型 / LLM 基础",
+    theme: "理解 Transformer，学会调大模型 API，做第一个 LLM 应用。",
+    core: "Transformer / LLM API / Prompt", aux: "刷题", project: "LLM 应用项目③ + LeetCode 15 题",
+    leetcodeGoal: 15,
+    modules: [
+      {
+        name: "Transformer 基础", range: "3.1 – 3.10", goal: "理解",
+        items: [
+          "Attention 机制",
+          "Transformer 结构",
+          "大模型发展脉络",
+        ],
+      },
+      {
+        name: "LLM API 与 Prompt", range: "3.11 – 3.20", goal: "会调用",
+        items: [
+          "调 OpenAI / 国产大模型 API",
+          "Prompt Engineering",
+          "结构化输出",
+        ],
+      },
+      {
+        name: "LLM 应用项目③", range: "3.21 – 3.31", goal: "项目",
+        items: [
+          "做一个 AI 学习助手 / 问答应用",
+          "整理进简历",
+        ],
+      },
+    ],
+  },
+  {
+    key: "2027-04", year: 2027, month: 3, label: "2027.4",
+    title: "RAG + Agent 开发",
+    theme: "当前最缺的大模型应用技能：检索增强 + 智能体。",
+    core: "RAG / Agent / 向量数据库", aux: "刷题", project: "知识库问答项目④ + LeetCode 15 题",
+    leetcodeGoal: 15,
+    modules: [
+      {
+        name: "向量数据库", range: "4.1 – 4.7", goal: "检索",
+        items: [
+          "Embedding",
+          "向量检索（FAISS / Chroma）",
+        ],
+      },
+      {
+        name: "RAG", range: "4.8 – 4.18", goal: "检索增强",
+        items: [
+          "RAG 原理与流程",
+          "文档切分 / 检索 / 生成",
+          "优化（重排 / 引用）",
+        ],
+      },
+      {
+        name: "Agent", range: "4.19 – 4.26", goal: "智能体",
+        items: [
+          "Function Calling",
+          "多步推理 / 工具调用",
+        ],
+      },
+      {
+        name: "知识库问答项目④", range: "4.27 – 4.30", goal: "项目",
+        items: [
+          "做一个私有知识库问答系统",
+          "整理进简历",
+        ],
+      },
+    ],
+  },
+  {
+    key: "2027-05", year: 2027, month: 4, label: "2027.5",
+    title: "操作系统 + 后端基础",
+    theme: "OS 八股 + 后端必备缓存基础，补上 AI 工程需要的系统能力。",
+    core: "操作系统 / Redis", aux: "八股", project: "LeetCode 15 题",
+    leetcodeGoal: 15,
+    modules: [
+      {
+        name: "操作系统", range: "5.1 – 5.16", goal: "八股",
+        items: [
+          "进程 / 线程",
+          "内存管理 / 虚拟内存",
+          "死锁 / 进程间通信",
+          "整理 OS 八股",
+        ],
+      },
+      {
+        name: "后端基础：Redis / 缓存", range: "5.17 – 5.31", goal: "缓存",
+        items: [
+          "缓存概念",
+          "Redis 数据类型",
+          "缓存穿透 / 击穿 / 雪崩",
+        ],
+      },
+    ],
+  },
+  {
+    key: "2027-06", year: 2027, month: 5, label: "2027.6",
+    title: "算法冲刺 + 八股",
+    theme: "面试硬门槛集中冲刺，剑指 Offer 和热题过一遍。",
+    core: "算法 / 数据结构", aux: "LeetCode 冲刺", project: "LeetCode 40 题",
+    leetcodeGoal: 40,
+    modules: [
+      {
+        name: "数据结构全面复习", range: "6.1 – 6.10", goal: "全部手写",
+        items: [
+          "链表 / 栈 / 队列",
+          "树 / 堆 / 哈希 / 图",
+          "排序",
+        ],
+      },
+      {
+        name: "算法专题", range: "6.11 – 6.20", goal: "专题突破",
+        items: [
+          "双指针 / 滑动窗口",
+          "二分",
+          "DFS / BFS / 回溯",
+          "动态规划",
+        ],
+      },
+      {
+        name: "高频题", range: "6.21 – 6.30", goal: "刷透",
+        items: [
+          "剑指 Offer",
+          "热题 100",
+        ],
+      },
+    ],
+  },
+  {
+    key: "2027-07", year: 2027, month: 6, label: "2027.7",
+    title: "AI 项目深入 + 微调 + 部署",
+    theme: "把项目做深做精，学会微调(LoRA)和简单部署，简历成型。",
+    core: "模型微调 / 部署", aux: "简历 / GitHub", project: "简历 + GitHub",
+    leetcodeGoal: 20,
+    modules: [
+      {
+        name: "模型微调", range: "7.1 – 7.12", goal: "LoRA",
+        items: [
+          "LoRA 微调",
+          "微调一个领域模型",
+        ],
+      },
+      {
+        name: "部署与工程化", range: "7.13 – 7.20", goal: "上线",
+        items: [
+          "vLLM / 简单推理部署",
+          "接口封装（FastAPI）",
+        ],
+      },
+      {
+        name: "项目深挖 + 简历", range: "7.21 – 7.31", goal: "简历",
+        items: [
+          "完善 2–3 个 AI 项目进简历",
+          "GitHub 整理（README / 项目）",
+        ],
+      },
+    ],
+  },
+  {
+    key: "2027-08", year: 2027, month: 7, label: "2027.8",
+    title: "面试冲刺 + 投递",
+    theme: "八股全面过一遍，模拟面试，开始投递暑期实习。",
+    core: "八股 / 模拟面试", aux: "投递", project: "投递暑期实习",
+    leetcodeGoal: 20,
+    modules: [
+      {
+        name: "八股全面整理", range: "8.1 – 8.15", goal: "系统化",
+        items: [
+          "Python / ML 八股",
+          "计网 / OS / 数据库八股",
+          "项目深挖话术",
+        ],
+      },
+      {
+        name: "面试冲刺", range: "8.16 – 8.31", goal: "投递",
+        items: [
+          "模拟面试",
+          "高频题复习",
+          "开始投递暑期实习",
+        ],
+      },
+    ],
+  },
+];
+
+// ============================================================
+// 英语专区：六级 + 雅思
+// ============================================================
+
+const ENGLISH = [
+  {
+    key: "cet6",
+    title: "大学英语六级 (CET-6)",
+    tag: "12 月考试 · 大厂简历常设门槛 · 目标 550+ 高分",
+    advice: [
+      "你的固定节奏：每天早上背 40 个六级单词，晚上听 BBC 六分钟英语练语感——两项作为每日固定任务，坚持到考前。",
+      "12 月考试倒推：9–10 月打基础（词汇 + 听力），11 月刷真题 + 专项突破，12 月冲刺模考。",
+      "词汇：早 40 词 + 晚复习，用「不背单词 / 墨墨」，核心 5500 词 3 个月刚好过完一轮。",
+      "听力：BBC 六分钟是泛听练语感，还要配合真题精听（每天 1 篇约 30 分钟），重点练新闻 / 长对话 / 讲座。",
+      "阅读：限时刷真题，先题后文定位，40 分钟 3 篇。",
+      "写作：背 3–5 个万能模板 + 每周写 1–2 篇，注意三段式。",
+      "翻译：每周 2 篇汉译英，积累固定搭配和中国文化词。",
+      "真题：11 月中旬起刷整卷，每周 1 次全真模考，考前刷 3–5 套并复盘。",
+    ],
+    modules: [
+      {
+        name: "词汇（每日早 40 词）", goal: "核心 5500 词",
+        items: ["第 1–2 周 · 高频核心词", "第 3–4 周 · 核心词", "第 5–6 周 · 核心词", "第 7–8 周 · 真题词 + 易错词", "第 9–10 周 · 全量复习", "考前一周 · 高频冲刺"],
+      },
+      {
+        name: "听力（每日晚 BBC + 精听）", goal: "BBC 六分钟 + 真题精听",
+        items: ["每天听 BBC 六分钟英语", "每天精听 1 篇真题听力", "新闻类专项", "长对话 / 讲座专项", "整套听力限时模拟"],
+      },
+      {
+        name: "阅读", goal: "限时 40 分钟",
+        items: ["限时 40 分钟做 3 篇", "定位 + 同义替换", "仔细阅读专项", "选词填空 + 段落匹配", "整套阅读模拟"],
+      },
+      {
+        name: "写作", goal: "模板 + 练笔",
+        items: ["背 3–5 个模板", "每周写 1–2 篇作文", "找人 / AI 批改"],
+      },
+      {
+        name: "翻译", goal: "每周 2 篇",
+        items: ["每周 2 篇汉译英", "积累中国文化词 + 固定搭配"],
+      },
+      {
+        name: "真题冲刺（11–12 月）", goal: "全真模考",
+        items: ["11 月中旬起刷整卷真题", "每周 1 次全真模考", "考前刷 3–5 套 + 复盘"],
+      },
+    ],
+  },
+  {
+    key: "ielts",
+    title: "雅思 (IELTS)",
+    tag: "外派 / 留学用 · 目标 6.5–7.0 · 建议 2027 春首考",
+    advice: [
+      "时间线：六级 12 月考完 → 2027 年 1–2 月打基础（词汇 + 题型）→ 3–4 月首考（目标 6.5）→ 5–6 月留刷分空间，赶在暑期实习投递（7 月）前拿下分数。",
+      "每天学什么（备考期每天约 1–1.5 小时）：精听 30 分钟 + 背 30 个学术词汇 + 口语开口 15 分钟，阅读 / 写作轮换。",
+      "目标：外派 / 留学一般 6.5 起，冲 7.0 更稳，口语和写作是多数人短板，务必重点补。",
+      "听力：剑桥真题 4–18 精听，重点练地图题、多选题、同义替换。",
+      "阅读：限时 60 分钟 3 篇，练定位 + 判断题（True / False / Not Given）。",
+      "写作：Task 1（图表）+ Task 2（议论文）都要练，务必找人或用 AI 批改。",
+      "口语：Part 1 / 2 / 3 题库逐项过，每天开口 15 分钟并录音自评。",
+    ],
+    modules: [
+      {
+        name: "词汇（每日 30 词）", goal: "学术词汇 AWL 550",
+        items: ["学术词汇 AWL 550", "话题词汇：教育 / 环境 / 科技", "同义替换积累"],
+      },
+      {
+        name: "听力（每日精听 30 分钟）", goal: "剑桥真题精听",
+        items: ["剑桥真题精听", "地图题 + 多选题专项", "整套听力限时（30 分钟）"],
+      },
+      {
+        name: "阅读（每日 1 篇限时）", goal: "限时 60 分钟",
+        items: ["限时 60 分钟 3 篇", "定位 + 判断题", "段落匹配 + 填空题"],
+      },
+      {
+        name: "写作（每周 2 篇）", goal: "Task 1 + Task 2",
+        items: ["Task 1 图表：线 / 柱 / 饼 / 表", "Task 2 议论文结构", "每周 1 篇 Task1 + 1 篇 Task2", "AI / 老师批改 + 复盘"],
+      },
+      {
+        name: "口语（每日开口 15 分钟）", goal: "题库 + 录音自评",
+        items: ["Part 1 常见话题", "Part 2 题库 + 1 分钟准备", "Part 3 展开论述", "每天开口 15 分钟 + 录音自评"],
+      },
+    ],
+  },
+];
+
+// ============================================================
+// 每日安排（固定时间表 + 每日任务清单）
+// ============================================================
+
+const DAILY = {
+  schedule: [
+    { time: "07:30 – 08:00", title: "背 40 个六级单词", note: "晨起记忆最佳，用「不背单词 / 墨墨」" },
+    { time: "12:30 – 13:00", title: "午间复习", note: "回顾早上单词 + 扫一眼今日主线笔记" },
+    { time: "21:00 – 22:00", title: "主线学习", note: "当月模块（Python / ML / 大模型 / 刷题）" },
+    { time: "22:00 – 22:30", title: "BBC 六分钟英语", note: "先盲听 1 遍 → 看字幕 → 跟读" },
+    { time: "22:30 – 23:00", title: "复盘 + 打卡", note: "写笔记、勾每日任务、日历打卡" },
+  ],
+  weekend: "周末：把「主线学习」延长到 2–3 小时，补一个完整项目模块 / 多刷 2–3 道 LeetCode。",
+  tasks: [
+    { id: "words", label: "背 40 个六级单词" },
+    { id: "bbc", label: "听 BBC 六分钟英语" },
+    { id: "leetcode", label: "刷 1 道 LeetCode" },
+    { id: "main", label: "完成今日主线学习（当月模块）" },
+    { id: "review", label: "复盘 + 写笔记" },
+  ],
+};
+
+</script>
+  <script>
+// ===== 状态 =====
+const STORAGE_KEY = "study-v3-snapshot-v0";
+
+function defaultState() {
+  return {
+    items: {},      // { "prefix|mi|ii": true }
+    notes: {},      // { "prefix|note|mi": "文本" }
+    diary: {},      // { monthKey: "文本" }
+    leetcode: {},   // { monthKey: number }
+    checkins: {},   // { monthKey: [day...] }
+    currentMonth: null,
+    daily: {},      // { "YYYY-MM-DD": { taskId: true } }
+  };
+}
+
+let state = loadState();
+
+function loadState() {
+  try {
+    return Object.assign(defaultState(), JSON.parse(localStorage.getItem(STORAGE_KEY)) || {});
+  } catch {
+    return defaultState();
+  }
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+const monthByKey = {};
+YEAR_MONTHS.forEach((m) => (monthByKey[m.key] = m));
+
+let currentMonthKey = state.currentMonth || YEAR_MONTHS[0].key;
+
+// ===== 工具 =====
+function itemKey(prefix, mi, ii) {
+  return prefix + "|" + mi + "|" + ii;
+}
+
+function noteKey(prefix, mi) {
+  return prefix + "|note|" + mi;
+}
+
+function daysInMonth(m) {
+  return new Date(m.year, m.month + 1, 0).getDate();
+}
+
+function monthStats(m) {
+  let modTotal = 0;
+  let modDone = 0;
+  m.modules.forEach((mod, mi) => {
+    mod.items.forEach((_, ii) => {
+      modTotal++;
+      if (state.items[itemKey(m.key, mi, ii)]) modDone++;
+    });
+  });
+  const lc = state.leetcode[m.key] || 0;
+  const ci = state.checkins[m.key] || [];
+  return { modTotal, modDone, lc, ciCount: ci.length, dim: daysInMonth(m) };
+}
+
+function monthProgress(m) {
+  const s = monthStats(m);
+  const modPct = s.modTotal ? s.modDone / s.modTotal : 0;
+  const lcPct = m.leetcodeGoal ? Math.min(1, s.lc / m.leetcodeGoal) : 0;
+  const ciPct = s.ciCount / s.dim;
+  return Math.round(((modPct + lcPct + ciPct) / 3) * 100);
+}
+
+function yearProgress() {
+  const sum = YEAR_MONTHS.reduce((acc, m) => acc + monthProgress(m), 0);
+  return Math.round(sum / YEAR_MONTHS.length);
+}
+
+// ===== 渲染：通用模块列表 =====
+function renderModuleList(container, modules, prefix, onChange) {
+  container.innerHTML = "";
+
+  function updateProgress(mi) {
+    const total = modules[mi].items.length;
+    let done = 0;
+    modules[mi].items.forEach((_, ii) => {
+      if (state.items[itemKey(prefix, mi, ii)]) done++;
+    });
+    const prog = document.getElementById("prog-" + prefix + "-" + mi);
+    if (prog) prog.textContent = done + "/" + total;
+  }
+
+  modules.forEach((mod, mi) => {
+    const card = document.createElement("details");
+    card.className = "module";
+
+    const sum = document.createElement("summary");
+    sum.className = "module-summary";
+
+    const left = document.createElement("div");
+    left.className = "module-left";
+    const name = document.createElement("span");
+    name.className = "module-name";
+    name.textContent = mod.name;
+    const range = document.createElement("span");
+    range.className = "module-range";
+    let rangeText = mod.range || "";
+    if (mod.goal) rangeText += (rangeText ? " · " : "") + mod.goal;
+    range.textContent = rangeText;
+    left.append(name, range);
+
+    const prog = document.createElement("span");
+    prog.className = "module-progress";
+    prog.id = "prog-" + prefix + "-" + mi;
+    prog.textContent = "0/" + mod.items.length;
+
+    sum.append(left, prog);
+
+    const body = document.createElement("div");
+    body.className = "module-body";
+
+    mod.items.forEach((text, ii) => {
+      const key = itemKey(prefix, mi, ii);
+      const label = document.createElement("label");
+      label.className = "item";
+      if (state.items[key]) label.classList.add("done");
+
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.checked = !!state.items[key];
+      cb.addEventListener("change", () => {
+        state.items[key] = cb.checked;
+        saveState();
+        label.classList.toggle("done", cb.checked);
+        updateProgress(mi);
+        if (onChange) onChange();
+      });
+
+      const span = document.createElement("span");
+      span.textContent = text;
+
+      label.append(cb, span);
+      body.appendChild(label);
+    });
+
+    const noteLabel = document.createElement("div");
+    noteLabel.className = "note-label";
+    noteLabel.textContent = "📝 笔记 / 日记";
+    const ta = document.createElement("textarea");
+    ta.className = "note";
+    ta.placeholder = "记录这个模块学了什么、哪里卡住了…";
+    ta.value = state.notes[noteKey(prefix, mi)] || "";
+    ta.addEventListener("input", () => {
+      state.notes[noteKey(prefix, mi)] = ta.value;
+      saveState();
+    });
+    body.append(noteLabel, ta);
+
+    card.append(sum, body);
+    container.appendChild(card);
+
+    updateProgress(mi);
+  });
+}
+
+// ===== 渲染：月份导航 =====
+function renderMonthNav() {
+  const nav = document.getElementById("month-nav");
+  nav.innerHTML = "";
+  YEAR_MONTHS.forEach((m) => {
+    const chip = document.createElement("button");
+    chip.className = "chip" + (m.key === currentMonthKey ? " active" : "");
+    chip.id = "chip-" + m.key;
+
+    const label = document.createElement("span");
+    label.className = "chip-label";
+    label.textContent = m.label;
+    const prog = document.createElement("span");
+    prog.className = "chip-progress";
+    prog.textContent = monthProgress(m) + "%";
+    chip.append(label, prog);
+
+    chip.addEventListener("click", () => {
+      currentMonthKey = m.key;
+      state.currentMonth = m.key;
+      saveState();
+      renderAll();
+    });
+    nav.appendChild(chip);
+  });
+}
+
+// ===== 渲染：路线图 =====
+function renderRoadmap() {
+  const tbody = document.getElementById("roadmap-body");
+  tbody.innerHTML = "";
+  YEAR_MONTHS.forEach((m) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML =
+      "<td>" + m.label + "</td><td>" + m.core + "</td><td>" + m.aux + "</td><td>" + m.project + "</td>";
+    tbody.appendChild(tr);
+  });
+}
+
+// ===== 渲染：LeetCode =====
+function renderLeetcode(m) {
+  document.getElementById("lc-solved").textContent = state.leetcode[m.key] || 0;
+  document.getElementById("lc-goal").textContent = "/ " + m.leetcodeGoal + " 题";
+  const lc = state.leetcode[m.key] || 0;
+  const pct = m.leetcodeGoal ? Math.min(100, Math.round((lc / m.leetcodeGoal) * 100)) : 0;
+  document.getElementById("lc-fill").style.width = pct + "%";
+}
+
+function changeLC(delta) {
+  const m = monthByKey[currentMonthKey];
+  const cur = state.leetcode[m.key] || 0;
+  state.leetcode[m.key] = Math.max(0, cur + delta);
+  saveState();
+  renderLeetcode(m);
+  updateMonthStats();
+}
+
+// ===== 渲染：日历 =====
+function renderCalendar(m) {
+  const grid = document.getElementById("cal-grid");
+  grid.innerHTML = "";
+
+  const first = new Date(m.year, m.month, 1);
+  const startWeekday = first.getDay();
+  const dim = daysInMonth(m);
+
+  for (let i = 0; i < startWeekday; i++) {
+    const blank = document.createElement("div");
+    blank.className = "cal-day blank";
+    grid.appendChild(blank);
+  }
+
+  const today = new Date();
+  const isThisMonth = today.getFullYear() === m.year && today.getMonth() === m.month;
+  const todayDate = today.getDate();
+  const ci = state.checkins[m.key] || [];
+
+  for (let d = 1; d <= dim; d++) {
+    const cell = document.createElement("div");
+    cell.className = "cal-day";
+    if (ci.includes(d)) cell.classList.add("checked");
+    if (isThisMonth && d === todayDate) cell.classList.add("today");
+    cell.textContent = d;
+    cell.addEventListener("click", () => toggleCheckin(m, d));
+    grid.appendChild(cell);
+  }
+}
+
+function toggleCheckin(m, day) {
+  let ci = state.checkins[m.key] || [];
+  if (ci.includes(day)) {
+    ci = ci.filter((x) => x !== day);
+  } else {
+    ci.push(day);
+  }
+  state.checkins[m.key] = ci;
+  saveState();
+  renderCalendar(m);
+  updateMonthStats();
+}
+
+function calcStreak(m) {
+  const ci = state.checkins[m.key] || [];
+  if (ci.length === 0) return 0;
+  const sorted = ci.slice().sort((a, b) => a - b);
+  let max = 1;
+  let cur = 1;
+  for (let i = 1; i < sorted.length; i++) {
+    if (sorted[i] === sorted[i - 1] + 1) {
+      cur++;
+      max = Math.max(max, cur);
+    } else {
+      cur = 1;
+    }
+  }
+  return max;
+}
+
+// ===== 渲染：月份详情 =====
+function renderMonth() {
+  const m = monthByKey[currentMonthKey];
+
+  document.getElementById("month-title").textContent = m.label + " · " + m.title;
+  document.getElementById("month-theme").textContent = m.theme;
+
+  renderLeetcode(m);
+  renderCalendar(m);
+  renderModuleList(document.getElementById("month-modules"), m.modules, m.key, updateMonthStats);
+
+  document.getElementById("month-diary").value = state.diary[m.key] || "";
+  updateMonthStats();
+}
+
+function updateMonthStats() {
+  const m = monthByKey[currentMonthKey];
+  const s = monthStats(m);
+  const pct = monthProgress(m);
+
+  document.getElementById("month-progress-pct").textContent = pct + "%";
+  document.getElementById("month-progress-fill").style.width = pct + "%";
+  document.getElementById("stat-modules").textContent = s.modDone + "/" + s.modTotal;
+  document.getElementById("stat-leetcode").textContent = s.lc + "/" + m.leetcodeGoal;
+  document.getElementById("stat-checkin").textContent = s.ciCount + "/" + s.dim;
+
+  document.getElementById("cal-days").textContent = s.ciCount;
+  document.getElementById("cal-streak").textContent = calcStreak(m);
+
+  const chip = document.getElementById("chip-" + m.key);
+  if (chip) chip.querySelector(".chip-progress").textContent = pct + "%";
+}
+
+// ===== 渲染：英语专区 =====
+function renderEnglish() {
+  const wrap = document.getElementById("english-wrap");
+  wrap.innerHTML = "";
+
+  const h = document.createElement("h2");
+  h.className = "english-title";
+  h.textContent = "🌍 英语专区（六级 + 雅思）";
+  wrap.appendChild(h);
+
+  ENGLISH.forEach((sec) => {
+    const prefix = "en-" + sec.key;
+    const card = document.createElement("section");
+    card.className = "card";
+
+    const title = document.createElement("h3");
+    title.style.fontSize = "17px";
+    title.style.marginBottom = "4px";
+    title.textContent = sec.title;
+
+    const tag = document.createElement("p");
+    tag.className = "subtitle";
+    tag.style.marginBottom = "12px";
+    tag.textContent = sec.tag;
+
+    const advice = document.createElement("ul");
+    advice.className = "advice";
+    sec.advice.forEach((a) => {
+      const li = document.createElement("li");
+      li.textContent = a;
+      advice.appendChild(li);
+    });
+
+    const modWrap = document.createElement("div");
+
+    card.append(title, tag, advice, modWrap);
+    wrap.appendChild(card);
+
+    renderModuleList(modWrap, sec.modules, prefix, null);
+  });
+}
+
+// ===== 每日安排 =====
+function todayStr() {
+  const d = new Date();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return d.getFullYear() + "-" + mm + "-" + dd;
+}
+
+function renderDaily() {
+  const wrap = document.getElementById("daily-wrap");
+  if (!wrap || typeof DAILY === "undefined") return;
+  wrap.innerHTML = "";
+
+  const card = document.createElement("section");
+  card.className = "card daily";
+
+  const h = document.createElement("h2");
+  h.className = "daily-title";
+  h.textContent = "📅 每日安排";
+  card.appendChild(h);
+
+  const sTitle = document.createElement("h3");
+  sTitle.className = "sub-title";
+  sTitle.style.marginTop = "0";
+  sTitle.textContent = "⏰ 每日时间表（在校日）";
+  card.appendChild(sTitle);
+
+  const tl = document.createElement("div");
+  tl.className = "daily-schedule";
+  DAILY.schedule.forEach((s) => {
+    const row = document.createElement("div");
+    row.className = "schedule-row";
+
+    const t = document.createElement("div");
+    t.className = "schedule-time";
+    t.textContent = s.time;
+
+    const info = document.createElement("div");
+    info.className = "schedule-info";
+    const tt = document.createElement("div");
+    tt.className = "schedule-title";
+    tt.textContent = s.title;
+    const nn = document.createElement("div");
+    nn.className = "schedule-note";
+    nn.textContent = s.note;
+    info.append(tt, nn);
+
+    row.append(t, info);
+    tl.appendChild(row);
+  });
+  card.appendChild(tl);
+
+  const wk = document.createElement("p");
+  wk.className = "daily-weekend";
+  wk.textContent = DAILY.weekend;
+  card.appendChild(wk);
+
+  const key = todayStr();
+  const tTitle = document.createElement("h3");
+  tTitle.className = "sub-title";
+  tTitle.textContent = "✅ 每日任务 · " + key;
+  card.appendChild(tTitle);
+
+  const today = state.daily[key] || {};
+  const taskWrap = document.createElement("div");
+  taskWrap.className = "daily-tasks";
+  DAILY.tasks.forEach((t) => {
+    const label = document.createElement("label");
+    label.className = "item";
+    if (today[t.id]) label.classList.add("done");
+
+    const cb = document.createElement("input");
+    cb.type = "checkbox";
+    cb.checked = !!today[t.id];
+    cb.addEventListener("change", () => {
+      if (!state.daily[key]) state.daily[key] = {};
+      state.daily[key][t.id] = cb.checked;
+      saveState();
+      label.classList.toggle("done", cb.checked);
+    });
+
+    const span = document.createElement("span");
+    span.textContent = t.label;
+    label.append(cb, span);
+    taskWrap.appendChild(label);
+  });
+  card.appendChild(taskWrap);
+
+  wrap.appendChild(card);
+}
+
+// ===== 其他 =====
+function renderHeader() {
+  const now = new Date();
+  const options = { year: "numeric", month: "long", day: "numeric", weekday: "long" };
+  document.getElementById("date").textContent = "今天：" + now.toLocaleDateString("zh-CN", options);
+  document.getElementById("year-progress").textContent = yearProgress() + "%";
+}
+
+function renderAll() {
+  renderHeader();
+  renderDaily();
+  renderMonthNav();
+  renderRoadmap();
+  renderMonth();
+  renderEnglish();
+}
+
+// ===== 初始化 =====
+document.getElementById("lc-minus").addEventListener("click", () => changeLC(-1));
+document.getElementById("lc-plus").addEventListener("click", () => changeLC(1));
+document.getElementById("lc-quick").addEventListener("click", () => changeLC(1));
+document.getElementById("month-diary").addEventListener("input", (e) => {
+  state.diary[currentMonthKey] = e.target.value;
+  saveState();
+});
+
+renderAll();
+
+</script>
+</body>
+</html>

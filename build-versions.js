@@ -19,11 +19,11 @@ const path = require("path");
 
 // 版本 -> 提交（从 git log --reverse 对齐；vN 对应其代表性提交）
 const VERSIONS = [
-  { v: "v19", commit: "5512fa5" }, // 新增健身专区 + 健身进逐日计划
-  { v: "v16", commit: "a7cfec4" }, // 逐日计划加入六级
-  { v: "v13", commit: "9625f65" }, // 逐日计划全年 12 个月
-  { v: "v6",  commit: "a85c8ba" }, // 主线改版 + 苹果风视觉
-  { v: "v1",  commit: "dcfb66c" }, // 网站初版
+  { v: "v4", commit: "5512fa5" }, // 新增健身专区 + 健身进逐日计划
+  { v: "v3", commit: "a7cfec4" }, // 逐日计划加入六级
+  { v: "v2", commit: "9625f65" }, // 逐日计划全年 12 个月
+  { v: "v1", commit: "a85c8ba" }, // 主线改版 + 苹果风视觉
+  { v: "v0", commit: "dcfb66c" }, // 网站初版
 ];
 
 function show(commit, file) {
