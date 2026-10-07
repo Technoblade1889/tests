@@ -1157,7 +1157,10 @@ const DAILY_PLAN = {
     { date: "10.5", week: "一", rest: "轻量：背单词 + 整理本周笔记到 GitHub，不排新学习" },
     { date: "10.6", week: "二", rest: "轻量：背单词 + 重跑一遍本周小工具，不排新学习" },
     { date: "10.7", week: "三", lines: [
-      { c: "main", label: "💙 TS", text: "收口复盘：写「我会什么 / 还不会什么」清单，整理代码进笔记，准备进 10.8 TS 进阶" },
+      { c: "main", label: "💙 TS", text: "补 异步①：回调 → Promise（写一个读文件 / 定时的 Promise，理解「等结果再往下走」）" },
+      { c: "main", label: "💙 TS", text: "补 异步②：async / await 重写上面的例子（对比 Promise.then 和 async/await 两种写法）" },
+      { c: "main", label: "💙 TS", text: "补 模块：import / export，把两个函数拆到两个文件里互相调用跑通" },
+      { c: "main", label: "💙 TS", text: "补 文件读写：用 node:fs 读一个 txt → JSON.parse / stringify（为 10 月文件持久化打底）" },
       { c: "fit", label: "💪 腰修复", text: "每日腰修复：麦肯基撑起→猫牛→臀桥→死虫→鸟狗→婴儿式→悬垂（5–8 分钟）" },
     ]},
     { date: "10.8", week: "四", lines: [
@@ -1166,7 +1169,10 @@ const DAILY_PLAN = {
       { c: "en", label: "✍️ 六级写作·翻译", text: "作文提纲：『The Importance of Physical Exercise（体育锻炼的重要性）』列三段式大纲 + 好句 3 句 ｜ 翻译积累：「教育公平」核心表达" },
       { c: "lc", label: "🧱 刷题", text: "平衡二叉树 · LC110 + 将有序数组转换为二叉搜索树 · LC108" },
       { c: "lc", label: "🔁 复习旧题", text: "回刷假期前最后内容：LC547 · LC994" },
-      { c: "main", label: "💙 TS", text: "async/await：写一个读文件的小脚本" },
+      { c: "main", label: "💙 TS", text: "补 命令行输入：process.argv 拿参数 + readline 读一行输入（为待办清单「增删改查」做准备）" },
+      { c: "main", label: "💙 TS", text: "补 fetch：调一个公开 JSON 接口（查天气 / 查 IP），把 async/await 真正用起来" },
+      { c: "main", label: "💙 TS", text: "综合小练：async 读文件统计词频 / 查天气，把异步 + 模块 + 文件读写串起来跑通" },
+      { c: "main", label: "💙 TS", text: "迷你收口：跑通「读 JSON → 改 → 写回」小脚本 + 写「我会/不会」清单，进 TS 进阶" },
       { c: "aux", label: "📚 数据结构", text: "第17节 AVL 旋转（LL/RR/LR/RL）" },
       { c: "fit", label: "💪 腰修复", text: "每日腰修复：麦肯基撑起→猫牛→臀桥→死虫→鸟狗→婴儿式→悬垂（5–8 分钟）" },
       { c: "fit", label: "💪 训练", text: "轻恢复：快走 20min + 核心 10min + 全身拉伸" },
