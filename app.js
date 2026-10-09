@@ -471,7 +471,6 @@ function renderEnglish() {
 
   const card = document.createElement("details");
   card.className = "card english-card";
-  card.open = true;
 
   const sum = document.createElement("summary");
   sum.className = "roadmap-summary";
@@ -925,7 +924,7 @@ function dayResourceLinks(lines) {
 
 // ===== 渲染：逐日具体计划（跟随当前月份） =====
 function renderDailyPlan() {
-  const wrap = document.getElementById("daily-wrap");
+  const wrap = document.getElementById("daily-plan-wrap");
   if (!wrap || typeof DAILY_PLAN === "undefined") return;
 
   const m = monthByKey[currentMonthKey];
