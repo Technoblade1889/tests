@@ -19,6 +19,7 @@ const path = require("path");
 
 // 版本 -> 提交（从 git log --reverse 对齐；vN 对应其代表性提交）
 const VERSIONS = [
+  { v: "v9", commit: "23abe18" }, // 健身分化改「一个部位一天」
   { v: "v8", commit: "28bb0fa" }, // 健身改隔天循环 + 固定没空日
   { v: "v6", commit: "584d1b0" }, // TS 收尾 + Node 提前 + 英语去重
   { v: "v5", commit: "704cc27" }, // 逐日计划加重：刷题 2 新 + 1 旧 + TS 每周综合小项目
